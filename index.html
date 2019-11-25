@@ -12,6 +12,7 @@
     crossorigin="anonymous">
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular-route.min.js"></script>
 </head>
 
 <body ng-app="myApp">
@@ -21,11 +22,8 @@
 
 
 
-<!-- ======================== MAIN BODY CONTAINER ======================== -->
-  <main id="main-body-container" ng-controller="MainController">
-    <h1 class="main-title">{{ title }}</h1>
-    <div class="fake-button">{{ buttonText }}</div>
-  </main>
+<!-- ======================== MAIN VIEW CONTAINER ======================== -->
+  <div ng-view></div>
 
 
 
@@ -56,6 +54,14 @@
 
   <!-- Controllers -->
   <script src="js/controllers/MainController.js"></script>
+
+  <!-- Views -->
+  <script type="text/ng-template" id="home.html">
+    <main id="main-body-container" ng-controller="MainController">
+      <h1 class="main-title">{{ title }}</h1>
+      <div class="fake-button">{{ buttonText }}</div>
+    </main>
+  </script>
 
 </body>
 </html>
