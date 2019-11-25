@@ -1,4 +1,4 @@
 app.controller("MainController", ["$scope", function($scope) {
-  $scope.title = "Current State : Home";
-  $scope.buttonText = "Change State";
+  $scope.title = "Current View : Home";
+  $scope.buttonText = "Change View";
 }]);
