@@ -17,7 +17,8 @@
 
 <body ng-app="myApp">
 <!-- =============================== NAVBAR =============================== -->
-  <nav id="navbar">LOGO
+  <nav id="navbar">
+    <a href="#/home/">LOGO</a>
   </nav>
 
 
@@ -49,17 +50,31 @@
   </footer>
 
 
+
   <!-- Modules -->
   <script src="js/app.js"></script>
 
   <!-- Controllers -->
   <script src="js/controllers/MainController.js"></script>
+  <script src="js/controllers/SecondController.js"></script>
 
   <!-- Views -->
   <script type="text/ng-template" id="home.html">
-    <main id="main-body-container" ng-controller="MainController">
+    <main class="main-body-container">
+      <div id="home-container">
+        <h1 class="main-title">{{ title }}</h1>
+
+        <form action="#/second/" method="get">
+          <input type="text"></input>
+            <button class="fake-button">{{ buttonText }}</button>
+        </form>
+      </div>
+    </main>
+  </script>
+
+  <script type="text/ng-template" id="second.html">
+    <main class="main-body-container">
       <h1 class="main-title">{{ title }}</h1>
-      <div class="fake-button">{{ buttonText }}</div>
     </main>
   </script>
 

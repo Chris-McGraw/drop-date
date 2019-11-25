@@ -1,12 +1,17 @@
 var app = angular.module("myApp", ["ngRoute"]);
 
-app.config(function ($routeProvider) {
+app.config(function ($routeProvider, $locationProvider) {
+  $locationProvider.hashPrefix("");
   $routeProvider
-    .when("/", {
+    .when("/home", {
       controller: "MainController",
       templateUrl: "home.html"
     })
+    .when("/second", {
+      controller: "SecondController",
+      templateUrl: "second.html"
+    })
     .otherwise({
-      redirectTo: "/"
+      redirectTo: "/home"
     });
 });
