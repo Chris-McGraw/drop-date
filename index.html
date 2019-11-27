@@ -58,23 +58,30 @@
   <script src="js/controllers/MainController.js"></script>
   <script src="js/controllers/SecondController.js"></script>
 
+  <!-- Services -->
+  <script src="js/services/photos.js"></script>
+
   <!-- Views -->
   <script type="text/ng-template" id="home.html">
-    <main class="main-body-container">
-      <div id="home-container">
-        <h1 class="main-title">{{ title }}</h1>
+    <main class="view-container">
+      <h1 class="main-title">{{ title }}</h1>
 
-        <form action="#/second/" method="get">
-          <input type="text"></input>
-            <button class="fake-button">{{ buttonText }}</button>
-        </form>
-      </div>
+      <form action="#/second/" method="get">
+        <input type="text"></input>
+          <button class="fake-button">{{ buttonText }}</button>
+      </form>
     </main>
   </script>
 
   <script type="text/ng-template" id="second.html">
-    <main class="main-body-container">
+    <main class="view-container">
       <h1 class="main-title">{{ title }}</h1>
+
+      <div id="second-view-grid-container">
+        <div class="second-view-grid-item" ng-repeat="photo in photos">
+          <p>{{ photo.author }}</p>
+        </div>
+      </div>
     </main>
   </script>
 

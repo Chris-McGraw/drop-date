@@ -61,20 +61,18 @@ a:active {
 
 
 
-/* ------------------------- MAIN BODY CONTAINER ------------------------- */
-.main-body-container {
+/* ------------------------- MAIN VIEW CONTAINER ------------------------- */
+.view-container {
   position: relative;
-  top: 100px;
-}
-
-#home-container {
-  position: relative;
+  top: 80px;
   left: 0;
   right: 0;
 
   width: 90%;
   height: auto;
   margin: auto;
+
+  border: 1px dashed red;
 }
 
 .main-title {
@@ -88,6 +86,8 @@ a:active {
   color: black;
 }
 
+
+/* ------------------------------ HOME VIEW ------------------------------ */
 .fake-button {
   display: flex;
   justify-content: center;
@@ -110,6 +110,26 @@ a:active {
   border-radius: 4px;
 
   cursor: pointer;
+}
+
+
+
+/* ----------------------------- SECOND VIEW ----------------------------- */
+#second-view-grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.second-view-grid-item {
+  grid-column: span 1;
+
+  height: 200px;
+  background-color: white;
+
+  border: 1px solid black;
+
+  /* background-image: url("https://s3.amazonaws.com/codecademy-content/courses/ltp4/photos-api/canada.jpg");
+  background-size: cover; */
 }
 
 
