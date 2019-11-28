@@ -29,7 +29,7 @@
 
 
 <!-- =============================== FOOTER =============================== -->
-  <footer id="footer">
+  <!-- <footer id="footer">
     <p id="footer-copyright">© 2019 Chris McGraw. All rights reserved.</p>
 
     <ul id="footer-link-list">
@@ -47,7 +47,7 @@
         </a>
       </li>
     </ul>
-  </footer>
+  </footer> -->
 
 
 
@@ -57,6 +57,7 @@
   <!-- Controllers -->
   <script src="js/controllers/MainController.js"></script>
   <script src="js/controllers/SecondController.js"></script>
+  <script src="js/controllers/PhotoController.js"></script>
 
   <!-- Services -->
   <script src="js/services/photos.js"></script>
@@ -80,11 +81,21 @@
       <h1 class="main-title">{{ title }}</h1>
 
       <div id="second-grid-container">
-        <div class="tile" ng-style="{'background-image':'url({{d.url}})'}"
+        <a class="tile" href="#/photos/{{$index}}" ng-style="{'background-image':'url({{d.url}})'}"
         ng-repeat="d in dingus">
           <p>{{ d.author }}</p>
-        </div>
+        </a>
       </div>
+    </main>
+  </script>
+
+  <script type="text/ng-template" id="photo.html">
+    <main class="main-body-container">
+      <h1 class="main-title">{{ title }}</h1>
+
+      <h2 class="photo-title">{{ detail.title }}</h2>
+      <p class="photo-author">{{ detail.author }}</p>
+      <p class="photo-pubdate">{{ detail.pubdate | date }}</p>
     </main>
   </script>
 
