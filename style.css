@@ -67,16 +67,6 @@ a:active {
   top: 100px;
 }
 
-#home-container {
-  position: relative;
-  left: 0;
-  right: 0;
-
-  width: 90%;
-  height: auto;
-  margin: auto;
-}
-
 .main-title {
   position: relative;
 
@@ -86,6 +76,19 @@ a:active {
   font-size: 40px;
   text-align: center;
   color: black;
+}
+
+
+
+/* ----------------------------- VIEW : HOME ----------------------------- */
+#home-container {
+  position: relative;
+  left: 0;
+  right: 0;
+
+  width: 90%;
+  height: auto;
+  margin: auto;
 }
 
 .fake-button {
@@ -114,17 +117,35 @@ a:active {
 
 
 
+/* ---------------------------- VIEW : SECOND ---------------------------- */
+#second-grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+
+  padding: 0 20px;
+}
+
+.tile {
+  grid-column: span 1;
+
+  height: 150px;
+
+  background-size: cover;
+  border: 1px solid black;
+}
+
+
+
 /* -------------------------------- FOOTER -------------------------------- */
 #footer {
   z-index: 10;
-  position: absolute;
-  bottom: 0;
+  position: relative;
+  top: 120px;
 
   height: 80px;
   width: 100%;
-
-  /* padding-top: 20px;
-  padding-bottom: 20px; */
 
   font-family: sans-serif;
   text-align: center;
@@ -135,7 +156,6 @@ a:active {
 
 #footer-copyright {
   margin-top: 20px;
-  /* margin-bottom: 10px; */
 
   font-size: 16px;
 }
