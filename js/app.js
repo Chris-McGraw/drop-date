@@ -11,6 +11,10 @@ app.config(function ($routeProvider, $locationProvider) {
       controller: "SecondController",
       templateUrl: "second.html"
     })
+    .when("/photos/:id", {
+      controller: "PhotoController",
+      templateUrl: "photo.html"
+    })
     .otherwise({
       redirectTo: "/home"
     });

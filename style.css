@@ -40,6 +40,10 @@ a:active {
   color: white;
 }
 
+p {
+  color: black;
+}
+
 
 
 /* -------------------------------- NAVBAR -------------------------------- */
@@ -134,6 +138,10 @@ a:active {
 
   background-size: cover;
   border: 1px solid black;
+}
+
+.tile > p {
+  cursor: pointer;
 }
 
 
