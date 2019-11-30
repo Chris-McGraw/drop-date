@@ -66,7 +66,7 @@ p {
 
 
 /* ------------------------- MAIN BODY CONTAINER ------------------------- */
-.main-body-container {
+.view-main-container {
   position: relative;
   top: 100px;
 }
@@ -82,10 +82,7 @@ p {
   color: black;
 }
 
-
-
-/* ----------------------------- VIEW : HOME ----------------------------- */
-#home-container {
+.view-inner-container {
   position: relative;
   left: 0;
   right: 0;
@@ -95,6 +92,9 @@ p {
   margin: auto;
 }
 
+
+
+/* ----------------------------- VIEW : HOME ----------------------------- */
 .fake-button {
   display: flex;
   justify-content: center;
@@ -128,7 +128,7 @@ p {
   grid-column-gap: 10px;
   grid-row-gap: 10px;
 
-  padding: 0 20px;
+  width: 100%;
 }
 
 .tile {
@@ -142,6 +142,17 @@ p {
 
 .tile > p {
   cursor: pointer;
+}
+
+
+
+/* ----------------------------- VIEW : PHOTO ----------------------------- */
+.photo-img {
+  width: 100%;
+  height: auto;
+
+  object-fit: cover;
+  border: 1px solid black;
 }
 
 

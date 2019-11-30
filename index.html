@@ -23,7 +23,7 @@
 
 
 
-<!-- ======================== MAIN VIEW CONTAINER ======================== -->
+<!-- ======================= MASTER VIEW CONTAINER ======================= -->
   <div ng-view></div>
 
 
@@ -62,12 +62,15 @@
   <!-- Services -->
   <script src="js/services/photos.js"></script>
 
+
+
   <!-- Views -->
+<!-- ============================ VIEW : HOME ============================ -->
   <script type="text/ng-template" id="home.html">
-    <main class="main-body-container">
+    <main class="view-main-container">
       <h1 class="main-title">{{ title }}</h1>
 
-      <div id="home-container">
+      <div class="view-inner-container">
         <form action="#/second/" method="get">
           <input type="text"></input>
             <button class="fake-button">{{ buttonText }}</button>
@@ -76,26 +79,33 @@
     </main>
   </script>
 
+<!-- =========================== VIEW : SECOND =========================== -->
   <script type="text/ng-template" id="second.html">
-    <main class="main-body-container">
+    <main class="view-main-container">
       <h1 class="main-title">{{ title }}</h1>
 
-      <div id="second-grid-container">
-        <a class="tile" href="#/photos/{{$index}}" ng-style="{'background-image':'url({{d.url}})'}"
-        ng-repeat="d in dingus">
-          <p>{{ d.author }}</p>
-        </a>
+      <div class="view-inner-container">
+        <div id="second-grid-container">
+          <a class="tile" href="#/photos/{{$index}}" ng-style="{'background-image':'url({{ d.url }})'}"
+          ng-repeat="d in dingus">
+            <p>{{ d.author }}</p>
+          </a>
+        </div>
       </div>
     </main>
   </script>
 
+<!-- ============================ VIEW : PHOTO ============================ -->
   <script type="text/ng-template" id="photo.html">
-    <main class="main-body-container">
+    <main class="view-main-container">
       <h1 class="main-title">{{ title }}</h1>
 
-      <h2 class="photo-title">{{ detail.title }}</h2>
-      <p class="photo-author">{{ detail.author }}</p>
-      <p class="photo-pubdate">{{ detail.pubdate | date }}</p>
+      <div class="view-inner-container">
+        <img class="photo-img" ng-src="{{ detail.url }}">
+        <h2 class="photo-title">{{ detail.title }}</h2>
+        <p class="photo-author">{{ detail.author }}</p>
+        <p class="photo-pubdate">{{ detail.pubdate | date }}</p>
+      </div>
     </main>
   </script>
 
