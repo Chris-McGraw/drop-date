@@ -1,0 +1,10 @@
+<main class="view-main-container">
+  <h1 class="main-title">{{ title }}</h1>
+
+  <div class="view-inner-container">
+    <img class="photo-img" ng-src="{{ detail.url }}">
+    <h2 class="photo-title">{{ detail.title }}</h2>
+    <p class="photo-author">{{ detail.author }}</p>
+    <p class="photo-pubdate">{{ detail.pubdate | date }}</p>
+  </div>
+</main>

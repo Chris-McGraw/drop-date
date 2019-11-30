@@ -5,15 +5,15 @@ app.config(function ($routeProvider, $locationProvider) {
   $routeProvider
     .when("/home", {
       controller: "MainController",
-      templateUrl: "home.html"
+      templateUrl: "views/home.html"
     })
     .when("/second", {
       controller: "SecondController",
-      templateUrl: "second.html"
+      templateUrl: "views/second.html"
     })
     .when("/photos/:id", {
       controller: "PhotoController",
-      templateUrl: "photo.html"
+      templateUrl: "views/photo.html"
     })
     .otherwise({
       redirectTo: "/home"
