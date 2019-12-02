@@ -124,7 +124,7 @@ p {
 /* ---------------------------- VIEW : SECOND ---------------------------- */
 #second-grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 10px;
   grid-row-gap: 10px;
 
@@ -134,9 +134,10 @@ p {
 .tile {
   grid-column: span 1;
 
-  height: 150px;
+  height: 200px;
 
   background-size: cover;
+  background-position: center;
   border: 1px solid black;
 }
 

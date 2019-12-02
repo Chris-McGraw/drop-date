@@ -3,6 +3,6 @@ app.controller("PhotoController", ["$scope", "photos", "$routeParams", function(
 
   photos.then(
     function successCallback(response) {
-    $scope.detail = response.data[$routeParams.id];
+    $scope.detail = response.data.results[$routeParams.id];
   });
 }]);
