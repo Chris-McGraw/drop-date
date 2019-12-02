@@ -1,0 +1,12 @@
+<main class="view-main-container">
+  <h1 class="main-title">{{ title }}</h1>
+
+  <div class="view-inner-container">
+    <div id="second-grid-container">
+      <a class="tile" href="#/photos/{{$index}}"
+      ng-style="{'background-image':'url({{ d.image.small_url }})'}" ng-repeat="d in dingus">
+        <p>{{ d.name }}</p>
+      </a>
+    </div>
+  </div>
+</main>

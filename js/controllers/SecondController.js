@@ -3,6 +3,7 @@ app.controller("SecondController", ["$scope", "photos", function($scope, photos)
 
   photos.then(
     function successCallback(response) {
-    $scope.dingus = response.data;
+    $scope.dingus = response.data.results;
+    //console.log(response.data.results);
   });
 }]);
