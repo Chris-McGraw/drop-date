@@ -148,12 +148,33 @@ p {
 
 
 /* ----------------------------- VIEW : PHOTO ----------------------------- */
+#photo-grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+
+  width: 100%;
+}
+
+#photo-img-container {
+  grid-column: span 1;
+
+  height: auto;
+}
+
 .photo-img {
   width: 100%;
   height: auto;
 
   object-fit: cover;
   border: 1px solid black;
+}
+
+#photo-info-container {
+  grid-column: span 1;
+
+  height: auto;
 }
 
 
