@@ -2,7 +2,19 @@
   <h1 class="main-title">{{ title }}</h1>
 
   <div class="view-inner-container">
-    <img class="photo-img" ng-src="{{ detail.image.small_url }}">
-    <h2 class="photo-title">{{ detail.name }}</h2>
+    <div id="photo-grid-container">
+      <div id="photo-img-container">
+        <img class="photo-img" ng-src="{{ detail.image.small_url }}">
+      </div>
+
+      <div id="photo-info-container">
+        <h2>{{ detail.name }}</h2>
+        <p>
+          {{ detail.expected_release_month}}/{{ detail.expected_release_day }}/{{ detail.expected_release_year }}
+        </p>
+        <br>
+        <p>{{ detail.deck }}</p>
+      </div>
+    </div>
   </div>
 </main>
