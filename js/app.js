@@ -19,3 +19,5 @@ app.config(function ($routeProvider, $locationProvider) {
       redirectTo: "/home"
     });
 });
+
+app.value("userInput", "mario");
