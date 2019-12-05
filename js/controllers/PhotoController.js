@@ -1,7 +1,7 @@
-app.controller("PhotoController", ["$scope", "photos", "$routeParams", function($scope, photos, $routeParams) {
+app.controller("PhotoController", ["$scope", "userSearch", "photos", "$routeParams", function($scope, userSearch, photos, $routeParams) {
   $scope.title = "Current View : Photo";
 
-  photos.then(
+  photos.getData( userSearch.getData() ).then(
     function successCallback(response) {
     $scope.detail = response.data.results[$routeParams.id];
   });
