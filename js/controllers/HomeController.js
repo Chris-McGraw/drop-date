@@ -1,6 +1,6 @@
-app.controller("MainController", ["$scope", "userSearch", function($scope, userSearch) {
+app.controller("HomeController", ["$scope", function($scope) {
   $scope.title = "Current View : Home";
-  $scope.buttonText = "Search";
+  $scope.buttonText = "Games";
 
   $scope.getInput = function() {
     var input = $scope.inputVal;
