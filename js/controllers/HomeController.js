@@ -22,4 +22,14 @@ app.controller("HomeController", ["$scope", "jsonPadApi", function($scope, jsonP
       $scope.movies = response.data.results;
   });
 
+// ------------------- TELEVISION
+    jsonPadApi.getData("https://api.themoviedb.org/3/discover/tv?api_key=",
+      "239a65ddae71707eccfac11b087ecbb9",
+      "&language=en-US&sort_by=first_air_date.desc&first_air_date.lte=2019-12-07&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false&with_original_language=en",
+      "callback"
+    ).then(
+      function successCallback(response) {
+        $scope.shows = response.data.results;
+    });
+
 }]);
