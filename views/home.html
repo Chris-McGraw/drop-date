@@ -2,12 +2,35 @@
   <h1 class="main-title">{{ title }}</h1>
 
   <div class="view-inner-container">
-    <form action="#/second/" method="get">
-      <input id="home-input" type="text" ng-model="inputVal"></input>
-
-        <button class="fake-button" ng-click="getInput()">{{ buttonText }}</button>
-
-        <!-- <get-user-input></get-user-input> -->
+    <form action="#/games/" method="get">
+        <button class="fake-button">{{ buttonText }}</button>
     </form>
+
+    <h2 class="release-today-title">Recent Releases</h2>
+
+    <h3 class="release-today-subtitle">Games</h3>
+    <div class="release-today-row">
+      <div class="release-today-tile" ng-style="{'background-image':'url({{ game.image.small_url }})'}"
+      ng-repeat="game in games"></div>
+
+      <div class="release-today-name" ng-repeat="game in games">
+        <p>{{ game.name }}</p>
+        <p>{{ game.release_date }}</p>
+      </div>
+    </div>
+
+
+
+    <h3 class="release-today-subtitle">Movies</h3>
+    <div class="release-today-row">
+      <div class="release-today-tile" ng-style="{'background-image':'url(http://image.tmdb.org/t/p/w185{{ movie.poster_path }})'}"
+      ng-repeat="movie in movies | limitTo: 4"></div>
+
+      <div class="release-today-name" ng-repeat="movie in movies | limitTo: 4">
+        <p>{{ movie.title }}</p>
+        <p>{{ movie.release_date }}</p>
+      </div>
+    </div>
+
   </div>
 </main>

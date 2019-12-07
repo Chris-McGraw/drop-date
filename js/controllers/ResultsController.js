@@ -1,5 +1,5 @@
-app.controller("SecondController", ["$scope", "userSearch", "photos", function($scope, userSearch, photos) {
-  $scope.title = "Current View : Second";
+app.controller("ResultsController", ["$scope", "userSearch", "photos", function($scope, userSearch, photos) {
+  $scope.title = "Current View : Results";
 
   photos.getData( userSearch.getData() ).then(
     function successCallback(response) {

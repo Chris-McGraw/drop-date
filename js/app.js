@@ -3,19 +3,23 @@ var app = angular.module("myApp", ["ngRoute"]);
 app.config(function ($routeProvider, $locationProvider) {
   $locationProvider.hashPrefix("");
   $routeProvider
-    .when("/home", {
-      controller: "MainController",
+    .when("/", {
+      controller: "HomeController",
       templateUrl: "views/home.html"
     })
-    .when("/second", {
-      controller: "SecondController",
-      templateUrl: "views/second.html"
+    .when("/games/", {
+      controller: "GamesController",
+      templateUrl: "views/games.html"
     })
-    .when("/photos/:id", {
-      controller: "PhotoController",
-      templateUrl: "views/photo.html"
+    .when("/games/results/", {
+      controller: "ResultsController",
+      templateUrl: "views/results.html"
+    })
+    .when("/games/detail/:id", {
+      controller: "DetailController",
+      templateUrl: "views/detail.html"
     })
     .otherwise({
-      redirectTo: "/home"
+      redirectTo: "/"
     });
 });
