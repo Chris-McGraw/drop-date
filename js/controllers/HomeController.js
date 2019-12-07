@@ -1,9 +1,17 @@
-app.controller("HomeController", ["$scope", function($scope) {
+app.controller("HomeController", ["$scope", "gameReleases", "movieReleases", function($scope, gameReleases, movieReleases) {
   $scope.title = "Current View : Home";
   $scope.buttonText = "Games";
 
-  $scope.getInput = function() {
-    var input = $scope.inputVal;
-    userSearch.setData(input);
-  }
+  gameReleases.then(
+    function successCallback(response) {
+    $scope.games = response.data.results;
+    //console.log(response.data.results);
+  });
+
+  movieReleases.then(
+    function successCallback(response) {
+    $scope.movies = response.data.results;
+    //console.log(response.data.results);
+  });
+
 }]);

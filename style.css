@@ -95,6 +95,65 @@ p {
 
 
 /* ----------------------------- VIEW : HOME ----------------------------- */
+.release-today-title {
+  width: 100%;
+  margin-top: 100px;
+
+  font-family: sans-serif;
+  font-size: 28px;
+  text-align: center;
+  color: black;
+}
+
+.release-today-subtitle {
+  width: 100%;
+  margin-top: 20px;
+
+  font-family: sans-serif;
+  font-size: 16px;
+  color: black;
+}
+
+.release-today-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 10px;
+
+  width: 100%;
+  height: auto;
+
+  border: 1px dashed red;
+}
+
+.release-today-tile {
+  grid-column: span 1;
+
+  height: 100px;
+
+  background-color: black;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid black;
+}
+
+.release-today-name {
+  grid-column: span 1;
+
+  height: 100%;
+
+  font-family: sans-serif;
+  font-size: 12px;
+  color: black;
+
+  border: 1px solid black;
+  border-top: none;
+}
+
+
+
+
+/* ----------------------------- VIEW : GAMES ----------------------------- */
 .fake-button {
   display: flex;
   justify-content: center;
@@ -119,19 +178,9 @@ p {
   cursor: pointer;
 }
 
-.release-today-title {
-  width: 100%;
-  margin-top: 100px;
-
-  font-family: sans-serif;
-  font-size: 28px;
-  text-align: center;
-  color: black;
-}
 
 
-
-/* ---------------------------- VIEW : SECOND ---------------------------- */
+/* ---------------------------- VIEW : RESULTS ---------------------------- */
 #second-grid-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -157,7 +206,7 @@ p {
 
 
 
-/* ----------------------------- VIEW : PHOTO ----------------------------- */
+/* ---------------------------- VIEW : DETAIL ---------------------------- */
 #photo-grid-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
