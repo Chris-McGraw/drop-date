@@ -4,8 +4,8 @@
   <div class="view-inner-container">
     <div id="second-grid-container">
       <a class="tile" href="#/games/detail/{{$index}}"
-      ng-style="{'background-image':'url({{ d.image.small_url }})'}" ng-repeat="d in dingus">
-        <p>{{ d.name }}</p>
+      ng-style="{'background-image':'url({{ result.image.small_url }})'}" ng-repeat="result in results">
+        <p>{{ result.name }}</p>
       </a>
     </div>
   </div>
