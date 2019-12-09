@@ -5,7 +5,7 @@ app.controller("HomeController", ["$scope", "jsonPadApi", "localDate", function(
 // ------------------------ GAMES
   jsonPadApi.getData("https://www.giantbomb.com/api/releases/?api_key=",
     "4996f14fcd1ff3aee96c621e0318101b3c6d5729",
-    "&format=jsonp&limit=4&offset=0&field_list=name,game,image,release_date&filter=release_date:" + localDate.getPreviousDate() + "%2000:00:00|" + localDate.getCurrentDate() + "%2000:00:00&sort=release_date:desc",
+    "&format=jsonp&limit=20&offset=0&field_list=name,game,image,release_date&filter=release_date:" + localDate.getPreviousDate() + "%2000:00:00|" + localDate.getCurrentDate() + "%2000:00:00&sort=release_date:desc",
     "json_callback"
   ).then(
     function successCallback(response) {

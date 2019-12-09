@@ -116,13 +116,11 @@ p {
 
 .release-today-row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   grid-column-gap: 10px;
 
   width: 100%;
   height: auto;
-
-  //border: 1px dashed red;
 }
 
 .release-today-tile {
