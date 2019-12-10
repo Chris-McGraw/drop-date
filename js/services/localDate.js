@@ -1,8 +1,11 @@
 app.service("localDate", function() {
 // ------------- GET CURRENT DATE
   var current = new Date();
-  var currentISO = current.toISOString();
-  var currentDate = currentISO.substr( 0, currentISO.indexOf("T") );
+  var currDay = String(current.getDate()).padStart(2, "0");
+  var currMonth = String(current.getMonth() + 1).padStart(2, "0");
+  var currYear = current.getFullYear();
+
+  var currentDate = currYear + "-" + currMonth + "-" + currDay;
 
   this.getCurrentDate = function() {
     return currentDate;
@@ -11,8 +14,11 @@ app.service("localDate", function() {
 // ------------ GET PREVIOUS DATE
   var previous = new Date();
   previous.setDate(previous.getDate() - 14);
-  var previousISO = previous.toISOString();
-  var previousDate = previousISO.substr( 0, previousISO.indexOf("T") );
+  var prevDay = String(previous.getDate()).padStart(2, "0");
+  var prevMonth = String(previous.getMonth() + 1).padStart(2, "0");
+  var prevYear = previous.getFullYear();
+
+  var previousDate = prevYear + "-" + prevMonth + "-" + prevDay;
 
   this.getPreviousDate = function() {
     return previousDate;
