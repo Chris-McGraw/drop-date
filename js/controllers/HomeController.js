@@ -1,6 +1,8 @@
 app.controller("HomeController", ["$scope", "jsonPadApi", "localDate", function($scope, jsonPadApi, localDate) {
   $scope.title = "Current View : Home";
-  $scope.buttonText = "Games";
+  $scope.gameTitle = "Video Games";
+  $scope.movieTitle = "Movies";
+  $scope.tvTitle = "Television";
 
 // ------------------------ GAMES
   jsonPadApi.getData("https://www.giantbomb.com/api/releases/?api_key=",

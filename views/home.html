@@ -2,14 +2,33 @@
   <h1 class="main-title">{{ title }}</h1>
 
   <div class="view-inner-container">
-    <form action="#/games/" method="get">
-        <button class="fake-button">{{ buttonText }}</button>
-    </form>
+    <ul id="page-link-list">
+      <li class="page-link">
+        <a class="change-view-btn" href="#/games/" aria-label="Video game release date page link">
+          <i class="fas fa-gamepad"></i>
+          <p>{{ gameTitle }}</p>
+        </a>
+      </li>
+
+      <li id="movie-page-link" class="page-link">
+        <a class="change-view-btn" href="#/games/" aria-label="Movie release date page link">
+          <i class="fas fa-film"></i>
+          <p>{{ movieTitle }}</p>
+        </a>
+      </li>
+
+      <li class="page-link">
+        <a class="change-view-btn" href="#/games/" aria-label="Television release date page link">
+          <i id="tv-page-icon" class="fas fa-tv"></i>
+          <p>{{ tvTitle }}</p>
+        </a>
+      </li>
+    </ul>
 
     <h2 class="release-today-title">Recent Releases</h2>
 
 <!------------ GAMES ------------>
-    <h3 class="release-today-subtitle">Games</h3>
+    <h3 class="release-today-subtitle">{{ gameTitle }}</h3>
     <div class="release-today-row">
       <div class="release-today-tile" ng-style="{'background-image':'url({{ game.image.small_url }})'}"
       ng-repeat="game in games | limitTo: 6"></div>
@@ -21,7 +40,7 @@
     </div>
 
 <!------------ MOVIES ------------>
-    <h3 class="release-today-subtitle">Movies</h3>
+    <h3 class="release-today-subtitle">{{ movieTitle }}</h3>
     <div class="release-today-row">
       <div class="release-today-tile" ng-style="{'background-image':'url(http://image.tmdb.org/t/p/w185{{ movie.poster_path }})'}"
       ng-repeat="movie in movies | limitTo: 6"></div>
@@ -33,7 +52,7 @@
     </div>
 
 <!---------- TELEVISION ---------->
-    <h3 class="release-today-subtitle">TV Shows</h3>
+    <h3 class="release-today-subtitle">{{ tvTitle }}</h3>
     <div class="release-today-row">
       <div class="release-today-tile" ng-style="{'background-image':'url(http://image.tmdb.org/t/p/w185{{ show.poster_path }})'}"
       ng-repeat="show in shows | limitTo: 6"></div>
