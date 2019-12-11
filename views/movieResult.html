@@ -2,11 +2,16 @@
   <h1 class="main-title">{{ title }}</h1>
 
   <div class="view-inner-container">
-    <div id="second-grid-container">
-      <a class="tile" href="#/movies/detail/{{$index}}"
-      ng-style="{'background-image':'url(http://image.tmdb.org/t/p/w185{{ result.poster_path }})'}"
-      ng-repeat="result in results  | limitTo: 8">
-        <p>{{ result.title }}</p>
+    <div id="result-grid-container">
+      <a class="result-tile" href="#/movies/detail/{{$index}}"
+      ng-repeat="result in results | limitTo: 8">
+        <div class="result-tile-img-contain"
+        ng-style="{'background-image':'url(http://image.tmdb.org/t/p/w185{{ result.poster_path }})'}"></div>
+
+        <div class="result-tile-info-contain">
+          <p>{{ result.title }}</p>
+          <p>{{ result.release_date}}</p>
+        </div>
       </a>
     </div>
   </div>

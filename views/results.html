@@ -2,10 +2,16 @@
   <h1 class="main-title">{{ title }}</h1>
 
   <div class="view-inner-container">
-    <div id="second-grid-container">
-      <a class="tile" href="#/games/detail/{{$index}}"
-      ng-style="{'background-image':'url({{ result.image.small_url }})'}" ng-repeat="result in results">
-        <p>{{ result.name }}</p>
+    <div id="result-grid-container">
+      <a class="result-tile" href="#/games/detail/{{$index}}"
+      ng-repeat="result in results | limitTo: 8">
+        <div class="result-tile-img-contain"
+        ng-style="{'background-image':'url({{ result.image.small_url }})'}"></div>
+
+        <div class="result-tile-info-contain">
+          <p>{{ result.name }}</p>
+          <p>{{ result.expected_release_month}}/{{ result.expected_release_day }}/{{ result.expected_release_year }}</p>
+        </div>
       </a>
     </div>
   </div>
