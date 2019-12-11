@@ -7,6 +7,7 @@ app.config(function ($routeProvider, $locationProvider) {
       controller: "HomeController",
       templateUrl: "views/home.html"
     })
+
     .when("/games/", {
       controller: "GamesController",
       templateUrl: "views/games.html"
@@ -19,6 +20,16 @@ app.config(function ($routeProvider, $locationProvider) {
       controller: "DetailController",
       templateUrl: "views/detail.html"
     })
+
+    .when("/movies/", {
+      controller: "MoviesController",
+      templateUrl: "views/movies.html"
+    })
+    .when("/movies/results/", {
+      controller: "MovieResultController",
+      templateUrl: "views/movieResult.html"
+    })
+
     .otherwise({
       redirectTo: "/"
     });
