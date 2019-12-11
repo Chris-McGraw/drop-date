@@ -17,7 +17,7 @@ app.controller("HomeController", ["$scope", "jsonPadApi", "localDate", function(
 // ----------------------- MOVIES
   jsonPadApi.getData("https://api.themoviedb.org/3/discover/movie?api_key=",
     "239a65ddae71707eccfac11b087ecbb9",
-    "&language=en-US&region=US&sort_by=primary_release_date.desc&include_adult=false&include_video=false&page=1&primary_release_date.lte=" + localDate.getCurrentDate(),
+    "&language=en-US&region=US&sort_by=release_date.desc&include_adult=false&include_video=false&page=1&release_date.lte=" + localDate.getCurrentDate(),
     "callback"
   ).then(
     function successCallback(response) {

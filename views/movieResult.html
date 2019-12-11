@@ -3,14 +3,14 @@
 
   <div class="view-inner-container">
     <div id="result-grid-container">
-      <a class="result-tile" href="#/games/detail/{{$index}}"
+      <a class="result-tile" href="#/movies/detail/{{$index}}"
       ng-repeat="result in results | limitTo: 8">
         <div class="result-tile-img-contain"
-        ng-style="{'background-image':'url({{ result.image.small_url }})'}"></div>
+        ng-style="{'background-image':'url(http://image.tmdb.org/t/p/w185{{ result.poster_path }})'}"></div>
 
         <div class="result-tile-info-contain">
-          <p>{{ result.name }}</p>
-          <p>{{ result.expected_release_month}}/{{ result.expected_release_day }}/{{ result.expected_release_year }}</p>
+          <p>{{ result.title }}</p>
+          <p>{{ result.release_date}}</p>
         </div>
       </a>
     </div>
