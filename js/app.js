@@ -29,6 +29,10 @@ app.config(function ($routeProvider, $locationProvider) {
       controller: "MovieResultController",
       templateUrl: "views/movieResult.html"
     })
+    .when("/movies/detail/:id", {
+      controller: "MovieDetailController",
+      templateUrl: "views/movieDetail.html"
+    })
 
     .otherwise({
       redirectTo: "/"
