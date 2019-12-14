@@ -6,7 +6,13 @@
       <input id="home-input" type="text" ng-model="inputVal"></input>
       <button class="submit-btn" type="submit">{{ buttonText }}</button>
 
-      <!-- <get-user-input></get-user-input> -->
+
+
+      <recent-release-row row-title="'Recently Released'" base-url="baseUrl" key="key" end-url="endUrl"
+      callback="callback"></recent-release-row>
+
+
+
     </form>
   </div>
 </main>
