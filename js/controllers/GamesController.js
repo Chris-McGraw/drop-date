@@ -1,11 +1,9 @@
-app.controller("GamesController", ["$scope", "giantBombApi", "userSearch", "$location", function($scope, giantBombApi, userSearch, $location) {
+app.controller("GamesController", ["$scope", "gameApi", "userSearch", "$location", function($scope, gameApi, userSearch, $location) {
   $scope.title = "Current View : Games";
   $scope.buttonText = "Search";
 
-  $scope.baseUrl = giantBombApi.baseUrl();
-  $scope.key = giantBombApi.key();
-  $scope.endUrl = giantBombApi.endUrl();
-  $scope.callback = giantBombApi.callback();
+  $scope.releaseUrl = gameApi.releaseUrl();
+  $scope.callback = gameApi.callback();
 
   $scope.getInput = function() {
     var input = $scope.inputVal;

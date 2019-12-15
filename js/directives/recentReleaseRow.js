@@ -1,17 +1,15 @@
-app.directive('recentReleaseRow', ["jsonPadApi", "localDate", function(jsonPadApi, localDate) {
+app.directive('recentReleaseRow', ["jsonPad", "localDate", function(jsonPad, localDate) {
   return {
     restrict: 'E',
     scope: {
       rowTitle: '=',
-      baseUrl: '=',
-      key: '=',
-      endUrl: '=',
+      releaseUrl: '=',
       callback: '='
     },
     templateUrl: 'js/directives/recentReleaseRow.html',
     link: function(scope, element, attrs) {
 
-      jsonPadApi.getData(scope.baseUrl, scope.key, scope.endUrl, scope.callback).then(
+      jsonPad.getData(scope.releaseUrl, scope.callback).then(
         function successCallback(response) {
           scope.games = response.data.results;
       });
