@@ -1,7 +1,7 @@
 app.service("tvApi", ["localDate", "userSearch", function(localDate, userSearch) {
   var key = "239a65ddae71707eccfac11b087ecbb9";
 
-  this.releaseUrl = function() {
+  this.recentUrl = function() {
     return "https://api.themoviedb.org/3/discover/tv?api_key=" + key
     + "&language=en-US&sort_by=first_air_date.desc&first_air_date.lte="
     + localDate.getCurrentDate()

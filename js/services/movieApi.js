@@ -1,7 +1,7 @@
 app.service("movieApi", ["localDate", "userSearch", function(localDate, userSearch) {
   var key = "239a65ddae71707eccfac11b087ecbb9";
 
-  this.releaseUrl = function() {
+  this.recentUrl = function() {
     return "https://api.themoviedb.org/3/discover/movie?api_key=" + key
     + "&language=en-US&region=US&sort_by=release_date.desc&include_adult=false&include_video=false&page=1&release_date.lte="
     + localDate.getCurrentDate();

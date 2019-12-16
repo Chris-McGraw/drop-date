@@ -239,6 +239,17 @@ p {
   cursor: pointer;
 }
 
+.media-page-header {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 24px;
+  color: black;
+}
+
 
 
 /* ---------------------------- VIEW : RESULTS ---------------------------- */
