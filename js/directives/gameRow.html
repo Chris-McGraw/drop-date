@@ -5,6 +5,6 @@
 
   <div class="release-today-name" ng-repeat="game in games | limitTo: 6">
     <p>{{ game.name }}</p>
-    <p>{{ game.release_date }}</p>
+    <p>{{ game.expected_release_year }}-{{ game.expected_release_month }}-{{ game.expected_release_day }}</p>
   </div>
 </div>

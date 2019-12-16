@@ -6,7 +6,7 @@
       <li class="page-link">
         <a class="change-view-btn" href="#/games/" aria-label="Video game release date page link">
           <i class="fas fa-gamepad"></i>
-          <p>{{ gameTitle }}</p>
+          <p>Video Games</p>
         </a>
       </li>
 
@@ -28,16 +28,7 @@
     <h2 class="release-today-title">Recent Releases</h2>
 
 <!------------ GAMES ------------>
-    <h3 class="release-today-subtitle">{{ gameTitle }}</h3>
-    <div class="release-today-row">
-      <div class="release-today-tile" ng-style="{'background-image':'url({{ game.image.small_url }})'}"
-      ng-repeat="game in games | limitTo: 6"></div>
-
-      <div class="release-today-name" ng-repeat="game in games | limitTo: 6">
-        <p>{{ game.name }}</p>
-        <p>{{ game.release_date }}</p>
-      </div>
-    </div>
+    <game-row type="games"></game-row>
 
 <!------------ MOVIES ------------>
     <h3 class="release-today-subtitle">{{ movieTitle }}</h3>

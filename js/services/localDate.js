@@ -23,4 +23,30 @@ app.service("localDate", function() {
   this.getPreviousDate = function() {
     return previousDate;
   }
+
+// ------------ GET TOMORROW DATE
+  var tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  var tmwDay = String(tomorrow.getDate()).padStart(2, "0");
+  var tmwMonth = String(tomorrow.getMonth() + 1).padStart(2, "0");
+  var tmwYear = tomorrow.getFullYear();
+
+  var tomorrowDate = tmwYear + "-" + tmwMonth + "-" + tmwDay;
+
+  this.getTomorrowDate = function() {
+    return tomorrowDate;
+  }
+
+// -------------- GET FUTURE DATE
+  var future = new Date();
+  future.setDate(future.getDate() + 14);
+  var ftrDay = String(future.getDate()).padStart(2, "0");
+  var ftrMonth = String(future.getMonth() + 1).padStart(2, "0");
+  var ftrYear = future.getFullYear();
+
+  var futureDate = ftrYear + "-" + ftrMonth + "-" + ftrDay;
+
+  this.getFutureDate = function() {
+    return futureDate;
+  }
 });
