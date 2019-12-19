@@ -23,14 +23,14 @@ app.directive("tvRow", ["jsonPad", "tvApi", "localDate", function(jsonPad, tvApi
             scope.shows = response.data.results;
         });
       }
-      // else if(scope.type === "upcoming") {
-      //   scope.rowTitle = "Upcoming";
-      //
-      //   jsonPad.getData( gameApi.upcomingUrl(), gameApi.callback() ).then(
-      //     function successCallback(response) {
-      //       scope.games = response.data.results;
-      //   });
-      // }
+      else if(scope.type === "upcoming") {
+        scope.rowTitle = "Upcoming";
+
+        jsonPad.getData( tvApi.upcomingUrl(), tvApi.callback() ).then(
+          function successCallback(response) {
+            scope.shows = response.data.results;
+        });
+      }
       else {
         console.log("broke it");
       }
