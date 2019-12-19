@@ -1,4 +1,4 @@
-app.controller("GamesController", ["$scope", "userSearch", "$location", function($scope, userSearch, $location) {
+app.controller("GameController", ["$scope", "userSearch", "$location", function($scope, userSearch, $location) {
   $scope.title = "Current View : Games";
   $scope.buttonText = "Search";
 
