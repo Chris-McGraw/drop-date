@@ -1,0 +1,18 @@
+<main class="view-main-container">
+  <h1 class="main-title">{{ title }}</h1>
+
+  <div class="view-inner-container">
+    <div id="photo-grid-container">
+      <div id="photo-img-container">
+        <img class="photo-img" ng-src="http://image.tmdb.org/t/p/w185{{ detail.poster_path }}">
+      </div>
+
+      <div id="photo-info-container">
+        <h2>{{ detail.name }}</h2>
+        <p>{{ detail.first_air_date }}</p>
+        <br>
+        <p>{{ detail.overview }}</p>
+      </div>
+    </div>
+  </div>
+</main>
