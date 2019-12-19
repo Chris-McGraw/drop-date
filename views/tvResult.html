@@ -1,0 +1,18 @@
+<main class="view-main-container">
+  <h1 class="main-title">{{ title }}</h1>
+
+  <div class="view-inner-container">
+    <div id="result-grid-container">
+      <a class="result-tile" href="#/tv/detail/{{$index}}"
+      ng-repeat="result in results | limitTo: 8">
+        <div class="result-tile-img-contain"
+        ng-style="{'background-image':'url(http://image.tmdb.org/t/p/w185{{ result.poster_path }})'}"></div>
+
+        <div class="result-tile-info-contain">
+          <p>{{ result.name }}</p>
+          <p>{{ result.first_air_date }}</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</main>

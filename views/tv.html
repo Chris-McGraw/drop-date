@@ -1,0 +1,13 @@
+<main class="view-main-container">
+  <h1 class="main-title">{{ title }}</h1>
+
+  <div class="view-inner-container">
+    <form ng-submit="getInput()">
+      <input id="home-input" type="text" ng-model="inputVal"></input>
+      <button class="submit-btn" type="submit">{{ buttonText }}</button>
+    </form>
+
+    <h2 class="media-page-header">Television Releases</h2>
+    <tv-row type="recent"></tv-row>
+  </div>
+</main>
