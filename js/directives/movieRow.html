@@ -1,10 +1,10 @@
 <h3 class="media-row-title">{{ rowTitle }}</h3>
-<div class="media-row">
-  <div class="media-tile" ng-style="{'background-image':'url(http://image.tmdb.org/t/p/w185{{ movie.poster_path }})'}"
-  ng-repeat="movie in movies | limitTo: 8"></div>
+<ul class="media-row">
+  <li class="media-tile" ng-repeat="movie in movies | limitTo: 6">
+    <img class="media-img" ng-src="http://image.tmdb.org/t/p/w185{{ movie.poster_path }}"
+    alt="{{ movie.title }} image">
 
-  <div class="media-info" ng-repeat="movie in movies | limitTo: 8">
     <p class="media-name">{{ movie.title }}</p>
-    <p>{{ movie.release_date }}</p>
-  </div>
-</div>
+    <p class="media-date">{{ movie.release_date }}</p>
+  </li>
+</ul>
