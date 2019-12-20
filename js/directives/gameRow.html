@@ -1,10 +1,10 @@
-<h3 class="release-today-subtitle">{{ rowTitle }}</h3>
-<div class="release-today-row">
-  <div class="release-today-tile" ng-style="{'background-image':'url({{ game.image.small_url }})'}"
-  ng-repeat="game in games | limitTo: 6"></div>
+<h3 class="media-row-title">{{ rowTitle }}</h3>
+<div class="media-row">
+  <div class="media-tile" ng-style="{'background-image':'url({{ game.image.small_url }})'}"
+  ng-repeat="game in games | limitTo: 8"></div>
 
-  <div class="release-today-name" ng-repeat="game in games | limitTo: 6">
-    <p>{{ game.name }}</p>
+  <div class="media-info" ng-repeat="game in games | limitTo: 8">
+    <p class="media-name">{{ game.name }}</p>
     <p>{{ game.expected_release_year }}-{{ game.expected_release_month }}-{{ game.expected_release_day }}</p>
   </div>
 </div>

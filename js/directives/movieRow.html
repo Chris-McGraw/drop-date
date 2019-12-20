@@ -1,10 +1,10 @@
-<h3 class="release-today-subtitle">{{ rowTitle }}</h3>
-<div class="release-today-row">
-  <div class="release-today-tile" ng-style="{'background-image':'url(http://image.tmdb.org/t/p/w185{{ movie.poster_path }})'}"
-  ng-repeat="movie in movies | limitTo: 6"></div>
+<h3 class="media-row-title">{{ rowTitle }}</h3>
+<div class="media-row">
+  <div class="media-tile" ng-style="{'background-image':'url(http://image.tmdb.org/t/p/w185{{ movie.poster_path }})'}"
+  ng-repeat="movie in movies | limitTo: 8"></div>
 
-  <div class="release-today-name" ng-repeat="movie in movies | limitTo: 6">
-    <p>{{ movie.title }}</p>
+  <div class="media-info" ng-repeat="movie in movies | limitTo: 8">
+    <p class="media-name">{{ movie.title }}</p>
     <p>{{ movie.release_date }}</p>
   </div>
 </div>
