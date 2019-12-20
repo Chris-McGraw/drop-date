@@ -1,4 +1,4 @@
-app.controller("DetailController", ["$scope", "jsonPad", "gameApi", "$routeParams", function($scope, jsonPad, gameApi, $routeParams) {
+app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "$routeParams", function($scope, jsonPad, gameApi, $routeParams) {
   $scope.title = "Current View : Detail";
 
 // ---------------------- DETAILS

@@ -1,4 +1,4 @@
-app.controller("ResultsController", ["$scope", "jsonPad", "gameApi", function($scope, jsonPad, gameApi) {
+app.controller("GameResultController", ["$scope", "jsonPad", "gameApi", function($scope, jsonPad, gameApi) {
   $scope.title = "Current View : Results";
 
 // ---------------------- RESULTS

@@ -9,21 +9,21 @@ app.config(function ($routeProvider, $locationProvider) {
     })
 
     .when("/games/", {
-      controller: "GamesController",
-      templateUrl: "views/games.html"
+      controller: "GameController",
+      templateUrl: "views/game.html"
     })
     .when("/games/results/", {
-      controller: "ResultsController",
-      templateUrl: "views/results.html"
+      controller: "GameResultController",
+      templateUrl: "views/gameResult.html"
     })
     .when("/games/detail/:id", {
-      controller: "DetailController",
-      templateUrl: "views/detail.html"
+      controller: "GameDetailController",
+      templateUrl: "views/gameDetail.html"
     })
 
     .when("/movies/", {
-      controller: "MoviesController",
-      templateUrl: "views/movies.html"
+      controller: "MovieController",
+      templateUrl: "views/movie.html"
     })
     .when("/movies/results/", {
       controller: "MovieResultController",
