@@ -1,7 +1,7 @@
 <h3 class="media-row-title">{{ rowTitle }}</h3>
 <ul class="media-row">
   <li class="media-tile" ng-repeat="movie in movies | limitTo: 6">
-    <img class="media-img" ng-src="http://image.tmdb.org/t/p/w185{{ movie.poster_path }}"
+    <img class="media-img" ng-src="{{ movie.img_path }}"
     alt="{{ movie.title }} image">
 
     <p class="media-name">{{ movie.title }}</p>
