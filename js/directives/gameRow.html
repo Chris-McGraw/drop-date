@@ -1,10 +1,10 @@
 <h3 class="media-row-title">{{ rowTitle }}</h3>
-<div class="media-row">
-  <div class="media-tile" ng-style="{'background-image':'url({{ game.image.small_url }})'}"
-  ng-repeat="game in games | limitTo: 8"></div>
+<ul class="media-row">
+  <li class="media-tile" ng-repeat="game in games | limitTo: 6">
+    <img class="media-img" ng-src="{{ game.image.small_url }}"
+    alt="{{ game.title }} image">
 
-  <div class="media-info" ng-repeat="game in games | limitTo: 8">
     <p class="media-name">{{ game.name }}</p>
-    <p>{{ game.expected_release_year }}-{{ game.expected_release_month }}-{{ game.expected_release_day }}</p>
-  </div>
-</div>
+    <p class="media-date">{{ game.expected_release_year }}-{{ game.expected_release_month }}-{{ game.expected_release_day }}</p>
+  </li>
+</ul>

@@ -1,10 +1,10 @@
 <h3 class="media-row-title">{{ rowTitle }}</h3>
-<div class="media-row">
-  <div class="media-tile" ng-style="{'background-image':'url(http://image.tmdb.org/t/p/w185{{ show.poster_path }})'}"
-  ng-repeat="show in shows | limitTo: 8"></div>
+<ul class="media-row">
+  <li class="media-tile" ng-repeat="show in shows | limitTo: 6">
+    <img class="media-img" ng-src="{{ show.img_path }}"
+    alt="{{ show.title }} image">
 
-  <div class="media-info" ng-repeat="show in shows | limitTo: 8">
     <p class="media-name">{{ show.name }}</p>
-    <p>{{ show.first_air_date }}</p>
-  </div>
-</div>
+    <p class="media-date">{{ show.first_air_date }}</p>
+  </li>
+</ul>
