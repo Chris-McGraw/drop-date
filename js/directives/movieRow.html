@@ -5,6 +5,6 @@
     alt="{{ movie.title }} image">
 
     <p class="media-name">{{ movie.title }}</p>
-    <p class="media-date">{{ movie.release_date }}</p>
+    <p class="media-date">{{ movie.release_date | date:"MMM dd, yyyy" }}</p>
   </li>
 </ul>

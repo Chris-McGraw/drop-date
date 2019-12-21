@@ -6,12 +6,20 @@ app.directive("gameRow", ["jsonPad", "gameApi", "localDate", "$filter", function
     },
     templateUrl: "js/directives/gameRow.html",
     link: function(scope, element, attrs) {
+      function formatDate() {
+        angular.forEach(scope.games, function(game) {
+          game.release_date = new Date(game.expected_release_year + "/" + game.expected_release_month + "/" + game.expected_release_day);
+        });
+      }
+
       if(scope.type === "games") {
         scope.rowTitle = "Video Games";
 
         jsonPad.getData( gameApi.recentUrl(), gameApi.callback() ).then(
           function successCallback(response) {
             scope.games = response.data.results;
+
+            formatDate();
         });
       }
 
@@ -21,6 +29,8 @@ app.directive("gameRow", ["jsonPad", "gameApi", "localDate", "$filter", function
         jsonPad.getData( gameApi.recentUrl(), gameApi.callback() ).then(
           function successCallback(response) {
             scope.games = response.data.results;
+
+            formatDate();
         });
       }
 
@@ -33,6 +43,8 @@ app.directive("gameRow", ["jsonPad", "gameApi", "localDate", "$filter", function
               expected_release_month:"",
               expected_release_day:""}
             );
+
+            formatDate();
         });
       }
 
