@@ -4,14 +4,12 @@
   <div class="view-inner-container">
     <div id="photo-grid-container">
       <div id="photo-img-container">
-        <img class="photo-img" ng-src="{{ detail.image.small_url }}">
+        <img class="photo-img" ng-src="{{ detail.img_path }}">
       </div>
 
       <div id="photo-info-container">
         <h2>{{ detail.name }}</h2>
-        <p>
-          {{ detail.expected_release_month}}/{{ detail.expected_release_day }}/{{ detail.expected_release_year }}
-        </p>
+        <p>{{ detail.expected_release_month}}/{{ detail.expected_release_day }}/{{ detail.expected_release_year }}</p>
         <br>
         <p>{{ detail.deck }}</p>
       </div>
