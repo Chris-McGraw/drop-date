@@ -6,6 +6,17 @@ app.directive("gameRow", ["jsonPad", "gameApi", "localDate", "$filter", function
     },
     templateUrl: "js/directives/gameRow.html",
     link: function(scope, element, attrs) {
+      function backupImage() {
+        angular.forEach(scope.games, function(game) {
+          if(game.image.small_url === "https://www.giantbomb.com/api/image/scale_small/3026329-gb_default-16_9.png") {
+            game.img_path = "../../imgs/game-backup.png";
+          }
+          else {
+            game.img_path = game.image.small_url;
+          }
+        });
+      }
+
       function formatDate() {
         angular.forEach(scope.games, function(game) {
           game.release_date = new Date(game.expected_release_year + "/" + game.expected_release_month + "/" + game.expected_release_day);
@@ -19,6 +30,7 @@ app.directive("gameRow", ["jsonPad", "gameApi", "localDate", "$filter", function
           function successCallback(response) {
             scope.games = response.data.results;
 
+            backupImage();
             formatDate();
         });
       }
@@ -30,6 +42,7 @@ app.directive("gameRow", ["jsonPad", "gameApi", "localDate", "$filter", function
           function successCallback(response) {
             scope.games = response.data.results;
 
+            backupImage();
             formatDate();
         });
       }
@@ -44,6 +57,7 @@ app.directive("gameRow", ["jsonPad", "gameApi", "localDate", "$filter", function
               expected_release_day:""}
             );
 
+            backupImage();
             formatDate();
         });
       }
