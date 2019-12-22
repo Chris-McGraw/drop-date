@@ -211,6 +211,8 @@ p {
 }
 
 .media-date {
+  margin-top: 2px;
+
   font-family: sans-serif;
   font-size: 14px;
   color: black;

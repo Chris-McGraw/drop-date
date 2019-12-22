@@ -22,7 +22,7 @@ app.directive("movieRow", ["jsonPad", "movieApi", "localDate", "$filter", functi
 
         jsonPad.getData( movieApi.recentUrl(), movieApi.callback() ).then(
           function successCallback(response) {
-            scope.movies = $filter("orderBy")(response.data.results, "release_date", "reverse");
+            scope.movies = response.data.results;
 
             backupImage();
         });
@@ -33,7 +33,7 @@ app.directive("movieRow", ["jsonPad", "movieApi", "localDate", "$filter", functi
 
         jsonPad.getData( movieApi.recentUrl(), movieApi.callback() ).then(
           function successCallback(response) {
-            scope.movies = $filter("orderBy")(response.data.results, "release_date", "reverse");
+            scope.movies = response.data.results;
 
             backupImage();
         });

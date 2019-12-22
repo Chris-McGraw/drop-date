@@ -5,6 +5,6 @@
     alt="{{ game.title }} image">
 
     <p class="media-name">{{ game.name }}</p>
-    <p class="media-date">{{ game.expected_release_year }}-{{ game.expected_release_month }}-{{ game.expected_release_day }}</p>
+    <p class="media-date">{{ game.release_date | date:"MMM dd, yyyy" }}</p>
   </li>
 </ul>
