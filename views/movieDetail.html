@@ -4,14 +4,12 @@
   <div class="view-inner-container">
     <div id="photo-grid-container">
       <div id="photo-img-container">
-        <img class="photo-img" ng-src="http://image.tmdb.org/t/p/w185{{ detail.poster_path }}">
+        <img class="photo-img" ng-src="{{ detail.img_path }}">
       </div>
 
       <div id="photo-info-container">
         <h2>{{ detail.title }}</h2>
-        <p>
-          {{ detail.release_date }}
-        </p>
+        <p>{{ detail.release_date }}</p>
         <br>
         <p>{{ detail.overview }}</p>
       </div>
