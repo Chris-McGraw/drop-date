@@ -6,6 +6,7 @@ app.controller("GameController", ["$scope", "userSearch", "$location", function(
     var input = $scope.inputVal;
     userSearch.setData(input);
 
+    $location.search("search", userSearch.getData());
     $location.path("/games/results/");
   }
 }]);
