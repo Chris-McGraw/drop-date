@@ -17,7 +17,7 @@ app.service("gameApi", ["localDate", "userSearch", function(localDate, userSearc
 
   this.searchUrl = function() {
     return "https://www.giantbomb.com/api/search/?api_key=" + key
-    + "&query=" + userSearch.getData()
+    + "&query=" + userSearch.getQuery()
     + "&format=jsonp&resources=game&limit=20&field_list=name,image,original_release_date,expected_release_month,expected_release_month,expected_release_day,expected_release_year,deck";
   }
 

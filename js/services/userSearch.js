@@ -1,5 +1,6 @@
 app.service("userSearch", function() {
   var userInput = "";
+  var userQuery = "";
 
   this.setData = function(input) {
     userInput = input;
@@ -7,5 +8,13 @@ app.service("userSearch", function() {
 
   this.getData = function() {
     return userInput;
+  }
+
+  this.setQuery = function(input) {
+    userQuery = input;
+  }
+
+  this.getQuery = function() {
+    return userQuery;
   }
 });
