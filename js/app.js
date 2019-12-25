@@ -16,7 +16,7 @@ app.config(function ($routeProvider, $locationProvider) {
       controller: "GameResultController",
       templateUrl: "views/gameResult.html"
     })
-    .when("/games/detail/:id", {
+    .when("/games/detail/", {
       controller: "GameDetailController",
       templateUrl: "views/gameDetail.html"
     })
