@@ -3,7 +3,7 @@
 
   <div class="view-inner-container">
     <div id="result-grid-container">
-      <a class="result-tile" href="#/games/detail/{{$index}}"
+      <a class="result-tile" href="#/games/detail/?id={{ result.id }}"
       ng-repeat="result in results | limitTo: 8">
         <div class="result-tile-img-contain"
         ng-style="{'background-image':'url({{ result.img_path }})'}"></div>
