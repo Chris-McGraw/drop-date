@@ -29,7 +29,7 @@ app.config(function ($routeProvider, $locationProvider) {
       controller: "MovieResultController",
       templateUrl: "views/movieResult.html"
     })
-    .when("/movies/detail/:id", {
+    .when("/movies/detail/", {
       controller: "MovieDetailController",
       templateUrl: "views/movieDetail.html"
     })
