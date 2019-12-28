@@ -1,7 +1,7 @@
 <h3 class="media-row-title">{{ rowTitle }}</h3>
 <ul class="media-row">
   <a class="media-tile" href="#/movies/detail/?id={{ movie.id }}"
-  ng-repeat="movie in movies | limitTo: 6" | limitTo: 6">
+  ng-repeat="movie in movies | limitTo: 6">
     <li>
       <img class="media-img" ng-src="{{ movie.img_path }}"
       alt="{{ movie.title }} image">

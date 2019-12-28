@@ -1,4 +1,4 @@
-app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "userSearch", "$location", function(jsonPad, gameApi, movieApi, userSearch, $location) {
+app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "userSearch", "$location", function(jsonPad, gameApi, movieApi, tvApi, userSearch, $location) {
   return {
     restrict: "E",
     scope: {
@@ -77,6 +77,42 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "userSearch", "$l
             resultLink();
             backupImage();
             formatName();
+        });
+      }
+
+// -----
+
+      else if(scope.type === "tv") {
+        function resultLink() {
+          angular.forEach(scope.results, function(result) {
+            result.link = "#/tv/detail/?id=" + result.id;
+          });
+        }
+
+        function backupImage() {
+          angular.forEach(scope.results, function(result) {
+            if(result.poster_path === null) {
+              result.img_path = "../../imgs/tv-backup.png";
+            }
+            else {
+              result.img_path = "http://image.tmdb.org/t/p/w185" + result.poster_path;
+            }
+          });
+        }
+
+        function formatDate() {
+          angular.forEach(scope.results, function(result) {
+            result.release_date = result.first_air_date;
+          });
+        }
+
+        jsonPad.getData( tvApi.searchUrl(), tvApi.callback() ).then(
+          function successCallback(response) {
+            scope.results = response.data.results;
+
+            resultLink();
+            backupImage();
+            formatDate();
         });
       }
 
