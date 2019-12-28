@@ -1,10 +1,12 @@
-app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "$routeParams", function($scope, jsonPad, movieApi, $routeParams) {
+app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "userSearch", "$location", function($scope, jsonPad, movieApi, userSearch, $location) {
   $scope.title = "Current View : Movie Detail";
 
+  userSearch.setDetail( $location.search().id );
+
 // ---------------------- DETAILS
-  jsonPad.getData( movieApi.searchUrl(), movieApi.callback() ).then(
+  jsonPad.getData( movieApi.detailUrl(), movieApi.callback() ).then(
     function successCallback(response) {
-      $scope.detail = response.data.results[$routeParams.id];
+      $scope.detail = response.data;
 
       if($scope.detail.poster_path === null) {
         $scope.detail.img_path = "../../imgs/movie-backup.png";

@@ -1,18 +1,5 @@
 <main class="view-main-container">
   <h1 class="main-title">{{ title }}</h1>
 
-  <div class="view-inner-container">
-    <div id="result-grid-container">
-      <a class="result-tile" href="#/games/detail/?id={{ result.id }}"
-      ng-repeat="result in results | limitTo: 8">
-        <div class="result-tile-img-contain"
-        ng-style="{'background-image':'url({{ result.img_path }})'}"></div>
-
-        <div class="result-tile-info-contain">
-          <p>{{ result.name }}</p>
-          <p>{{ result.expected_release_month}}/{{ result.expected_release_day }}/{{ result.expected_release_year }}</p>
-        </div>
-      </a>
-    </div>
-  </div>
+  <search-grid type="games"></search-grid>
 </main>

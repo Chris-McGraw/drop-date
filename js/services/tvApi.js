@@ -18,7 +18,13 @@ app.service("tvApi", ["localDate", "userSearch", function(localDate, userSearch)
   this.searchUrl = function() {
     return "https://api.themoviedb.org/3/search/tv?api_key=" + key
     + "&language=en-US&page=1"
-    + "&query=" + userSearch.getData();
+    + "&query=" + userSearch.getQuery();
+  }
+
+  this.detailUrl = function() {
+    return "https://api.themoviedb.org/3/tv/" + userSearch.getDetail()
+    + "?api_key=" + key
+    + "&language=en-US";
   }
 
   this.callback = function() {

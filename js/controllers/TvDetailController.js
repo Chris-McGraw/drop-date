@@ -1,10 +1,12 @@
-app.controller("TvDetailController", ["$scope", "jsonPad", "tvApi", "$routeParams", function($scope, jsonPad, tvApi, $routeParams) {
+app.controller("TvDetailController", ["$scope", "jsonPad", "tvApi", "userSearch", "$location", function($scope, jsonPad, tvApi, userSearch, $location) {
   $scope.title = "Current View : TV Detail";
 
+  userSearch.setDetail( $location.search().id );
+
 // ---------------------- DETAILS
-  jsonPad.getData( tvApi.searchUrl(), tvApi.callback() ).then(
+  jsonPad.getData( tvApi.detailUrl(), tvApi.callback() ).then(
     function successCallback(response) {
-      $scope.detail = response.data.results[$routeParams.id];
+      $scope.detail = response.data;
 
       if($scope.detail.poster_path === null) {
         $scope.detail.img_path = "../../imgs/tv-backup.png";

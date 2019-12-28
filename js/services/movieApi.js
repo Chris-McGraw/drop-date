@@ -15,7 +15,13 @@ app.service("movieApi", ["localDate", "userSearch", function(localDate, userSear
 
   this.searchUrl = function() {
     return "https://api.themoviedb.org/3/search/movie?api_key=" + key
-    + "&query=" + userSearch.getData() + "&language=en-US&page=1&include_adult=false&region=US";
+    + "&query=" + userSearch.getQuery() + "&language=en-US&page=1&include_adult=false&region=US";
+  }
+
+  this.detailUrl = function() {
+    return "https://api.themoviedb.org/3/movie/" + userSearch.getDetail()
+    + "?api_key=" + key
+    + "&language=en-US";
   }
 
   this.callback = function() {

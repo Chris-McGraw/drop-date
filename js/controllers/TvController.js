@@ -6,6 +6,7 @@ app.controller("TvController", ["$scope", "userSearch", "$location", function($s
     var input = $scope.inputVal;
     userSearch.setData(input);
 
+    $location.search("search", userSearch.getData());
     $location.path("/tv/results/");
   }
 }]);
