@@ -1,3 +1,3 @@
-app.controller("MovieResultController", ["$scope", "jsonPad", "movieApi", function($scope, jsonPad, movieApi) {
+app.controller("MovieResultController", ["$scope", function($scope) {
   $scope.title = "Current View : Movie Results";
 }]);

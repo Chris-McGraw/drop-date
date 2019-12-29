@@ -1,3 +1,3 @@
-app.controller("TvResultController", ["$scope", "jsonPad", "tvApi", function($scope, jsonPad, tvApi) {
+app.controller("TvResultController", ["$scope", function($scope) {
   $scope.title = "Current View : Results";
 }]);
