@@ -28,7 +28,10 @@ app.directive("gameRow", ["jsonPad", "gameApi", "localDate", "$filter", function
 
         jsonPad.getData( gameApi.recentUrl(), gameApi.callback() ).then(
           function successCallback(response) {
-            scope.games = response.data.results;
+            scope.games = $filter("filter")(response.data.results, {expected_release_year:"",
+              expected_release_month:"",
+              expected_release_day:""}
+            );
 
             backupImage();
             formatDate();
@@ -40,7 +43,10 @@ app.directive("gameRow", ["jsonPad", "gameApi", "localDate", "$filter", function
 
         jsonPad.getData( gameApi.recentUrl(), gameApi.callback() ).then(
           function successCallback(response) {
-            scope.games = response.data.results;
+            scope.games = $filter("filter")(response.data.results, {expected_release_year:"",
+              expected_release_month:"",
+              expected_release_day:""}
+            );
 
             backupImage();
             formatDate();
