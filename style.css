@@ -388,6 +388,16 @@ p {
   grid-template-columns: repeat(2, 1fr);
 }
 
+#rating-count-header {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+#rating-count {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.8);
+}
+
 #genre {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

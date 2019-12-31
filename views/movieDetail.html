@@ -31,8 +31,8 @@
           <p class="media-info-left">Average Rating:</p>
           <div class="media-info-right">
             <p>{{ detail.vote_average }}</p>
-            <p>Numbers of Ratings:</p>
-            <p>{{ detail.vote_count }}</p>
+            <p id="rating-count-header">Numbers of Ratings:</p>
+            <p id="rating-count">{{ detail.vote_count | number }}</p>
           </div>
         </div>
 
