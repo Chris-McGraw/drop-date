@@ -2,26 +2,36 @@ app.service("movieApi", ["localDate", "userSearch", function(localDate, userSear
   var key = "239a65ddae71707eccfac11b087ecbb9";
 
   this.recentUrl = function() {
-    return "https://api.themoviedb.org/3/discover/movie?api_key=" + key
+    return "https://api.themoviedb.org/3/discover/movie"
+    + "?api_key=" + key
     + "&language=en-US&region=US&sort_by=release_date.desc&include_adult=false&include_video=false&page=1"
     + "&release_date.lte=" + localDate.getCurrentDate();
   }
 
   this.upcomingUrl = function() {
-    return "https://api.themoviedb.org/3/discover/movie?api_key=" + key
+    return "https://api.themoviedb.org/3/discover/movie"
+    + "?api_key=" + key
     + "&language=en-US&region=US&sort_by=primary_release_date.asc&include_adult=false&include_video=false&page=1"
     + "&primary_release_date.gte=" + localDate.getTomorrowDate();
   }
 
   this.searchUrl = function() {
-    return "https://api.themoviedb.org/3/search/movie?api_key=" + key
-    + "&query=" + userSearch.getQuery() + "&language=en-US&page=1&include_adult=false&region=US";
+    return "https://api.themoviedb.org/3/search/movie"
+    + "?api_key=" + key
+    + "&query=" + userSearch.getQuery()
+    + "&language=en-US&page=1&include_adult=false&region=US";
   }
 
   this.detailUrl = function() {
     return "https://api.themoviedb.org/3/movie/" + userSearch.getDetail()
     + "?api_key=" + key
     + "&language=en-US";
+  }
+
+  this.releaseUrl = function() {
+    return "https://api.themoviedb.org/3/movie/" + userSearch.getDetail()
+    + "/release_dates"
+    + "?api_key=" + key;
   }
 
   this.callback = function() {
