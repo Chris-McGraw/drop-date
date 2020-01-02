@@ -27,6 +27,12 @@ app.service("tvApi", ["localDate", "userSearch", function(localDate, userSearch)
     + "&language=en-US";
   }
 
+  this.castUrl = function() {
+    return "https://api.themoviedb.org/3/tv/" + userSearch.getDetail()
+    + "/credits"
+    + "?api_key=" + key;
+  }
+
   this.callback = function() {
     return "callback";
   }

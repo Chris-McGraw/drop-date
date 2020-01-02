@@ -52,6 +52,7 @@ app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "userS
   });
 
 
+// --------------------- RELEASES
   jsonPad.getData( movieApi.releaseUrl(), movieApi.callback() ).then(
     function successCallback(response) {
       $scope.releaseUS = $filter("filter")(response.data.results, {iso_3166_1: "US"})[0];

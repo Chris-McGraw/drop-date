@@ -34,6 +34,12 @@ app.service("movieApi", ["localDate", "userSearch", function(localDate, userSear
     + "?api_key=" + key;
   }
 
+  this.castUrl = function() {
+    return "https://api.themoviedb.org/3/movie/" + userSearch.getDetail()
+    + "/credits"
+    + "?api_key=" + key;
+  }
+
   this.callback = function() {
     return "callback";
   }
