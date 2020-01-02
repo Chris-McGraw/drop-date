@@ -49,18 +49,7 @@
     </div>
 
     <div class="cast-row">
-      <h3>Cast:</h3>
-      <ul class="media-row">
-        <div class="media-tile" ng-repeat="cast in castList | limitTo: 6">
-          <li>
-            <img class="cast-img" ng-src="{{ cast.img_path }}"
-            alt="{{ cast.name }} image">
-
-            <p class="media-name">{{ cast.name }}</p>
-            <p class="media-date">{{ cast.character }}</p>
-          </li>
-        </div>
-      </ul>
+      <cast-row type="movies"><cast-row>
     </div>
 
 
