@@ -52,6 +52,7 @@ app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "userS
   });
 
 
+// --------------------- RELEASES
   jsonPad.getData( movieApi.releaseUrl(), movieApi.callback() ).then(
     function successCallback(response) {
       $scope.releaseUS = $filter("filter")(response.data.results, {iso_3166_1: "US"})[0];
@@ -60,5 +61,20 @@ app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "userS
       releaseType();
   });
 
+
+// ------------------------- CAST
+  jsonPad.getData( movieApi.castUrl(), movieApi.callback() ).then(
+    function successCallback(response) {
+      $scope.castList = response.data.cast;
+
+      angular.forEach($scope.castList, function(cast) {
+        if(cast.profile_path === null) {
+          cast.img_path = "../../imgs/movie-backup.png";
+        }
+        else {
+          cast.img_path = "http://image.tmdb.org/t/p/w185" + cast.profile_path;
+        }
+      });
+  });
 
 }]);
