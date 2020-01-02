@@ -32,6 +32,12 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", function(jsonPad, movi
       }
 
       else if(scope.type === "tv") {
+        jsonPad.getData( tvApi.castUrl(), tvApi.callback() ).then(
+          function successCallback(response) {
+            scope.castList = response.data.cast;
+
+            backupImage();
+        });
       }
 
 // -----
