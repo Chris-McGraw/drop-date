@@ -12,7 +12,7 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", function(jsonPad, movi
       function backupImage() {
         angular.forEach(scope.castList, function(cast) {
           if(cast.profile_path === null) {
-            cast.img_path = "../../imgs/movie-backup.png";
+            cast.img_path = "../../imgs/cast-backup.png";
           }
           else {
             cast.img_path = "http://image.tmdb.org/t/p/w185" + cast.profile_path;

@@ -45,7 +45,7 @@ app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "userSea
 
           angular.forEach($scope.charList, function(char) {
             if(char.image.small_url === "https://www.giantbomb.com/api/image/scale_small/3026329-gb_default-16_9.png") {
-              char.img_path = "../../imgs/game-backup.png";
+              char.img_path = "../../imgs/cast-backup.png";
             }
             else {
               char.img_path = char.image.small_url;
