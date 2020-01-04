@@ -58,16 +58,12 @@ app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "userSea
 // --------------------- RELEASES
   jsonPad.getData( gameApi.releaseUrl(), gameApi.callback() ).then(
     function successCallback(response) {
-      // console.log(response.data.results);
-
       $scope.releaseUS = $filter("filter")(response.data.results, {region: {name: "United States"}});
-      // console.log($scope.releaseUS);
-
-
       $scope.releases = $filter("orderBy")($scope.releaseUS, "release_date");
-      // console.log($scope.releases);
 
-      // releaseType();
+      angular.forEach($scope.releases, function(release) {
+        release.date = release.release_date.replace(/ /g,"T");
+      });
   });
 
 

@@ -14,7 +14,7 @@
           <h3 class="media-info-tile">US Release Dates:</h3>
           <div class="media-info-tile">
             <div ng-repeat="release in releases">
-              <p>{{ release.release_date | date:"MMM dd, yyyy" }}</p>
+              <p>{{ release.date | date:"MMM dd, yyyy" }}</p>
               <p class="release-note">{{ release.name }} {{ release.platform.name }}</p>
             </div>
           </div>
