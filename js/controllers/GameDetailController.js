@@ -61,9 +61,20 @@ app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "userSea
       $scope.releaseUS = $filter("filter")(response.data.results, {region: {name: "United States"}});
       $scope.releases = $filter("orderBy")($scope.releaseUS, "release_date");
 
-      angular.forEach($scope.releases, function(release) {
-        release.date = release.release_date.replace(/ /g,"T");
-      });
+
+// ---------------------- REVIEWS
+      // var releaseGuidArray = [];
+      //
+      // angular.forEach($scope.releases, function(release) {
+      //   release.date = release.release_date.replace(/ /g,"T");
+      //
+      //   releaseGuidArray.push(release.guid);
+      // });
+      //
+      // jsonPad.getData( gameApi.reviewUrl( releaseGuidArray.join(",") ), gameApi.callback() ).then(
+      //   function successCallback(response) {
+      //     console.log(response.data.results);
+      // });
   });
 
 

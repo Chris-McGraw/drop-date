@@ -36,7 +36,15 @@ app.service("gameApi", ["localDate", "userSearch", function(localDate, userSearc
     + "?api_key=" + key
     + "&filter=game:" + userSearch.getDetail()
     + "&format=jsonp"
-    + "&field_list=name,region,platform,release_date,expected_release_month,expected_release_day,expected_release_year";
+    + "&field_list=guid,name,region,platform,release_date,expected_release_month,expected_release_day,expected_release_year";
+  }
+
+  this.reviewUrl = function(releaseList) {
+    return "https://www.giantbomb.com/api/user_reviews/"
+    + "?api_key=" + key
+    + "&filter=object:" + releaseList
+    + "&format=jsonp"
+    + "&field_list=wikiObject,reviewer,score";
   }
 
   this.characterUrl = function(charList) {
