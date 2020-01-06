@@ -43,13 +43,15 @@ app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "userS
       $scope.production = response.data.production_companies;
       $scope.genres = response.data.genres;
 
+// ____ IMAGE BACKUP
       if($scope.detail.poster_path === null) {
         $scope.detail.img_path = "../../imgs/movie-backup.png";
       }
       else {
-        $scope.detail.img_path = "http://image.tmdb.org/t/p/w185" + $scope.detail.poster_path;
+        $scope.detail.img_path = "http://image.tmdb.org/t/p/w500" + $scope.detail.poster_path;
       }
 
+// ___ COLOR PALETTE
       var img = document.createElement('img');
       img.setAttribute('crossorigin', 'anonymous')
       img.setAttribute('src', $scope.detail.img_path)
@@ -58,17 +60,16 @@ app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "userS
         var vibrant = new Vibrant(img);
         var swatches = vibrant.swatches();
 
-        console.log(swatches);
+        var paletteColor = swatches.DarkMuted.rgb[0]
+        + "," + swatches.DarkMuted.rgb[1]
+        + "," + swatches.DarkMuted.rgb[2]
+        + "," + "0.75";
 
-        var testColor = swatches.DarkVibrant.rgb[0]
-        + "," + swatches.DarkVibrant.rgb[1]
-        + "," + swatches.DarkVibrant.rgb[2]
-        + "," + "1.0";
+        // console.log(swatches);
+        // console.log(paletteColor);
 
-        console.log(testColor);
-
-        document.getElementById("media-detail-img-container").style.backgroundColor = "rgba(" + testColor + ")";
-        document.getElementById("media-info-container").style.backgroundColor = "rgba(" + testColor + ")";
+        document.getElementById("detail-img-background").style.backgroundImage = "url(" + $scope.detail.img_path + ")";
+        document.getElementById("detail-feature-container").style.backgroundColor = "rgba(" + paletteColor + ")";
       });
   });
 

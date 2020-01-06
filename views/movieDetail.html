@@ -1,57 +1,59 @@
 <main class="view-main-container">
-  <h1 class="main-title">{{ title }}</h1>
+  <!-- <h1 class="main-title">{{ title }}</h1> -->
 
-  <div class="view-inner-container">
-    <div id="detail-view-container">
-      <div id="media-detail-img-container">
-        <img class="media-detail-img" ng-src="{{ detail.img_path }}" crossorigin="anonymous">
-      </div>
+  <div id="detail-img-background">
+    <section id="detail-feature-container">
+      <div id="detail-feature-grid">
+        <div id="media-detail-img-container">
+          <img class="media-detail-img" ng-src="{{ detail.img_path }}" crossorigin="anonymous">
+        </div>
 
-      <div id="media-info-container">
-        <h2>{{ detail.title }}</h2>
+        <div id="media-info-container">
+          <h2>{{ detail.title }}</h2>
 
-        <div id="release-dates">
-          <h3 class="media-info-tile">US Release Dates:</h3>
-          <div class="media-info-tile">
-            <div ng-repeat="release in releases">
-              <p>{{ release.release_date | date:"MMM dd, yyyy":"UTC" }}</p>
-              <p class="release-note">{{ release.release_type }}</p>
+          <div id="release-dates">
+            <h3 class="media-info-tile">US Release Dates:</h3>
+            <div class="media-info-tile">
+              <div ng-repeat="release in releases">
+                <p>{{ release.release_date | date:"MMM dd, yyyy":"UTC" }}</p>
+                <p class="release-note">{{ release.release_type }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="user-rating">
+            <h3 class="media-info-tile">Average Rating:</h3>
+            <div class="media-info-tile">
+              <star-rating type="movies"></star-rating>
+            </div>
+          </div>
+
+          <div id="production">
+            <h3 class="media-info-tile">Production Companies:</h3>
+            <div class="media-info-tile">
+              <p ng-repeat="prod in production">{{ prod.name }}</p>
+            </div>
+          </div>
+
+          <div id="genre">
+            <h3 class="media-info-tile">Genres:</h3>
+            <div class="media-info-tile">
+              <p ng-repeat="genre in genres">{{ genre.name }}</p>
             </div>
           </div>
         </div>
-
-        <div id="user-rating">
-          <h3 class="media-info-tile">Average Rating:</h3>
-          <div class="media-info-tile">
-            <star-rating type="movies"></star-rating>
-          </div>
-        </div>
-
-        <div id="production">
-          <h3 class="media-info-tile">Production Companies:</h3>
-          <div class="media-info-tile">
-            <p ng-repeat="prod in production">{{ prod.name }}</p>
-          </div>
-        </div>
-
-        <div id="genre">
-          <h3 class="media-info-tile">Genres:</h3>
-          <div class="media-info-tile">
-            <p ng-repeat="genre in genres">{{ genre.name }}</p>
-          </div>
-        </div>
       </div>
-    </div>
-
-    <div id="overview-container">
-      <h3>Overview:</h3>
-      <p>{{ detail.overview }}</p>
-    </div>
-
-    <div class="cast-row">
-      <cast-row type="movies"><cast-row>
-    </div>
-
-
+    </section>
   </div>
+
+  <div id="overview-container">
+    <h3>Overview:</h3>
+    <p>{{ detail.overview }}</p>
+  </div>
+
+  <div class="cast-row">
+    <cast-row type="movies"><cast-row>
+  </div>
+
+
 </main>
