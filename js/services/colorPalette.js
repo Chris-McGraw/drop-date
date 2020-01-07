@@ -22,8 +22,9 @@ app.service("colorPalette", ["localDate", "userSearch", function(localDate, user
         + "," + swatches.Muted.rgb[2]
         + "," + "0.85";
       }
-      console.log(swatches);
-      console.log(paletteColor);
+
+      // console.log(swatches);
+      // console.log(paletteColor);
 
       document.getElementById("detail-feature-container").style.backgroundColor = "rgba(" + paletteColor + ")";
     });
