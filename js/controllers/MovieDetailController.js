@@ -1,4 +1,4 @@
-app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "userSearch", "$location", "$filter", function($scope, jsonPad, movieApi, userSearch, $location, $filter) {
+app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "userSearch", "colorPalette", "$location", "$filter", function($scope, jsonPad, movieApi, userSearch, colorPalette, $location, $filter) {
   $scope.title = "Current View : Movie Detail";
 
   userSearch.setDetail( $location.search().id );
@@ -64,35 +64,10 @@ app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "userS
         $scope.detail.backdrop = "http://image.tmdb.org/t/p/w500" + $scope.detail.backdrop_path;
       }
 
+      document.getElementById("detail-img-background").style.backgroundImage = "url(" + $scope.detail.backdrop + ")";
+
 // ___ COLOR PALETTE
-      var img = document.createElement('img');
-      img.setAttribute('crossorigin', 'anonymous')
-      img.setAttribute('src', $scope.detail.img_path)
-
-      img.addEventListener('load', function() {
-        var vibrant = new Vibrant(img);
-        var swatches = vibrant.swatches();
-        var paletteColor = "";
-
-        if(swatches.Muted === undefined) {
-          paletteColor = swatches.DarkMuted.rgb[0]
-          + "," + swatches.DarkMuted.rgb[1]
-          + "," + swatches.DarkMuted.rgb[2]
-          + "," + "0";
-        }
-        else {
-          paletteColor = swatches.Muted.rgb[0]
-          + "," + swatches.Muted.rgb[1]
-          + "," + swatches.Muted.rgb[2]
-          + "," + "0.85";
-        }
-
-        // console.log(swatches);
-        // console.log(paletteColor);
-
-        document.getElementById("detail-img-background").style.backgroundImage = "url(" + $scope.detail.backdrop + ")";
-        document.getElementById("detail-feature-container").style.backgroundColor = "rgba(" + paletteColor + ")";
-      });
+      colorPalette.getPalette( $scope.detail.img_path );
   });
 
 
