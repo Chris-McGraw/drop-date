@@ -51,6 +51,19 @@ app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "userS
         $scope.detail.img_path = "http://image.tmdb.org/t/p/w500" + $scope.detail.poster_path;
       }
 
+// _ BACKDROP BACKUP
+      if($scope.detail.backdrop_path === null) {
+        if($scope.detail.poster_path !== null) {
+          $scope.detail.backdrop = $scope.detail.img_path;
+        }
+        else {
+          $scope.detail.backdrop = "../imgs/movie-backup.png";
+        }
+      }
+      else {
+        $scope.detail.backdrop = "http://image.tmdb.org/t/p/w500" + $scope.detail.backdrop_path;
+      }
+
 // ___ COLOR PALETTE
       var img = document.createElement('img');
       img.setAttribute('crossorigin', 'anonymous')
@@ -59,16 +72,25 @@ app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "userS
       img.addEventListener('load', function() {
         var vibrant = new Vibrant(img);
         var swatches = vibrant.swatches();
+        var paletteColor = "";
 
-        var paletteColor = swatches.DarkMuted.rgb[0]
-        + "," + swatches.DarkMuted.rgb[1]
-        + "," + swatches.DarkMuted.rgb[2]
-        + "," + "0.75";
+        if(swatches.Muted === undefined) {
+          paletteColor = swatches.DarkMuted.rgb[0]
+          + "," + swatches.DarkMuted.rgb[1]
+          + "," + swatches.DarkMuted.rgb[2]
+          + "," + "0";
+        }
+        else {
+          paletteColor = swatches.Muted.rgb[0]
+          + "," + swatches.Muted.rgb[1]
+          + "," + swatches.Muted.rgb[2]
+          + "," + "0.85";
+        }
 
         // console.log(swatches);
         // console.log(paletteColor);
 
-        document.getElementById("detail-img-background").style.backgroundImage = "url(" + $scope.detail.img_path + ")";
+        document.getElementById("detail-img-background").style.backgroundImage = "url(" + $scope.detail.backdrop + ")";
         document.getElementById("detail-feature-container").style.backgroundColor = "rgba(" + paletteColor + ")";
       });
   });
