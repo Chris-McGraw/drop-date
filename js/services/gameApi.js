@@ -28,7 +28,7 @@ app.service("gameApi", ["localDate", "userSearch", function(localDate, userSearc
     return "https://www.giantbomb.com/api/game/" + userSearch.getDetail()
     + "/?api_key=" + key
     + "&format=jsonp"
-    + "&field_list=id,name,image,deck,developers,genres,platforms,number_of_user_reviews,releases,original_game_rating,original_release_date,expected_release_month,expected_release_day,expected_release_year";
+    + "&field_list=id,image,name,releases,developers,genres,deck,characters,platforms,number_of_user_reviews,original_game_rating,original_release_date,expected_release_month,expected_release_day,expected_release_year";
   }
 
   this.releaseUrl = function() {
@@ -36,7 +36,23 @@ app.service("gameApi", ["localDate", "userSearch", function(localDate, userSearc
     + "?api_key=" + key
     + "&filter=game:" + userSearch.getDetail()
     + "&format=jsonp"
-    + "&field_list=name,region,platform,release_date,expected_release_month,expected_release_day,expected_release_year";
+    + "&field_list=guid,name,region,platform,release_date,expected_release_month,expected_release_day,expected_release_year";
+  }
+
+  this.reviewUrl = function(releaseList) {
+    return "https://www.giantbomb.com/api/user_reviews/"
+    + "?api_key=" + key
+    + "&filter=object:" + releaseList
+    + "&format=jsonp"
+    + "&field_list=wikiObject,reviewer,score";
+  }
+
+  this.characterUrl = function(charList) {
+    return "https://www.giantbomb.com/api/characters/"
+    + "?api_key=" + key
+    + "&filter=id:" + charList
+    + "&format=jsonp"
+    + "&field_list=image,name,real_name";
   }
 
   this.callback = function() {

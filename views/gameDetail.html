@@ -11,18 +11,18 @@
         <h2>{{ detail.name }}</h2>
 
         <div id="release-dates">
-          <p class="media-info-left">US Release Dates:</p>
-          <div class="media-info-right">
+          <h3 class="media-info-tile">US Release Dates:</h3>
+          <div class="media-info-tile">
             <div ng-repeat="release in releases">
-              <p>{{ release.release_date | date:"MMM dd, yyyy" }}</p>
+              <p>{{ release.date | date:"MMM dd, yyyy" }}</p>
               <p class="release-note">{{ release.name }} {{ release.platform.name }}</p>
             </div>
           </div>
         </div>
 
         <div id="production">
-          <p class="media-info-left">Production Companies:</p>
-          <div class="media-info-right">
+          <h3 class="media-info-tile">Production Companies:</h3>
+          <div class="media-info-tile">
             <p ng-repeat="prod in production">{{ prod.name }}</p>
           </div>
         </div>
@@ -30,15 +30,34 @@
         <!-- <p>{{ detail.platforms[0].name }}</p> -->
 
         <div id="genre">
-          <p class="media-info-left">Genres:</p>
-          <div class="media-info-right">
+          <h3 class="media-info-tile">Genres:</h3>
+          <div class="media-info-tile">
             <p ng-repeat="genre in genres">{{ genre.name }}</p>
           </div>
         </div>
-
       </div>
-
-      <p id="overview">{{ detail.deck }}</p>
     </div>
+
+    <div id="overview-container">
+      <h3>Overview:</h3>
+      <p>{{ detail.deck }}</p>
+    </div>
+
+    <div class="cast-row">
+      <h3>Characters:</h3>
+      <ul class="media-row">
+        <div class="media-tile" ng-repeat="char in charList | limitTo: 6">
+          <li>
+            <img class="cast-img" ng-src="{{ char.img_path }}"
+            alt="{{ char.name }} image">
+
+            <p class="media-name">{{ char.name }}</p>
+            <p class="media-date">{{ char.real_name }}</p>
+          </li>
+        </div>
+      </ul>
+    </div>
+
+
   </div>
 </main>
