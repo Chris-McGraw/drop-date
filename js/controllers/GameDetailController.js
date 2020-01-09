@@ -1,4 +1,4 @@
-app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "userSearch", "$location", "$filter", function($scope, jsonPad, gameApi, userSearch, $location, $filter) {
+app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "userSearch", "colorPalette", "$location", "$filter", function($scope, jsonPad, gameApi, userSearch, colorPalette, $location, $filter) {
   $scope.title = "Current View : Detail";
 
   userSearch.setDetail( $location.search().id );
@@ -25,6 +25,14 @@ app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "userSea
       else {
         $scope.detail.img_path = $scope.detail.image.small_url;
       }
+
+
+
+// _ BACKDROP BACKUP
+      document.getElementById("detail-img-background").style.backgroundImage = "url(" + $scope.detail.img_path + ")";
+
+// ___ COLOR PALETTE
+      colorPalette.getPalette( $scope.detail.img_path );
 
 
 // ------------------- CHARACTERS
@@ -60,6 +68,10 @@ app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "userSea
     function successCallback(response) {
       $scope.releaseUS = $filter("filter")(response.data.results, {region: {name: "United States"}});
       $scope.releases = $filter("orderBy")($scope.releaseUS, "release_date");
+
+      angular.forEach($scope.releases, function(release) {
+        release.date = release.release_date.replace(/ /g,"T");
+      });
 
 
 // ---------------------- REVIEWS
