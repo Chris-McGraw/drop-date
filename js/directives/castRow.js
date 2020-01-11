@@ -25,18 +25,32 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", function(jsonPad, movi
       if(scope.type === "movies") {
         jsonPad.getData( movieApi.castUrl(), movieApi.callback() ).then(
           function successCallback(response) {
-            scope.castList = response.data.cast;
+            if(response.data.cast === null || response.data.cast === undefined || response.data.cast === "" || response.data.cast.length === 0) {
+              document.getElementById("test-result").style.display = "block";
+            }
+            else {
+              document.getElementById("test-result").style.display = "none";
 
-            backupImage();
+              scope.castList = response.data.cast;
+
+              backupImage();
+            }
         });
       }
 
       else if(scope.type === "tv") {
         jsonPad.getData( tvApi.castUrl(), tvApi.callback() ).then(
           function successCallback(response) {
-            scope.castList = response.data.cast;
+            if(response.data.cast === null || response.data.cast === undefined || response.data.cast === "" || response.data.cast.length === 0) {
+              document.getElementById("test-result").style.display = "block";
+            }
+            else {
+              document.getElementById("test-result").style.display = "none";
 
-            backupImage();
+              scope.castList = response.data.cast;
+
+              backupImage();
+            }
         });
       }
 
