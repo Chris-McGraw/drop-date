@@ -8,7 +8,7 @@ app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "userS
       if(release.note === undefined || release.note === null || release.note === "") {
         switch(release.type) {
           case 1:
-            release.release_type = "Premiere";
+            release.release_type = "Initial Release";
             break;
           case 2:
             release.release_type = "Limited Theatrical";
@@ -40,10 +40,8 @@ app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "userS
   jsonPad.getData( movieApi.detailUrl(), movieApi.callback() ).then(
     function successCallback(response) {
       $scope.detail = response.data;
-      $scope.production = response.data.production_companies;
-      $scope.genres = response.data.genres;
 
-// ____ IMAGE BACKUP
+  // ____ DETAIL IMAGE
       if($scope.detail.poster_path === null) {
         $scope.detail.img_path = "../../imgs/movie-backup.png";
       }
@@ -51,7 +49,7 @@ app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "userS
         $scope.detail.img_path = "http://image.tmdb.org/t/p/w500" + $scope.detail.poster_path;
       }
 
-// _ BACKDROP BACKUP
+  // _ DETAIL BACKDROP
       if($scope.detail.backdrop_path === null) {
         if($scope.detail.poster_path !== null) {
           $scope.detail.backdrop = $scope.detail.img_path;
@@ -66,18 +64,56 @@ app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "userS
 
       document.getElementById("detail-img-background").style.backgroundImage = "url(" + $scope.detail.backdrop + ")";
 
-// ___ COLOR PALETTE
+  // ___ COLOR PALETTE
       colorPalette.getPalette( $scope.detail.img_path );
-  });
 
+  // ______ PRODUCTION
+      $scope.production = response.data.production_companies;
 
-// --------------------- RELEASES
-  jsonPad.getData( movieApi.releaseUrl(), movieApi.callback() ).then(
-    function successCallback(response) {
-      $scope.releaseUS = $filter("filter")(response.data.results, {iso_3166_1: "US"})[0];
-      $scope.releases = $filter("orderBy")($scope.releaseUS.release_dates, "release_date");
+      if($scope.production.length === 0) {
+        $scope.productionList = [{name:"n/a"}];
+      }
+      else {
+        $scope.productionList = $scope.production;
+      }
 
-      releaseType();
+  // __________ GENRES
+      $scope.genres = response.data.genres;
+
+      if($scope.genres.length === 0) {
+        $scope.genreList = [{name:"n/a"}];
+      }
+      else {
+        $scope.genreList = $scope.genres;
+      }
+
+  // _________ SUMMARY
+      $scope.overview = response.data.overview;
+
+      if($scope.overview === null || $scope.overview === undefined || $scope.overview === "") {
+        $scope.detail.summary = "n/a";
+      }
+      else {
+        $scope.detail.summary = $scope.overview;
+      }
+
+  // --------------------- RELEASES
+      jsonPad.getData( movieApi.releaseUrl(), movieApi.callback() ).then(
+        function successCallback(response) {
+          $scope.releaseUS = $filter("filter")(response.data.results, {iso_3166_1: "US"})[0];
+
+          if($scope.releaseUS === null || $scope.releaseUS === undefined || $scope.releaseUS === "" || $scope.releaseUS.length === 0) {
+            // $scope.releases = [{release_date:"n/a"}];
+
+            // console.log($scope.detail.release_date);
+            $scope.releases = [{release_date: $scope.detail.release_date, type: 1}];
+          }
+          else {
+            $scope.releases = $filter("orderBy")($scope.releaseUS.release_dates, "release_date");
+          }
+
+          releaseType();
+      });
   });
 
 

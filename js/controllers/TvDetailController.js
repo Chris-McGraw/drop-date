@@ -7,10 +7,8 @@ app.controller("TvDetailController", ["$scope", "jsonPad", "tvApi", "userSearch"
   jsonPad.getData( tvApi.detailUrl(), tvApi.callback() ).then(
     function successCallback(response) {
       $scope.detail = response.data;
-      $scope.production = response.data.production_companies;
-      $scope.genres = response.data.genres;
 
-// ____ IMAGE BACKUP
+  // ____ DETAIL IMAGE
       if($scope.detail.poster_path === null) {
         $scope.detail.img_path = "../../imgs/tv-backup.png";
       }
@@ -18,7 +16,7 @@ app.controller("TvDetailController", ["$scope", "jsonPad", "tvApi", "userSearch"
         $scope.detail.img_path = "http://image.tmdb.org/t/p/w500" + $scope.detail.poster_path;
       }
 
-// _ BACKDROP BACKUP
+  // _ DETAIL BACKDROP
       if($scope.detail.backdrop_path === null) {
         if($scope.detail.poster_path !== null) {
           $scope.detail.backdrop = $scope.detail.img_path;
@@ -33,8 +31,38 @@ app.controller("TvDetailController", ["$scope", "jsonPad", "tvApi", "userSearch"
 
       document.getElementById("detail-img-background").style.backgroundImage = "url(" + $scope.detail.backdrop + ")";
 
-// ___ COLOR PALETTE
+  // ___ COLOR PALETTE
       colorPalette.getPalette( $scope.detail.img_path );
+
+  // ______ PRODUCTION
+      $scope.production = response.data.production_companies;
+
+      if($scope.production.length === 0) {
+        $scope.productionList = [{name:"n/a"}];
+      }
+      else {
+        $scope.productionList = $scope.production;
+      }
+
+  // __________ GENRES
+      $scope.genres = response.data.genres;
+
+      if($scope.genres.length === 0) {
+        $scope.genreList = [{name:"n/a"}];
+      }
+      else {
+        $scope.genreList = $scope.genres;
+      }
+
+  // _________ SUMMARY
+      $scope.overview = response.data.overview;
+
+      if($scope.overview === null || $scope.overview === undefined || $scope.overview === "") {
+        $scope.detail.summary = "n/a";
+      }
+      else {
+        $scope.detail.summary = $scope.overview;
+      }
   });
 
 
