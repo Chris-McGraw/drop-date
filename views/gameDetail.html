@@ -24,7 +24,7 @@
           <div id="production">
             <h3 class="media-info-tile">Production Companies:</h3>
             <div class="media-info-tile">
-              <p ng-repeat="prod in production">{{ prod.name }}</p>
+              <p ng-repeat="prod in productionList">{{ prod.name }}</p>
             </div>
           </div>
 
@@ -33,7 +33,7 @@
           <div id="genre">
             <h3 class="media-info-tile">Genres:</h3>
             <div class="media-info-tile">
-              <p ng-repeat="genre in genres">{{ genre.name }}</p>
+              <p ng-repeat="genre in genreList">{{ genre.name }}</p>
             </div>
           </div>
         </div>
@@ -43,11 +43,13 @@
 
   <div id="overview-container">
     <h3>Overview:</h3>
-    <p>{{ detail.deck }}</p>
+    <p>{{ detail.summary }}</p>
   </div>
 
   <div class="cast-row">
     <h3>Characters:</h3>
+    <p id="test-result">n/a</p>
+
     <ul class="media-row">
       <div class="media-tile" ng-repeat="char in charList | limitTo: 6">
         <li>

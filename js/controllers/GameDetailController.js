@@ -18,8 +18,6 @@ app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "userSea
   jsonPad.getData( gameApi.detailUrl(), gameApi.callback() ).then(
     function successCallback(response) {
       $scope.detail = response.data.results;
-      $scope.production = response.data.results.developers;
-      $scope.genres = response.data.results.genres;
 
       // console.log($scope.detail.releases);
 
@@ -37,32 +35,73 @@ app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "userSea
   // ___ COLOR PALETTE
       colorPalette.getPalette( $scope.detail.img_path );
 
+  // ______ PRODUCTION
+      $scope.production = response.data.results.developers;
+
+      if($scope.production === null || $scope.production === undefined || $scope.production === "" || $scope.production.length === 0) {
+        $scope.productionList = [{name:"n/a"}];
+      }
+      else {
+        $scope.productionList = $scope.production;
+      }
+
+  // __________ GENRES
+      $scope.genres = response.data.results.genres;
+
+      if($scope.genres === null || $scope.genres === undefined || $scope.genres === "" || $scope.genres.length === 0) {
+        $scope.genreList = [{name:"n/a"}];
+      }
+      else {
+        $scope.genreList = $scope.genres;
+      }
+
+  // _________ SUMMARY
+      $scope.overview = response.data.results.deck;
+
+      if($scope.overview === null || $scope.overview === undefined || $scope.overview === "") {
+        $scope.detail.summary = "n/a";
+      }
+      else {
+        $scope.detail.summary = response.data.results.deck;
+      }
 
   // ------------------- CHARACTERS
       var charIdArray = [];
 
-      for(i = 0; i < 10; i++) {
-        if(i === response.data.results.characters.length) {
-          break;
-        }
-        else {
-          charIdArray.push(response.data.results.characters[i].id + "|");
+      if($scope.detail.characters === null || $scope.detail.characters === undefined || $scope.detail.characters === "" || $scope.detail.characters.length === 0) {
+        charIdArray = [];
+      }
+      else {
+        for(i = 0; i < 10; i++) {
+          if(i === response.data.results.characters.length) {
+            break;
+          }
+          else {
+            charIdArray.push(response.data.results.characters[i].id + "|");
+          }
         }
       }
 
-      jsonPad.getData( gameApi.characterUrl( charIdArray.join("") ), gameApi.callback() ).then(
-        function successCallback(response) {
-          $scope.charList = response.data.results;
+      if(charIdArray.length === 0) {
+        document.getElementById("test-result").style.display = "block";
+      }
+      else {
+        document.getElementById("test-result").style.display = "none";
 
-          angular.forEach($scope.charList, function(char) {
-            if(char.image.small_url === "https://www.giantbomb.com/api/image/scale_small/3026329-gb_default-16_9.png") {
-              char.img_path = "../../imgs/cast-backup.png";
-            }
-            else {
-              char.img_path = char.image.small_url;
-            }
-          });
-      });
+        jsonPad.getData( gameApi.characterUrl( charIdArray.join("") ), gameApi.callback() ).then(
+          function successCallback(response) {
+            $scope.charList = response.data.results;
+
+            angular.forEach($scope.charList, function(char) {
+              if(char.image.small_url === "https://www.giantbomb.com/api/image/scale_small/3026329-gb_default-16_9.png") {
+                char.img_path = "../../imgs/cast-backup.png";
+              }
+              else {
+                char.img_path = char.image.small_url;
+              }
+            });
+        });
+      }
 
   // --------------------- RELEASES
       jsonPad.getData( gameApi.releaseUrl(), gameApi.callback() ).then(
@@ -109,9 +148,6 @@ app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "userSea
           // });
       });
   });
-
-
-
 
 
 }]);
