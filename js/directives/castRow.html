@@ -1,14 +1,12 @@
 <h3>Cast:</h3>
 <p id="test-result">n/a</p>
 
-<ul class="media-row">
-  <div class="media-tile" ng-repeat="cast in castList | limitTo: 6">
-    <li>
-      <img class="cast-img" ng-src="{{ cast.img_path }}"
-      alt="{{ cast.name }} image">
+<div class="sliding-carousel">
+  <li class="carousel-tile" ng-repeat="cast in castList | limitTo: 10">
+    <img class="cast-img" ng-src="{{ cast.img_path }}"
+    alt="{{ cast.name }} image">
 
-      <p class="media-name">{{ cast.name }}</p>
-      <p class="media-date">{{ cast.character }}</p>
-    </li>
-  </div>
-</ul>
+    <p class="cast-name">{{ cast.name }}</p>
+    <p class="cast-character">{{ cast.character }}</p>
+  </li>
+</div>
