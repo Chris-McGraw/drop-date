@@ -7,7 +7,7 @@
       <i class="fas fa-chevron-left"></i>
     </div>
 
-    <div class="carousel-tile" ng-repeat="cast in castList | limitTo: 10">
+    <div class="carousel-tile" ng-repeat="cast in castList | limitTo: 10" ng-init="$last && checkCarouselOverflow()">
       <img class="cast-img" ng-src="{{ cast.img_path }}"
       alt="{{ cast.name }} image">
 
@@ -15,7 +15,7 @@
       <p class="cast-character">{{ cast.character }}</p>
     </div>
 
-    <div id="carousel-slide-right" class="carousel-slide">
+    <div id="carousel-slide-right" class="carousel-slide" style="display:none">
       <i class="fas fa-chevron-right"></i>
     </div>
   </div>
