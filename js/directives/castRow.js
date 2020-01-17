@@ -35,6 +35,57 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", function(jsonPad, movi
 
               backupImage();
             }
+
+
+// TEMP CLICK SCROLL VARIABLES
+            var carousel = document.getElementById("sliding-carousel");
+            var currentCarouselPos = 0;
+            var carouselSlideLeft = document.getElementById("carousel-slide-left");
+            var carouselSlideRight = document.getElementById("carousel-slide-right");
+
+// TEMP CLICK SCROLL LEFT FUNCTIONALITY
+            carouselSlideLeft.onclick = function() {
+              currentCarouselPos = carousel.scrollLeft;
+
+              carousel.scroll(currentCarouselPos - ( 160 * Math.floor(carousel.offsetWidth / 160) ), 0);
+
+              if(carousel.scrollLeft === 0) {
+                carouselSlideLeft.style.display = "none";
+              }
+              else {
+                carouselSlideLeft.style.display = "flex";
+              }
+
+              if( carousel.scrollLeft >= (carousel.scrollWidth - carousel.offsetWidth) ) {
+                carouselSlideRight.style.display = "none";
+              }
+              else {
+                carouselSlideRight.style.display = "flex";
+              }
+            };
+
+// TEMP CLICK SCROLL RIGHT FUNCTIONALITY
+            carouselSlideRight.onclick = function() {
+              currentCarouselPos = carousel.scrollLeft;
+
+              carousel.scroll(currentCarouselPos + ( 160 * Math.floor(carousel.offsetWidth / 160) ), 0);
+
+              if(carousel.scrollLeft === 0) {
+                carouselSlideLeft.style.display = "none";
+              }
+              else {
+                carouselSlideLeft.style.display = "flex";
+              }
+
+              if( carousel.scrollLeft >= (carousel.scrollWidth - carousel.offsetWidth) ) {
+                carouselSlideRight.style.display = "none";
+              }
+              else {
+                carouselSlideRight.style.display = "flex";
+              }
+            };
+
+
         });
       }
 
