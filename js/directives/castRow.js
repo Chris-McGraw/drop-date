@@ -7,8 +7,14 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", function(jsonPad, movi
     templateUrl: "js/directives/castRow.html",
     link: function(scope, element, attrs) {
 
-// -----
 
+// _____________ VARIABLES
+      var carousel = document.getElementById("sliding-carousel");
+      var carouselSlideLeft = document.getElementById("carousel-slide-left");
+      var carouselSlideRight = document.getElementById("carousel-slide-right");
+
+
+// _____________ FUNCTIONS
       function backupImage() {
         angular.forEach(scope.castList, function(cast) {
           if(cast.profile_path === null) {
@@ -20,8 +26,39 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", function(jsonPad, movi
         });
       }
 
-// -----
+// ---
 
+      scope.checkCarouselOverflow = function() {
+        if(carousel.scrollWidth - carousel.offsetWidth > 0) {
+          carouselSlideRight.style.display = "flex";
+        }
+        else {
+          carouselSlideRight.style.display = "none";
+        }
+      }
+
+// ---
+
+      function toggleCarouselControls() {
+        var scrollPos = carousel.scrollLeft;
+
+        if(scrollPos === 0) {
+          carouselSlideLeft.style.display = "none";
+        }
+        else {
+          carouselSlideLeft.style.display = "flex";
+        }
+
+        if( scrollPos >= (carousel.scrollWidth - carousel.offsetWidth) ) {
+          carouselSlideRight.style.display = "none";
+        }
+        else {
+          carouselSlideRight.style.display = "flex";
+        }
+      }
+
+
+// ____ ATTRIBUTE HANDLERS
       if(scope.type === "movies") {
         jsonPad.getData( movieApi.castUrl(), movieApi.callback() ).then(
           function successCallback(response) {
@@ -54,7 +91,33 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", function(jsonPad, movi
         });
       }
 
-// -----
+
+// ________ EVENT HANDLERS
+      carouselSlideLeft.onclick = function() {
+        var scrollPos = carousel.scrollLeft;
+        carousel.scroll(scrollPos - ( 160 * Math.floor(carousel.offsetWidth / 160) ), 0);
+
+        toggleCarouselControls();
+      };
+
+// ---
+
+      carouselSlideRight.onclick = function() {
+        var scrollPos = carousel.scrollLeft;
+        carousel.scroll(scrollPos + ( 160 * Math.floor(carousel.offsetWidth / 160) ), 0);
+
+        toggleCarouselControls();
+      };
+
+// ---
+
+      var debounceTimeout;
+
+      window.onresize = function() {
+        clearTimeout(debounceTimeout);
+        debounceTimeout = setTimeout(toggleCarouselControls, 100);
+      }
+
 
     }
   };

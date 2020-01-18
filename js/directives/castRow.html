@@ -1,12 +1,22 @@
-<h3>Cast:</h3>
-<p id="test-result">n/a</p>
+<section id="cast">
+  <h3>Cast:</h3>
+  <p id="test-result">n/a</p>
 
-<div class="sliding-carousel">
-  <li class="carousel-tile" ng-repeat="cast in castList | limitTo: 10">
-    <img class="cast-img" ng-src="{{ cast.img_path }}"
-    alt="{{ cast.name }} image">
+  <div id="sliding-carousel">
+    <div id="carousel-slide-left" class="carousel-slide" style="display:none">
+      <i class="fas fa-chevron-left"></i>
+    </div>
 
-    <p class="cast-name">{{ cast.name }}</p>
-    <p class="cast-character">{{ cast.character }}</p>
-  </li>
-</div>
+    <div class="carousel-tile" ng-repeat="cast in castList | limitTo: 10" ng-init="$last && checkCarouselOverflow()">
+      <img class="cast-img" ng-src="{{ cast.img_path }}"
+      alt="{{ cast.name }} image">
+
+      <p class="cast-name">{{ cast.name }}</p>
+      <p class="cast-character">{{ cast.character }}</p>
+    </div>
+
+    <div id="carousel-slide-right" class="carousel-slide" style="display:none">
+      <i class="fas fa-chevron-right"></i>
+    </div>
+  </div>
+</section>
