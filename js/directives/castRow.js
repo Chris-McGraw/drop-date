@@ -39,7 +39,7 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", function(jsonPad, movi
 
 // ---
 
-      function toggleCarouselControl() {
+      function toggleCarouselControls() {
         var scrollPos = carousel.scrollLeft;
 
         if(scrollPos === 0) {
@@ -97,7 +97,7 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", function(jsonPad, movi
         var scrollPos = carousel.scrollLeft;
         carousel.scroll(scrollPos - ( 160 * Math.floor(carousel.offsetWidth / 160) ), 0);
 
-        toggleCarouselControl();
+        toggleCarouselControls();
       };
 
 // ---
@@ -106,8 +106,17 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", function(jsonPad, movi
         var scrollPos = carousel.scrollLeft;
         carousel.scroll(scrollPos + ( 160 * Math.floor(carousel.offsetWidth / 160) ), 0);
 
-        toggleCarouselControl();
+        toggleCarouselControls();
       };
+
+// ---
+
+      var debounceTimeout;
+
+      window.onresize = function() {
+        clearTimeout(debounceTimeout);
+        debounceTimeout = setTimeout(toggleCarouselControls, 100);
+      }
 
 
     }
