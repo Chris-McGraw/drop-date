@@ -615,3 +615,39 @@ p {
 
   cursor: pointer;
 }
+
+
+
+
+
+/* -------------------------- MEDIA QUERY <= 1150 -------------------------- */
+@media screen and (max-width: 1150px) {
+  #detail-feature-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  #media-detail-img-container {
+    grid-column: span 2;
+  }
+
+  #media-info-container {
+    grid-column: span 2;
+  }
+}
+
+
+
+/* -------------------------- MEDIA QUERY <= 750 -------------------------- */
+@media screen and (max-width: 750px) {
+  #detail-feature-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  #media-detail-img-container {
+    grid-column: span 4;
+  }
+
+  #media-info-container {
+    grid-column: span 4;
+  }
+}
