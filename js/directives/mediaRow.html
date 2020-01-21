@@ -7,13 +7,13 @@
       <i class="fas fa-chevron-left"></i>
     </button>
 
-    <a class="carousel-tile" href="#/movies/detail/?id={{ movie.id }}"
-    ng-repeat="movie in movies | limitTo: 10" ng-init="$last && checkCarouselOverflow()">
-      <img class="media-img" ng-src="{{ movie.img_path }}"
-      alt="{{ movie.title }} image">
+    <a class="carousel-tile" href="{{ media.idPath }}"
+    ng-repeat="media in mediaList | limitTo: 10" ng-init="$last && checkCarouselOverflow()">
+      <img class="media-img" ng-src="{{ media.imgPath }}"
+      alt="{{ media.title }} image">
 
-      <p class="media-name">{{ movie.title }}</p>
-      <p class="media-date">{{ movie.release_date | date:"MMM dd, yyyy" }}</p>
+      <p class="media-name">{{ media.title }}</p>
+      <p class="media-date">{{ media.release_date | date:"MMM dd, yyyy" }}</p>
     </a>
 
     <button id="carousel-scroll-right" class="carousel-scroll scroll-right"

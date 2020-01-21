@@ -1,61 +1,123 @@
-app.directive("movieRow", ["jsonPad", "movieApi", "localDate", "$filter", function(jsonPad, movieApi, localDate, $filter) {
+app.directive("mediaRow", ["jsonPad", "movieApi", "tvApi", "localDate", "$filter", function(jsonPad, movieApi, tvApi, localDate, $filter) {
   return {
     restrict: "E",
     scope: {
-      type: "@"
+      media:"@",
+      type: "@",
+      title: "@"
     },
-    templateUrl: "js/directives/movieRow.html",
+    templateUrl: "js/directives/mediaRow.html",
     link: function(scope, element, attrs) {
-      function backupImage() {
-        angular.forEach(scope.movies, function(movie) {
+
+      scope.rowTitle = scope.title;
+
+
+// ____ ATTRIBUTE HANDLERS
+      if(scope.media === "movies") {
+        function movieIdPath(movie) {
+          movie.idPath = "#/movies/detail/?id=" + movie.id;
+          // console.log(movie.idPath);
+        }
+
+        function backupMovieImages(movie) {
           if(movie.poster_path === null) {
-            movie.img_path = "../../imgs/movie-backup.png";
+            movie.imgPath = "../../imgs/movie-backup.png";
           }
           else {
-            movie.img_path = "http://image.tmdb.org/t/p/w185" + movie.poster_path;
+            movie.imgPath = "http://image.tmdb.org/t/p/w185" + movie.poster_path;
           }
-        });
-      }
+        }
 
-      if(scope.type === "movies") {
-        scope.rowTitle = "Movies";
+      // ---
 
-        jsonPad.getData( movieApi.recentUrl(), movieApi.callback() ).then(
-          function successCallback(response) {
-            scope.movies = response.data.results;
+        if(scope.type === "recent") {
+          jsonPad.getData( movieApi.recentUrl(), movieApi.callback() ).then(
+            function successCallback(response) {
+              scope.mediaList = response.data.results;
 
-            backupImage();
-        });
-      }
+              angular.forEach(scope.mediaList, function(movie) {
+                movieIdPath(movie);
+                backupMovieImages(movie);
+              });
+          });
+        }
 
-      else if(scope.type === "recent") {
-        scope.rowTitle = "Recent";
-
-        jsonPad.getData( movieApi.recentUrl(), movieApi.callback() ).then(
-          function successCallback(response) {
-            scope.movies = response.data.results;
-
-            backupImage();
-        });
-      }
-
-      else if(scope.type === "upcoming") {
-        scope.rowTitle = "Upcoming";
-
-        jsonPad.getData( movieApi.upcomingUrl(), movieApi.callback() ).then(
-          function successCallback(response) {
-            var greaterThan = function(prop, val) {
-              return function(item) {
-                return item[prop] >= val;
+        else if(scope.type === "upcoming") {
+          jsonPad.getData( movieApi.upcomingUrl(), movieApi.callback() ).then(
+            function successCallback(response) {
+              var greaterThan = function(prop, val) {
+                return function(item) {
+                  return item[prop] >= val;
+                }
               }
-            }
 
-            var upcomingMovies = $filter("filter")(response.data.results, greaterThan("release_date", localDate.getTomorrowDate() ));
-            scope.movies = $filter("orderBy")(upcomingMovies, "release_date");
+              var upcomingMovies = $filter("filter")(response.data.results, greaterThan("release_date", localDate.getTomorrowDate() ));
+              scope.mediaList = $filter("orderBy")(upcomingMovies, "release_date");
 
-            backupImage();
-        });
+              angular.forEach(scope.mediaList, function(movie) {
+                movieIdPath(movie);
+                backupMovieImages(movie);
+              });
+          });
+        }
       }
+
+// ---
+
+      else if(scope.media === "tv") {
+        function tvIdPath(show) {
+          show.idPath = "#/tv/detail/?id=" + show.id;
+        }
+
+        function backupTvImages(show) {
+          if(show.poster_path === null) {
+            show.imgPath = "../../imgs/tv-backup.png";
+          }
+          else {
+            show.imgPath = "http://image.tmdb.org/t/p/w185" + show.poster_path;
+          }
+        }
+
+        function tvTitle(show) {
+          show.title = show.name;
+        }
+
+        function tvRelease(show) {
+          show.release_date = show.first_air_date;
+        }
+
+      // ---
+
+        if(scope.type === "recent") {
+          jsonPad.getData( tvApi.recentUrl(), tvApi.callback() ).then(
+            function successCallback(response) {
+              scope.mediaList = response.data.results;
+
+              angular.forEach(scope.mediaList, function(show) {
+                tvIdPath(show);
+                backupTvImages(show);
+                tvTitle(show);
+                tvRelease(show);
+              });
+          });
+        }
+
+        else if(scope.type === "upcoming") {
+          jsonPad.getData( tvApi.upcomingUrl(), tvApi.callback() ).then(
+            function successCallback(response) {
+              scope.mediaList = response.data.results;
+
+              angular.forEach(scope.mediaList, function(show) {
+                tvIdPath(show);
+                backupTvImages(show);
+                tvTitle(show);
+                tvRelease(show);
+              });
+          });
+        }
+      }
+
+// ---
 
       else {
         console.log("error");
