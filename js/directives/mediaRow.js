@@ -1,4 +1,4 @@
-app.directive("mediaRow", ["jsonPad", "movieApi", "tvApi", "localDate", "$filter", function(jsonPad, movieApi, tvApi, localDate, $filter) {
+app.directive("mediaRow", ["jsonPad", "movieApi", "tvApi", "gameApi", "localDate", "$filter", function(jsonPad, movieApi, tvApi, gameApi, localDate, $filter) {
   return {
     restrict: "E",
     scope: {
@@ -116,6 +116,67 @@ app.directive("mediaRow", ["jsonPad", "movieApi", "tvApi", "localDate", "$filter
           });
         }
       }
+
+// ---
+
+       else if(scope.media === "games") {
+         function gameIdPath(game) {
+           game.idPath = "#/games/detail/?id=" + game.id;
+         }
+
+         function backupGameImages(game) {
+           if(game.image.small_url === "https://www.giantbomb.com/api/image/scale_small/3026329-gb_default-16_9.png") {
+             game.imgPath = "../../imgs/game-backup.png";
+           }
+           else {
+             game.imgPath = game.image.small_url;
+           }
+         }
+
+         function gameTitle(game) {
+           game.title = game.name;
+         }
+
+         function formatDate(game) {
+           game.release_date = new Date(game.expected_release_year + "/" + game.expected_release_month + "/" + game.expected_release_day);
+         }
+
+         // ---
+
+         if(scope.type === "recent") {
+           jsonPad.getData( gameApi.recentUrl(), gameApi.callback() ).then(
+             function successCallback(response) {
+               scope.mediaList = $filter("filter")(response.data.results, {expected_release_year:"",
+                 expected_release_month:"",
+                 expected_release_day:""}
+               );
+
+               angular.forEach(scope.mediaList, function(game) {
+                 gameIdPath(game);
+                 backupGameImages(game);
+                 gameTitle(game);
+                 formatDate(game);
+               });
+           });
+         }
+
+         else if(scope.type === "upcoming") {
+           jsonPad.getData( gameApi.upcomingUrl(), gameApi.callback() ).then(
+             function successCallback(response) {
+               scope.mediaList = $filter("filter")(response.data.results, {expected_release_year:"",
+                 expected_release_month:"",
+                 expected_release_day:""}
+               );
+
+               angular.forEach(scope.mediaList, function(game) {
+                 gameIdPath(game);
+                 backupGameImages(game);
+                 gameTitle(game);
+                 formatDate(game);
+               });
+           });
+         }
+       }
 
 // ---
 
