@@ -6,9 +6,9 @@
       <input id="home-input" type="text" ng-model="inputVal"></input>
       <button class="submit-btn" type="submit">{{ buttonText }}</button>
     </form>
-
-    <h2 class="media-page-header">Video Game Releases</h2>
-    <game-row type="recent"></game-row>
-    <game-row type="upcoming"></game-row>
   </div>
+
+  <h2 class="media-page-header">Video Game Releases</h2>
+  <media-row media="games" type="recent" title="Recent"></media-row>
+  <media-row media="games" type="upcoming" title="Upcoming"></media-row>
 </main>
