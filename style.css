@@ -262,7 +262,9 @@ p {
   overflow-x: auto;
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
- }
+
+  /* scroll-behavior: smooth; */
+}
 
 .carousel-main::-webkit-scrollbar {
   width: 0 !important;
@@ -627,9 +629,10 @@ p {
   position: relative;
   top: 120px;
 
-  height: 80px;
+  height: auto;
   width: 100%;
   margin-top: 40px;
+  padding: 20px 40px;
 
   font-family: sans-serif;
   text-align: center;
@@ -637,20 +640,60 @@ p {
   background-color: black;
 }
 
+#attribution-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 20px;
+
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.attribution {
+  grid-column: span 1;
+
+  text-align: left;
+  font-size: 14px;
+}
+
+.attr-text {
+  /* margin-bottom: 20px; */
+}
+
+.attr-text p {
+  display: inline;
+
+  color: white;
+
+  cursor: text;
+}
+
+.attr-link {
+  margin-top: 10px;
+}
+
+.attr-link a {
+  font-weight: bold;
+  color: rgba(255,255,255, 0.6);
+
+  cursor: pointer;
+}
+
+.attr-link a:hover {
+  color: rgba(255,255,255, 1.0);
+}
+
 #footer-copyright {
   position: relative;
-  top: 16px;
+
+  margin-bottom: 10px;
 
   font-size: 16px;
   color: white;
 }
 
 #footer-link-list {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 16px;
-
   width: auto;
   height: auto;
   margin: auto;
@@ -704,6 +747,15 @@ p {
 
 
 
+/* -------------------------- MEDIA QUERY <= 900 -------------------------- */
+@media screen and (max-width: 900px) {
+  .attribution {
+    grid-column: span 2;
+  }
+}
+
+
+
 /* -------------------------- MEDIA QUERY <= 750 -------------------------- */
 @media screen and (max-width: 750px) {
   #detail-feature-grid {
@@ -715,6 +767,15 @@ p {
   }
 
   #media-info-container {
+    grid-column: span 4;
+  }
+}
+
+
+
+/* -------------------------- MEDIA QUERY <= 500 -------------------------- */
+@media screen and (max-width: 500px) {
+  .attribution {
     grid-column: span 4;
   }
 }
