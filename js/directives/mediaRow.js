@@ -33,7 +33,14 @@ app.directive("mediaRow", ["jsonPad", "movieApi", "tvApi", "gameApi", "localDate
         if(scope.type === "recent") {
           jsonPad.getData( movieApi.recentUrl(), movieApi.callback() ).then(
             function successCallback(response) {
-              scope.mediaList = response.data.results;
+              var lessThan = function(prop, val) {
+                return function(item) {
+                  return item[prop] <= val;
+                }
+              }
+
+              var recentMovies = $filter("filter")(response.data.results, lessThan("release_date", localDate.getCurrentDate() ));
+              scope.mediaList = $filter("orderBy")(recentMovies, "release_date", reverse = true);
 
               angular.forEach(scope.mediaList, function(movie) {
                 movieIdPath(movie);
@@ -105,7 +112,9 @@ app.directive("mediaRow", ["jsonPad", "movieApi", "tvApi", "gameApi", "localDate
         else if(scope.type === "upcoming") {
           jsonPad.getData( tvApi.upcomingUrl(), tvApi.callback() ).then(
             function successCallback(response) {
-              scope.mediaList = response.data.results;
+              var upcomingTv = response.data.results;
+
+              scope.mediaList = $filter("orderBy")(upcomingTv, "first_air_date");
 
               angular.forEach(scope.mediaList, function(show) {
                 tvIdPath(show);
