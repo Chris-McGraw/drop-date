@@ -2,17 +2,15 @@ app.service("movieApi", ["localDate", "userSearch", function(localDate, userSear
   var key = "239a65ddae71707eccfac11b087ecbb9";
 
   this.recentUrl = function() {
-    return "https://api.themoviedb.org/3/discover/movie"
+    return "https://api.themoviedb.org/3/movie/now_playing"
     + "?api_key=" + key
-    + "&language=en-US&region=US&sort_by=release_date.desc&include_adult=false&include_video=false&page=1"
-    + "&release_date.lte=" + localDate.getCurrentDate();
+    + "&language=en-US&region=US&sort_by=release_date.desc&include_adult=false&include_video=false&page=1";
   }
 
   this.upcomingUrl = function() {
-    return "https://api.themoviedb.org/3/discover/movie"
+    return "https://api.themoviedb.org/3/movie/upcoming"
     + "?api_key=" + key
-    + "&language=en-US&region=US&sort_by=primary_release_date.asc&include_adult=false&include_video=false&page=1"
-    + "&primary_release_date.gte=" + localDate.getTomorrowDate();
+    + "&language=en-US&region=US&sort_by=release_date.asc&include_adult=false&include_video=false&page=1";
   }
 
   this.searchUrl = function() {

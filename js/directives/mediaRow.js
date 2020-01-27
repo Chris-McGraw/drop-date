@@ -33,7 +33,14 @@ app.directive("mediaRow", ["jsonPad", "movieApi", "tvApi", "gameApi", "localDate
         if(scope.type === "recent") {
           jsonPad.getData( movieApi.recentUrl(), movieApi.callback() ).then(
             function successCallback(response) {
-              scope.mediaList = response.data.results;
+              var lessThan = function(prop, val) {
+                return function(item) {
+                  return item[prop] <= val;
+                }
+              }
+
+              var recentMovies = $filter("filter")(response.data.results, lessThan("release_date", localDate.getCurrentDate() ));
+              scope.mediaList = $filter("orderBy")(recentMovies, "release_date", reverse = true);
 
               angular.forEach(scope.mediaList, function(movie) {
                 movieIdPath(movie);
@@ -105,7 +112,9 @@ app.directive("mediaRow", ["jsonPad", "movieApi", "tvApi", "gameApi", "localDate
         else if(scope.type === "upcoming") {
           jsonPad.getData( tvApi.upcomingUrl(), tvApi.callback() ).then(
             function successCallback(response) {
-              scope.mediaList = response.data.results;
+              var upcomingTv = response.data.results;
+
+              scope.mediaList = $filter("orderBy")(upcomingTv, "first_air_date");
 
               angular.forEach(scope.mediaList, function(show) {
                 tvIdPath(show);
@@ -120,8 +129,31 @@ app.directive("mediaRow", ["jsonPad", "movieApi", "tvApi", "gameApi", "localDate
 // ---
 
        else if(scope.media === "games") {
+         function getTrimmedArray(results, trimmedArray) {
+           for(i = 0; i < results.length; i++) {
+             if(i === 0) {
+               trimmedArray.push(results[i]);
+             }
+
+             else if(trimmedArray.length < 20) {
+               var hasDuplicate = false;
+
+               for(v = 0; v < trimmedArray.length; v++) {
+                 if(results[i].game.id === trimmedArray[v].game.id) {
+                   hasDuplicate = true;
+                 }
+               }
+
+               if(hasDuplicate === false) {
+                 trimmedArray.push(results[i]);
+               }
+             }
+           }
+           return trimmedArray;
+         }
+
          function gameIdPath(game) {
-           game.idPath = "#/games/detail/?id=" + game.id;
+           game.idPath = "#/games/detail/?id=" + game.game.id;
          }
 
          function backupGameImages(game) {
@@ -146,16 +178,16 @@ app.directive("mediaRow", ["jsonPad", "movieApi", "tvApi", "gameApi", "localDate
          if(scope.type === "recent") {
            jsonPad.getData( gameApi.recentUrl(), gameApi.callback() ).then(
              function successCallback(response) {
-               scope.mediaList = $filter("filter")(response.data.results, {expected_release_year:"",
-                 expected_release_month:"",
-                 expected_release_day:""}
-               );
+               var trimmedArray = [];
+               getTrimmedArray(response.data.results, trimmedArray);
+
+               scope.mediaList = $filter("filter")(trimmedArray, {release_date:""});
 
                angular.forEach(scope.mediaList, function(game) {
                  gameIdPath(game);
                  backupGameImages(game);
                  gameTitle(game);
-                 formatDate(game);
+                 game.release_date = game.release_date.replace(/ /g,"T");
                });
            });
          }
@@ -163,7 +195,10 @@ app.directive("mediaRow", ["jsonPad", "movieApi", "tvApi", "gameApi", "localDate
          else if(scope.type === "upcoming") {
            jsonPad.getData( gameApi.upcomingUrl(), gameApi.callback() ).then(
              function successCallback(response) {
-               scope.mediaList = $filter("filter")(response.data.results, {expected_release_year:"",
+               var trimmedArray = [];
+               getTrimmedArray(response.data.results, trimmedArray);
+
+               scope.mediaList = $filter("filter")(trimmedArray, {expected_release_year:"",
                  expected_release_month:"",
                  expected_release_day:""}
                );
