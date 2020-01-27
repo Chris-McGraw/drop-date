@@ -2,19 +2,25 @@ app.service("gameApi", ["localDate", "userSearch", function(localDate, userSearc
   var key = "4996f14fcd1ff3aee96c621e0318101b3c6d5729";
 
   this.recentUrl = function() {
-    return "https://www.giantbomb.com/api/games/?api_key=" + key
+    return "https://www.giantbomb.com/api/releases/"
+    + "?api_key=" + key
     + "&format=jsonp&limit=100&offset=0"
-    + "&field_list=id,name,image,original_release_date,expected_release_day,expected_release_month,expected_release_year"
-    + "&filter=original_release_date:" + localDate.getPreviousDate() + "%2000:00:00|"
-    + localDate.getCurrentDate() + "%2000:00:00&sort=original_release_date:desc";
+    + "&filter=release_date:" + localDate.getPreviousDate() + "%2000:00:00|"
+    + localDate.getCurrentDate() + "%2000:00:00,"
+    + "region:1"
+    + "&sort=release_date:desc"
+    + "&field_list=guid,id,game,name,image,region,release_date,expected_release_day,expected_release_month,expected_release_year";
   }
 
   this.upcomingUrl = function() {
-    return "https://www.giantbomb.com/api/games/?api_key=" + key
+    return "https://www.giantbomb.com/api/releases/"
+    + "?api_key=" + key
     + "&format=jsonp&limit=100&offset=0"
-    + "&field_list=id,name,image,original_release_date,expected_release_day,expected_release_month,expected_release_year"
-    + "&filter=original_release_date:" + localDate.getTomorrowDate() + "%2000:00:00|"
-    + localDate.getFutureDate() + "%2000:00:00&sort=original_release_date:asc";
+    + "&filter=release_date:" + localDate.getCurrentDate() + "%2000:00:00|"
+    + localDate.getFutureDate() + "%2000:00:00,"
+    + "region:1"
+    + "&sort=release_date:asc"
+    + "&field_list=guid,id,game,name,image,region,release_date,expected_release_day,expected_release_month,expected_release_year";
   }
 
   this.searchUrl = function() {

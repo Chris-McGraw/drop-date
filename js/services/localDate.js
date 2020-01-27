@@ -26,7 +26,7 @@ app.service("localDate", function() {
 
 // ------------ GET PREVIOUS DATE
   var previous = new Date();
-  previous.setDate(previous.getDate() - 90);
+  previous.setDate(previous.getDate() - 365);
   var prevDay = String(previous.getDate()).padStart(2, "0");
   var prevMonth = String(previous.getMonth() + 1).padStart(2, "0");
   var prevYear = previous.getFullYear();
@@ -39,7 +39,7 @@ app.service("localDate", function() {
 
 // -------------- GET FUTURE DATE
   var future = new Date();
-  future.setDate(future.getDate() + 90);
+  future.setDate(future.getDate() + 365);
   var ftrDay = String(future.getDate()).padStart(2, "0");
   var ftrMonth = String(future.getMonth() + 1).padStart(2, "0");
   var ftrYear = future.getFullYear();
