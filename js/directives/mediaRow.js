@@ -72,6 +72,12 @@ app.directive("mediaRow", ["jsonPad", "movieApi", "tvApi", "gameApi", "localDate
 // ---
 
       else if(scope.media === "tv") {
+        function checkOrigin(prop, val) {
+          return function(item) {
+            return item[prop].length === 0 || item[prop].toString() === val;
+          }
+        }
+
         function tvIdPath(show) {
           show.idPath = "#/tv/detail/?id=" + show.id;
         }
@@ -98,7 +104,7 @@ app.directive("mediaRow", ["jsonPad", "movieApi", "tvApi", "gameApi", "localDate
         if(scope.type === "recent") {
           jsonPad.getData( tvApi.recentUrl(), tvApi.callback() ).then(
             function successCallback(response) {
-              scope.mediaList = response.data.results;
+              scope.mediaList = $filter("filter")( response.data.results, checkOrigin("origin_country", "US") );
 
               angular.forEach(scope.mediaList, function(show) {
                 tvIdPath(show);
@@ -112,8 +118,7 @@ app.directive("mediaRow", ["jsonPad", "movieApi", "tvApi", "gameApi", "localDate
         else if(scope.type === "upcoming") {
           jsonPad.getData( tvApi.upcomingUrl(), tvApi.callback() ).then(
             function successCallback(response) {
-              var upcomingTv = response.data.results;
-
+              var upcomingTv = $filter("filter")( response.data.results, checkOrigin("origin_country", "US") );
               scope.mediaList = $filter("orderBy")(upcomingTv, "first_air_date");
 
               angular.forEach(scope.mediaList, function(show) {
