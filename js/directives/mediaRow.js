@@ -1,4 +1,4 @@
-app.directive("mediaRow", ["fillMediaRow", function(fillMediaRow) {
+app.directive("mediaRow", ["fillMediaRow", "$location", function(fillMediaRow, $location) {
   return {
     restrict: "E",
     scope: {
@@ -8,7 +8,6 @@ app.directive("mediaRow", ["fillMediaRow", function(fillMediaRow) {
     },
     templateUrl: "js/directives/mediaRow.html",
     link: function(scope, element, attrs) {
-
       scope.rowTitle = scope.title;
 
 
@@ -188,6 +187,56 @@ app.directive("mediaRow", ["fillMediaRow", function(fillMediaRow) {
             toggleCarouselControls(carouselMain[i]);
           }
         }, 100);
+      }
+
+// ---
+
+      var countrySelect = document.getElementById("country-select");
+
+      countrySelect.onchange = function() {
+        if($location.$$url === "/") {
+          fillMediaRow.getRecentGames().then(function(data) {
+            scope.$$prevSibling.$$prevSibling.mediaList = data;
+          });
+
+          fillMediaRow.getRecentMovies().then(function(data) {
+            scope.$$prevSibling.mediaList = data;
+          });
+
+          fillMediaRow.getRecentTv().then(function(data) {
+            scope.mediaList = data;
+          });
+        }
+
+        else if($location.$$url === "/games/") {
+          fillMediaRow.getRecentGames().then(function(data) {
+            scope.$$prevSibling.mediaList = data;
+          });
+
+          fillMediaRow.getUpcomingGames().then(function(data) {
+            scope.mediaList = data;
+          });
+        }
+
+        else if($location.$$url === "/movies/") {
+          fillMediaRow.getRecentMovies().then(function(data) {
+            scope.$$prevSibling.mediaList = data;
+          });
+
+          fillMediaRow.getUpcomingMovies().then(function(data) {
+            scope.mediaList = data;
+          });
+        }
+
+        else if($location.$$url === "/tv/") {
+          fillMediaRow.getRecentTv().then(function(data) {
+            scope.$$prevSibling.mediaList = data;
+          });
+
+          fillMediaRow.getUpcomingTv().then(function(data) {
+            scope.mediaList = data;
+          });
+        }
       }
 
 

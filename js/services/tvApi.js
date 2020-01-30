@@ -1,17 +1,21 @@
-app.service("tvApi", ["localDate", "userSearch", function(localDate, userSearch) {
+app.service("tvApi", ["countrySelect", "localDate", "userSearch", function(countrySelect, localDate, userSearch) {
   var key = "239a65ddae71707eccfac11b087ecbb9";
 
   this.recentUrl = function() {
     return "https://api.themoviedb.org/3/discover/tv?api_key=" + key
     + "&language=en-US&timezone=America%2FNew_York&sort_by=first_air_date.desc"
-    + "&include_null_first_air_dates=false&with_original_language=en&page=1"
+    + "&include_null_first_air_dates=false"
+    + "&with_original_language=" + countrySelect.getLang()
+    + "&page=1"
     + "&first_air_date.lte=" + localDate.getCurrentDate();
   }
 
   this.upcomingUrl = function() {
     return "https://api.themoviedb.org/3/discover/tv?api_key=" + key
     + "&language=en-US&timezone=America%2FNew_York&sort_by=first_air_date.asc"
-    + "&include_null_first_air_dates=false&with_original_language=en&page=1"
+    + "&include_null_first_air_dates=false"
+    + "&with_original_language=" + countrySelect.getLang()
+    + "&page=1"
     + "&first_air_date.gte=" + localDate.getTomorrowDate();
   }
 

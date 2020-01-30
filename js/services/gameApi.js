@@ -1,4 +1,4 @@
-app.service("gameApi", ["localDate", "userSearch", function(localDate, userSearch) {
+app.service("gameApi", ["countrySelect", "localDate", "userSearch", function(countrySelect, localDate, userSearch) {
   var key = "4996f14fcd1ff3aee96c621e0318101b3c6d5729";
 
   this.recentUrl = function() {
@@ -7,7 +7,7 @@ app.service("gameApi", ["localDate", "userSearch", function(localDate, userSearc
     + "&format=jsonp&limit=100&offset=0"
     + "&filter=release_date:" + localDate.getPreviousDate() + "%2000:00:00|"
     + localDate.getCurrentDate() + "%2000:00:00,"
-    + "region:1"
+    + "region:" + countrySelect.getRegionCode()
     + "&sort=release_date:desc"
     + "&field_list=guid,id,game,name,image,region,release_date,expected_release_day,expected_release_month,expected_release_year";
   }
@@ -18,7 +18,7 @@ app.service("gameApi", ["localDate", "userSearch", function(localDate, userSearc
     + "&format=jsonp&limit=100&offset=0"
     + "&filter=release_date:" + localDate.getCurrentDate() + "%2000:00:00|"
     + localDate.getFutureDate() + "%2000:00:00,"
-    + "region:1"
+    + "region:" + countrySelect.getRegionCode()
     + "&sort=release_date:asc"
     + "&field_list=guid,id,game,name,image,region,release_date,expected_release_day,expected_release_month,expected_release_year";
   }

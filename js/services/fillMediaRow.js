@@ -1,4 +1,4 @@
-app.service("fillMediaRow", ["jsonPad", "movieApi", "tvApi", "gameApi", "localDate", "$filter", function(jsonPad, movieApi, tvApi, gameApi, localDate, $filter) {
+app.service("fillMediaRow", ["jsonPad", "movieApi", "tvApi", "gameApi", "countrySelect", "localDate", "$filter", function(jsonPad, movieApi, tvApi, gameApi, countrySelect, localDate, $filter) {
 
 
 /* --------------------------------- MOVIES --------------------------------- */
@@ -99,7 +99,7 @@ app.service("fillMediaRow", ["jsonPad", "movieApi", "tvApi", "gameApi", "localDa
   this.getRecentTv = function() {
     return jsonPad.getData( tvApi.recentUrl(), tvApi.callback() ).then(
       function successCallback(response) {
-        var mediaList = $filter("filter")( response.data.results, checkOrigin("origin_country", "US") );
+        var mediaList = $filter("filter")( response.data.results, checkOrigin("origin_country", countrySelect.getCountryAlt() ) );
 
         angular.forEach(mediaList, function(show) {
           tvIdPath(show);
@@ -118,7 +118,14 @@ app.service("fillMediaRow", ["jsonPad", "movieApi", "tvApi", "gameApi", "localDa
   this.getUpcomingTv = function() {
     return jsonPad.getData( tvApi.upcomingUrl(), tvApi.callback() ).then(
       function successCallback(response) {
-        var upcomingTv = $filter("filter")( response.data.results, checkOrigin("origin_country", "US") );
+        var greaterThan = function(prop, val) {
+          return function(item) {
+            return item[prop] >= val;
+          }
+        }
+
+        var countryTv = $filter("filter")( response.data.results, checkOrigin( "origin_country", countrySelect.getCountryAlt() ) );
+        var upcomingTv = $filter("filter")(countryTv, greaterThan("first_air_date", localDate.getTomorrowDate() ));
         var mediaList = $filter("orderBy")(upcomingTv, "first_air_date");
 
         angular.forEach(mediaList, function(show) {
