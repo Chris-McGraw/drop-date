@@ -99,7 +99,8 @@ app.service("fillMediaRow", ["jsonPad", "movieApi", "tvApi", "gameApi", "country
   this.getRecentTv = function() {
     return jsonPad.getData( tvApi.recentUrl(), tvApi.callback() ).then(
       function successCallback(response) {
-        var mediaList = $filter("filter")( response.data.results, checkOrigin("origin_country", countrySelect.getCountryAlt() ) );
+        var countryTv = $filter("filter")( response.data.results, checkOrigin("origin_country", countrySelect.getCountryAlt() ) );
+        var mediaList = $filter("orderBy")(countryTv, "first_air_date", reverse = true);
 
         angular.forEach(mediaList, function(show) {
           tvIdPath(show);

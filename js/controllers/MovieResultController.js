@@ -1,3 +1,6 @@
-app.controller("MovieResultController", ["$scope", function($scope) {
-  $scope.title = "Current View : Movie Results";
+app.controller("MovieResultController", ["$scope", "$location", function($scope, $location) {
+  $scope.title = "Movie Search";
+  $scope.subtitle = "Results For:";
+
+  $scope.searchQuery = $location.search().search;
 }]);
