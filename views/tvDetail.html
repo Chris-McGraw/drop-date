@@ -10,10 +10,10 @@
           <h2>{{ detail.name }}</h2>
 
           <div id="release-dates">
-            <h3 class="media-info-tile">US Release Dates:</h3>
+            <h3 class="media-info-tile">{{ selectedCountry }} Release Dates:</h3>
             <div class="media-info-tile">
-              <p>{{ detail.first_air_date | date:"MMM dd, yyyy":"UTC" }}</p>
-              <p class="release-note">Initial Release</p>
+              <p>{{ detail.release_date | date:"MMM dd, yyyy":"UTC" }}</p>
+              <p class="release-note">{{ detail.release_tense }}</p>
             </div>
           </div>
 

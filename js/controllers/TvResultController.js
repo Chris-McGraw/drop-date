@@ -1,3 +1,3 @@
-app.controller("TvResultController", ["$scope", function($scope) {
-  $scope.title = "Current View : Results";
+app.controller("TvResultController", ["$scope", "$location", function($scope, $location) {
+  $scope.searchQuery = $location.search().search;
 }]);

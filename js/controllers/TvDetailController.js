@@ -1,7 +1,32 @@
-app.controller("TvDetailController", ["$scope", "jsonPad", "tvApi", "userSearch", "colorPalette", "$location", function($scope, jsonPad, tvApi, userSearch, colorPalette, $location) {
-  $scope.title = "Current View : TV Detail";
-
+app.controller("TvDetailController", ["$scope", "jsonPad", "tvApi", "countrySelect", "userSearch", "colorPalette", "$location", function($scope, jsonPad, tvApi, countrySelect, userSearch, colorPalette, $location) {
   userSearch.setDetail( $location.search().id );
+
+
+// -------------------- FUNCTIONS
+  function getReleaseList(response) {
+    $scope.selectedCountry = countrySelect.getCountry();
+
+    if(response.data.origin_country.length === 0 || response.data.origin_country.toString() === countrySelect.getCountryAlt()) {
+      response.data.release_date = response.data.first_air_date;
+    }
+    else {
+      response.data.release_date = "n/a";
+    }
+
+    getReleaseTense(response, response.data.release_date);
+  }
+
+  function getReleaseTense(response, release) {
+    if(release === "n/a") {
+      response.data.release_tense = "";
+    }
+    else if( new Date( release.replace(/-/g, "/") ) <= new Date() ) {
+      response.data.release_tense = "Initial Release";
+    }
+    else {
+      response.data.release_tense = "Expected Release";
+    }
+  }
 
 // ---------------------- DETAILS
   jsonPad.getData( tvApi.detailUrl(), tvApi.callback() ).then(
@@ -34,6 +59,9 @@ app.controller("TvDetailController", ["$scope", "jsonPad", "tvApi", "userSearch"
   // ___ COLOR PALETTE
       colorPalette.getPalette( $scope.detail.img_path );
 
+  // ________ RELEASES
+      getReleaseList(response);
+
   // ______ PRODUCTION
       $scope.production = response.data.production_companies;
 
@@ -64,6 +92,18 @@ app.controller("TvDetailController", ["$scope", "jsonPad", "tvApi", "userSearch"
         $scope.detail.summary = $scope.overview;
       }
   });
+
+
+
+
+
+// --------------- EVENT HANDLERS
+  document.getElementById("country-select").onchange = function() {
+    jsonPad.getData( tvApi.detailUrl(), tvApi.callback() ).then(
+      function successCallback(response) {
+        getReleaseList(response);
+    });
+  }
 
 
 }]);
