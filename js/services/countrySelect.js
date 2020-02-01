@@ -1,6 +1,7 @@
 app.service("countrySelect", ["$location", function($location) {
   var userCountry = "";
   var userCountryAlt = "";
+  var userCountryFull = "";
   var countryLang = "";
   var regionCode = "";
 
@@ -20,6 +21,25 @@ app.service("countrySelect", ["$location", function($location) {
     }
 
     return userCountryAlt;
+  }
+
+  this.getCountryFull = function() {
+    var userCountry = document.getElementById("country-select").value.toUpperCase();
+
+    if(userCountry === "US") {
+      userCountryFull = "United States";
+    }
+    else if(userCountry === "UK") {
+      userCountryFull = "United Kingdom";
+    }
+    else if(userCountry === "JP") {
+      userCountryFull = "Japan";
+    }
+    else if(userCountry === "AU") {
+      userCountryFull = "Australia";
+    }
+
+    return userCountryFull;
   }
 
   this.getLang = function() {

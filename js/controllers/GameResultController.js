@@ -1,3 +1,3 @@
-app.controller("GameResultController", ["$scope", function($scope) {
-  $scope.title = "Current View : Game Results";
+app.controller("GameResultController", ["$scope", "$location", function($scope, $location) {
+  $scope.searchQuery = $location.search().search;
 }]);

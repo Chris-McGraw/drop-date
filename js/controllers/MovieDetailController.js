@@ -10,7 +10,7 @@ app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "count
         $scope.countryReleases = $filter("filter")(response.data.results, {iso_3166_1: countrySelect.getCountryAlt()})[0];
 
         if($scope.countryReleases === null || $scope.countryReleases === undefined || $scope.countryReleases === "" || $scope.countryReleases.length === 0) {
-          $scope.releases = [{release_date: "n/a", type: 1}];
+          $scope.releases = [{release_date: "n/a"}];
         }
         else {
           $scope.releases = $filter("orderBy")($scope.countryReleases.release_dates, "release_date");

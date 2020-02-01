@@ -1,9 +1,73 @@
-app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "userSearch", "colorPalette", "$location", "$filter", function($scope, jsonPad, gameApi, userSearch, colorPalette, $location, $filter) {
-  $scope.title = "Current View : Detail";
-
+app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "countrySelect", "userSearch", "colorPalette", "$location", "$filter", function($scope, jsonPad, gameApi, countrySelect, userSearch, colorPalette, $location, $filter) {
   userSearch.setDetail( $location.search().id );
 
+
   var releaseTense = "";
+
+
+// -------------------- FUNCTIONS
+  function getReleaseList() {
+    jsonPad.getData( gameApi.releaseUrl(), gameApi.callback() ).then(
+      function successCallback(response) {
+        var detailReleaseDate = new Date($scope.detail.expected_release_year + "/" + $scope.detail.expected_release_month + "/" + $scope.detail.expected_release_day);
+
+        $scope.selectedCountry = countrySelect.getCountry();
+        $scope.countryReleases = $filter("filter")(response.data.results, {region: {name: countrySelect.getCountryFull()}});
+
+      // check detail api for game releases in all countries
+      // if results unavailable return expected release date from detail api
+      // if expected release date unavailable return unavailable
+        if($scope.detail.releases === null || $scope.detail.releases === undefined || $scope.detail.releases === "" || $scope.detail.releases.length === 0) {
+          if($scope.detail.expected_release_year === null || $scope.detail.expected_release_year === undefined || $scope.detail.expected_release_year === "") {
+            $scope.releases = [{date: "n/a"}];
+          }
+          else {
+            getReleaseTense(detailReleaseDate);
+
+            $scope.releases = [{name:releaseTense, date: detailReleaseDate}];
+          }
+        }
+      // check release api for game releases in currently selected country
+      // if results unavailable return unavailable
+        else if($scope.countryReleases === null || $scope.countryReleases === undefined || $scope.countryReleases === "" || $scope.countryReleases.length === 0) {
+          $scope.releases = [{date: "n/a"}];
+        }
+      // loop through release api results for game releases in currently selected country
+      // check release type and return appropriate results
+      // if results unavailable return unavailable
+        else {
+          angular.forEach($scope.countryReleases, function(release) {
+            if(release.release_date === null || release.release_date === undefined || release.release_date === "") {
+              if(release.expected_release_year === null|| release.expected_release_year === undefined || release.expected_release_year === "") {
+                release.date = "n/a";
+              }
+              else {
+                release.date = new Date(release.expected_release_year + "/" + release.expected_release_month + "/" + release.expected_release_day);
+              }
+            }
+            else {
+              release.date = new Date( release.release_date );
+            }
+          });
+
+          $scope.releases = $filter("orderBy")($scope.countryReleases, "date");
+        }
+
+  // ---------------------- REVIEWS
+        // var releaseGuidArray = [];
+        //
+        // angular.forEach($scope.releases, function(release) {
+        //   release.date = release.release_date.replace(/ /g,"T");
+        //
+        //   releaseGuidArray.push(release.guid);
+        // });
+        //
+        // jsonPad.getData( gameApi.reviewUrl( releaseGuidArray.join(",") ), gameApi.callback() ).then(
+        //   function successCallback(response) {
+        //     console.log(response.data.results);
+        // });
+    });
+  }
 
   function getReleaseTense(release) {
     if( release <= new Date() ) {
@@ -104,55 +168,17 @@ app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "userSea
       }
 
   // --------------------- RELEASES
-      jsonPad.getData( gameApi.releaseUrl(), gameApi.callback() ).then(
-        function successCallback(response) {
-          var detailReleaseDate = new Date($scope.detail.expected_release_year + "/" + $scope.detail.expected_release_month + "/" + $scope.detail.expected_release_day);
-          $scope.releaseUS = $filter("filter")(response.data.results, {region: {name: "United States"}});
-
-        // check detail api for game releases in all countries
-        // if results unavailable return expected release date from detail api
-          if($scope.detail.releases === null || $scope.detail.releases === undefined || $scope.detail.releases === "" || $scope.detail.releases.length === 0) {
-            getReleaseTense(detailReleaseDate);
-
-            $scope.releases = [{name:releaseTense, date: detailReleaseDate}];
-          }
-        // check release api for game releases in currently selected country
-        // if results unavailable return expected release date from detail api
-          else if($scope.releaseUS === null || $scope.releaseUS === undefined || $scope.releaseUS === "" || $scope.releaseUS.length === 0) {
-            getReleaseTense(detailReleaseDate);
-
-            $scope.releases = [{name:releaseTense, date: detailReleaseDate}];
-          }
-        // loop through release api results for game releases in currently selected country
-        // check release type and return appropriate results
-          else {
-            angular.forEach($scope.releaseUS, function(release) {
-              if(release.release_date === null || release.release_date === undefined || release.release_date === "") {
-                release.date = new Date(release.expected_release_year + "/" + release.expected_release_month + "/" + release.expected_release_day)
-              }
-              else {
-                release.date = new Date( release.release_date );
-              }
-            });
-
-            $scope.releases = $filter("orderBy")($scope.releaseUS, "date");
-          }
-
-    // ---------------------- REVIEWS
-          // var releaseGuidArray = [];
-          //
-          // angular.forEach($scope.releases, function(release) {
-          //   release.date = release.release_date.replace(/ /g,"T");
-          //
-          //   releaseGuidArray.push(release.guid);
-          // });
-          //
-          // jsonPad.getData( gameApi.reviewUrl( releaseGuidArray.join(",") ), gameApi.callback() ).then(
-          //   function successCallback(response) {
-          //     console.log(response.data.results);
-          // });
-      });
+      getReleaseList();
   });
+
+
+
+
+
+  // --------------- EVENT HANDLERS
+    document.getElementById("country-select").onchange = function() {
+      getReleaseList();
+    }
 
 
 }]);
