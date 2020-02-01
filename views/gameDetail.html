@@ -1,6 +1,4 @@
 <main class="view-main-container">
-  <!-- <h1 class="main-title">{{ title }}</h1> -->
-
   <div id="detail-img-background">
     <section id="detail-feature-container">
       <div id="detail-feature-grid">
@@ -12,7 +10,7 @@
           <h2>{{ detail.name }}</h2>
 
           <div id="release-dates">
-            <h3 class="media-info-tile">US Release Dates:</h3>
+            <h3 class="media-info-tile">{{ selectedCountry }} Release Dates:</h3>
             <div class="media-info-tile">
               <div ng-repeat="release in releases">
                 <p>{{ release.date | date:"MMM dd, yyyy" }}</p>

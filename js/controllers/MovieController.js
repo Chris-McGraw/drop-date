@@ -1,5 +1,4 @@
 app.controller("MovieController", ["$scope", "userSearch", "$location", function($scope, userSearch, $location) {
-  $scope.title = "Current View : Movies";
   $scope.buttonText = "Search";
 
   $scope.getInput = function() {

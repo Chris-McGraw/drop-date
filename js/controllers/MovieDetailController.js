@@ -1,7 +1,24 @@
-app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "userSearch", "colorPalette", "$location", "$filter", function($scope, jsonPad, movieApi, userSearch, colorPalette, $location, $filter) {
-  $scope.title = "Current View : Movie Detail";
-
+app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "countrySelect", "userSearch", "colorPalette", "$location", "$filter", function($scope, jsonPad, movieApi, countrySelect, userSearch, colorPalette, $location, $filter) {
   userSearch.setDetail( $location.search().id );
+
+
+// -------------------- FUNCTIONS
+  function getReleaseList() {
+    jsonPad.getData( movieApi.releaseUrl(), movieApi.callback() ).then(
+      function successCallback(response) {
+        $scope.selectedCountry = countrySelect.getCountry();
+        $scope.countryReleases = $filter("filter")(response.data.results, {iso_3166_1: countrySelect.getCountryAlt()})[0];
+
+        if($scope.countryReleases === null || $scope.countryReleases === undefined || $scope.countryReleases === "" || $scope.countryReleases.length === 0) {
+          $scope.releases = [{release_date: "n/a"}];
+        }
+        else {
+          $scope.releases = $filter("orderBy")($scope.countryReleases.release_dates, "release_date");
+        }
+
+        releaseType();
+    });
+  }
 
   function releaseType() {
     angular.forEach($scope.releases, function(release) {
@@ -98,23 +115,17 @@ app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "userS
       }
 
   // --------------------- RELEASES
-      jsonPad.getData( movieApi.releaseUrl(), movieApi.callback() ).then(
-        function successCallback(response) {
-          $scope.releaseUS = $filter("filter")(response.data.results, {iso_3166_1: "US"})[0];
-
-          if($scope.releaseUS === null || $scope.releaseUS === undefined || $scope.releaseUS === "" || $scope.releaseUS.length === 0) {
-            // $scope.releases = [{release_date:"n/a"}];
-
-            // console.log($scope.detail.release_date);
-            $scope.releases = [{release_date: $scope.detail.release_date, type: 1}];
-          }
-          else {
-            $scope.releases = $filter("orderBy")($scope.releaseUS.release_dates, "release_date");
-          }
-
-          releaseType();
-      });
+      getReleaseList();
   });
+
+
+
+
+
+// --------------- EVENT HANDLERS
+  document.getElementById("country-select").onchange = function() {
+    getReleaseList();
+  }
 
 
 }]);

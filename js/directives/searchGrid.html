@@ -1,14 +1,14 @@
-<div class="view-inner-container">
-  <div id="result-grid-container">
-    <a class="result-tile" href="{{ result.link }}"
-    ng-repeat="result in results | limitTo: 8">
-      <div class="result-tile-img-contain"
-      ng-style="{'background-image':'url({{ result.img_path }})'}"></div>
+<div id="result-grid-container">
+  <a class="result-tile" href="{{ result.link }}"
+  ng-repeat="result in results | limitTo: 8">
 
-      <div class="result-tile-info-contain">
-        <p>{{ result.name }}</p>
-        <p>{{ result.release_date | date:"MMM dd, yyyy" }}</p>
-      </div>
-    </a>
-  </div>
+    <div class="result-tile-img-contain">
+      <img class="result-media-img" ng-src="{{ result.img_path }}">
+    </div>
+
+    <div class="result-tile-info-contain">
+      <h3>{{ result.name }}</h3>
+      <p>{{ result.overview }}</p>>
+    </div>
+  </a>
 </div>

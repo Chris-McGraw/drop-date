@@ -152,7 +152,19 @@ nav > form > select > option {
 .main-title {
   position: relative;
 
-  margin-top: 20px;
+  margin-top: 40px;
+  margin-bottom: 10px;
+
+  font-family: sans-serif;
+  font-size: 40px;
+  text-align: center;
+  color: black;
+}
+
+.main-title-btm {
+  position: relative;
+
+  margin-top: 10px;
   margin-bottom: 20px;
 
   font-family: sans-serif;
@@ -178,6 +190,8 @@ nav > form > select > option {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  margin-top: 20px;
 }
 
 #movie-page-link {
@@ -416,36 +430,86 @@ nav > form > select > option {
 
 
 /* ---------------------------- VIEW : RESULTS ---------------------------- */
-#result-grid-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-column-gap: 10px;
-  grid-row-gap: 10px;
+.user-search-query {
+  position: relative;
 
-  width: 100%;
+  margin-top: -10px;
+  margin-bottom: 80px;
+
+  font-family: sans-serif;
+  font-size: 30px;
+  text-align: center;
+  color: rgba(0,0,0, 0.6);
 }
 
 .result-tile {
-  grid-column: span 1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
 
-  border: 1px solid black;
+  position: relative;
+  left: 40px;
+
+  width: 90%;
+  max-width: 1000px;
+  height: 200px;
+  margin-bottom: 80px;
 
   cursor: pointer;
 }
 
-.result-tile-img-contain {
+.result-tile::after {
+  content: "";
+  position: absolute;
+  top: 240px;
+
+  height: 1px;
+  background-color: rgba(0,0,0, 0.2);
   width: 100%;
+
+  pointer-events: none;
+  cursor: default;
+}
+
+.result-tile-img-contain {
+  grid-column: span 1;
+
   height: 200px;
+
+  text-align: center;
 
   background-size: cover;
   background-position: center;
-  border-bottom: 1px solid black;
+  background-color: black;
+
+  cursor: pointer;
+}
+
+.result-media-img {
+  max-width: 100%;
+  height: 100%;
+
+  object-fit: cover;
 
   cursor: pointer;
 }
 
 .result-tile-info-contain {
+  grid-column: span 4;
+
   width: 100%;
+  height: 200px;
+  padding-right: 10px;
+  overflow: hidden;
+
+  cursor: pointer;
+}
+
+.result-tile-info-contain > h3 {
+  font-family: sans-serif;
+  font-size: 20px;
+  color: black;
 
   cursor: pointer;
 }
@@ -501,21 +565,16 @@ nav > form > select > option {
   display: flex;
   justify-content: center;
 
-  height: auto;
-  max-height: 500px;
-
   text-align: center;
 
   border: 1px solid black;
 }
 
 .media-detail-img {
-  max-width: 100%;
-  height: 100%;
-  max-height: 498px;
+  width: auto;
+  height: 498px;
 
   object-fit: cover;
-  /* border: 1px solid black; */
 }
 
 #media-info-container {
@@ -816,6 +875,18 @@ nav > form > select > option {
 }
 
 
+/* -------------------------- MEDIA QUERY <= 1015 -------------------------- */
+@media screen and (max-width: 1015px) {
+  .result-tile {
+    position: relative;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+    margin-bottom: 80px;
+  }
+}
+
 
 /* -------------------------- MEDIA QUERY <= 900 -------------------------- */
 @media screen and (max-width: 900px) {
@@ -828,6 +899,14 @@ nav > form > select > option {
 
 /* -------------------------- MEDIA QUERY <= 750 -------------------------- */
 @media screen and (max-width: 750px) {
+  .result-tile-img-contain {
+    grid-column: span 2;
+  }
+
+  .result-tile-info-contain {
+    grid-column: span 3;
+  }
+
   #detail-feature-grid {
     grid-template-columns: repeat(4, 1fr);
   }

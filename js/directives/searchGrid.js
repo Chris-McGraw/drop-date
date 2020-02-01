@@ -28,6 +28,12 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "userSea
           });
         }
 
+        function formatOverview() {
+          angular.forEach(scope.results, function(result) {
+            result.overview = result.deck;
+          });
+        }
+
         function formatDate() {
           angular.forEach(scope.results, function(result) {
             result.release_date = new Date(result.expected_release_year + "/" + result.expected_release_month + "/" + result.expected_release_day);
@@ -40,6 +46,7 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "userSea
 
             resultLink();
             backupImage();
+            formatOverview();
             formatDate();
         });
       }
