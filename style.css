@@ -534,6 +534,63 @@ nav > form > select > option {
   cursor: pointer;
 }
 
+.result-page-btn-list {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-column-gap: 10px;
+
+  position: relative;
+  top: -20px;
+  left: 5%;
+
+  width: 242px;
+  height: 26px;
+}
+
+.result-page-btn {
+  grid-column: span 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: sans-serif;
+  font-size: 12px;
+  color: black;
+
+  border: 1px solid black;
+
+  user-select: none;
+  cursor: pointer;
+}
+
+.result-page-btn:nth-child(1) {
+  background-color: red;
+}
+
+.fuck {
+  background-color: red;
+}
+
+.current-page-search-results {
+  display: inline;
+  position: relative;
+  left: 5%;
+
+  font-family: sans-serif;
+  font-size: 12px;
+  color: black;
+}
+
+.total-search-results {
+  display: inline;
+  position: relative;
+  left: 10%;
+
+  font-family: sans-serif;
+  font-size: 12px;
+  color: black;
+}
+
 
 /* ---------------------------- VIEW : DETAIL ---------------------------- */
 #detail-img-background {
