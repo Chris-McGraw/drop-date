@@ -8,6 +8,8 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "userSea
     link: function(scope, element, attrs) {
       userSearch.setQuery( $location.search().search );
 
+      scope.searchTest = $location.search().search;
+
 // -----
 
       if(scope.type === "games") {
@@ -44,20 +46,14 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "userSea
 
 
 
-        function getPageButtons(response) {
+        function getPageButtons(response, currentPage) {
           var pageCountTotal = 0;
           scope.pageButtons = [];
 
+        // get the total number of results for the current search
           scope.totalResults = response.data.number_of_total_results;
-          scope.pageResultFirst = 1;
 
-          if(response.data.number_of_total_results > 10) {
-            scope.pageResultLast = 10;
-          }
-          else {
-            scope.pageResultLast = response.data.number_of_total_results;
-          }
-
+        // get the total number of result page buttons needed for the current search
           if(response.data.number_of_total_results % 10 === 0) {
             pageCountTotal = (response.data.number_of_total_results / 10);
           }
@@ -68,21 +64,67 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "userSea
           for(i = 0; i < pageCountTotal; i++) {
             scope.pageButtons.push({number: i + 1});
           }
+
+        // get the number of the first result on the current page
+          scope.pageResultFirst = ((currentPage * 10) - 9);
+
+        // get the number of the last result on the current page
+          if(response.data.number_of_total_results > (currentPage * 10)) {
+            scope.pageResultLast = (currentPage * 10);
+          }
+          else {
+            scope.pageResultLast = response.data.number_of_total_results;
+          }
         }
 
 
         function getCurrentPageResults(results, number) {
           var currentPageResults = [];
 
-          number = number - 1;
-
-          for(i = (number * 10); i < results.length; i++) {
-            if(currentPageResults.length < ( (number + 1) * 10) ) {
-              currentPageResults.push(results[i]);
+          if(number % 2 !== 0) {
+            for(i = 0; i < 10; i++) {
+              if(currentPageResults.length < results.length) {
+                currentPageResults.push(results[i]);
+              }
+            }
+          }
+          else {
+            for(i = 10; i < 20; i++) {
+              if(currentPageResults.length < (results.length - 10)) {
+                currentPageResults.push(results[i]);
+              }
             }
           }
 
           return currentPageResults;
+        }
+
+
+        function getCurrentPage() {
+          var currentPage = 1;
+
+          if($location.url().split("page=")[1] === undefined) {
+            currentPage = 1;
+          }
+          else {
+            currentPage = $location.url().split("page=")[1];
+          }
+
+          return currentPage;
+        }
+
+
+
+
+
+        if(getCurrentPage() === 1) {
+          userSearch.setSearchPage( 1 );
+        }
+        else if(getCurrentPage() % 2 !== 0) {
+          userSearch.setSearchPage( (parseInt( getCurrentPage() ) + 1) / 2 );
+        }
+        else {
+          userSearch.setSearchPage( parseInt( getCurrentPage() ) / 2 );
         }
 
 
@@ -91,36 +133,24 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "userSea
 
         jsonPad.getData( gameApi.searchUrl(), gameApi.callback() ).then(
           function successCallback(response) {
+            console.log( "current page : " + getCurrentPage() );
 
-            getPageButtons(response);
+          // get current page results from API response
+            scope.results = getCurrentPageResults( response.data.results, getCurrentPage() );
 
-            scope.clickTest = function(number, $index) {
-            // get current page results from API response
-              scope.results = getCurrentPageResults(response.data.results, number);
+          // get current page results from API response
+            getPageButtons( response, getCurrentPage() );
 
-            // get the number of the first result on the current page
-              scope.pageResultFirst = ((number * 10) - 9);
-
-            // get the number of the last result on the current page
-              if(response.data.number_of_total_results > (number * 10)) {
-                scope.pageResultLast = (number * 10);
-              }
-              else {
-                scope.pageResultLast = response.data.number_of_total_results;
-              }
-
-            // remove "selected class" styling from all result page buttons
-            // add "selected class" styling to selected result page button
+          // add "selected" styling to result page button for current page
+            setTimeout(function() {
               for(i = 0; i < document.getElementsByClassName("result-page-btn").length; i++) {
-                document.getElementsByClassName("result-page-btn")[i].style.backgroundColor = "white";
+                document.getElementsByClassName("result-page-btn")[getCurrentPage() - 1].style.backgroundColor = "red";
               }
-              document.getElementsByClassName("result-page-btn")[$index].style.backgroundColor = "red";
+            }, 0);
 
-            // scroll to window top
-              window.scrollTo(0, 0);
-            }
 
-            scope.results = response.data.results;
+
+
 
             resultLink();
             backupImage();

@@ -563,14 +563,6 @@ nav > form > select > option {
   cursor: pointer;
 }
 
-.result-page-btn:nth-child(1) {
-  background-color: red;
-}
-
-.fuck {
-  background-color: red;
-}
-
 .current-page-search-results {
   display: inline;
   position: relative;

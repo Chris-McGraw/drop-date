@@ -12,8 +12,8 @@ ng-repeat="result in results | limitTo: 10">
 </a>
 
 <ul class="result-page-btn-list">
-  <div class="result-page-btn" ng-click="clickTest(button.number, $index)"
-  ng-repeat="button in pageButtons | limitTo: 7">{{ button.number }}</div>
+  <a class="result-page-btn" href="#/games/results/?search={{searchTest}}&page={{$index + 1}}"
+  ng-repeat="button in pageButtons | limitTo: 7">{{ button.number }}</a>
 </ul>
 
 <p class="current-page-search-results">showing: {{ pageResultFirst }} - {{ pageResultLast }}</p>
