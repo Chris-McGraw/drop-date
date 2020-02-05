@@ -67,29 +67,29 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "userSea
         scope.pageButtons = [];
 
       // get the total number of results for the current search
-        scope.totalResults = response.data.number_of_total_results;
+        scope.totalResults = response.data.total_results;
 
       // get the total number of result page buttons needed for the current search
-        if(response.data.number_of_total_results % 10 === 0) {
-          pageCountTotal = (response.data.number_of_total_results / 10);
+        if(response.data.total_results % 10 === 0) {
+          pageCountTotal = (response.data.total_results / 10);
         }
         else {
-          pageCountTotal = ( Math.floor(response.data.number_of_total_results / 10) + 1 );
+          pageCountTotal = ( Math.floor(response.data.total_results / 10) + 1 );
         }
 
         for(i = 0; i < pageCountTotal; i++) {
-          scope.pageButtons.push({number: i + 1, page_path: "#/games/results/?search=" + $location.search().search});
+          scope.pageButtons.push({number: i + 1, page_path: "#/" + scope.type + "/results/?search=" + $location.search().search});
         }
 
       // get the number of the first result on the current page
         scope.pageResultFirst = ((currentPage * 10) - 9);
 
       // get the number of the last result on the current page
-        if(response.data.number_of_total_results > (currentPage * 10)) {
+        if(response.data.total_results > (currentPage * 10)) {
           scope.pageResultLast = (currentPage * 10);
         }
         else {
-          scope.pageResultLast = response.data.number_of_total_results;
+          scope.pageResultLast = response.data.total_results;
         }
       }
 
@@ -112,6 +112,10 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "userSea
 
 // ____ ATTRIBUTE HANDLERS
       if(scope.type === "games") {
+        function formatTotalResultNumber(response) {
+          response.data.total_results = response.data.number_of_total_results;
+        }
+
         function resultLink(result) {
           result.link = "#/games/detail/?id=" + result.id;
         }
@@ -136,6 +140,7 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "userSea
 
         jsonPad.getData( gameApi.searchUrl(), gameApi.callback() ).then(
           function successCallback(response) {
+            formatTotalResultNumber(response);
             changePage(response);
 
             angular.forEach(scope.results, function(result) {
@@ -150,27 +155,21 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "userSea
 // -----
 
       else if(scope.type === "movies") {
-        function resultLink() {
-          angular.forEach(scope.results, function(result) {
-            result.link = "#/movies/detail/?id=" + result.id;
-          });
+        function resultLink(result) {
+          result.link = "#/movies/detail/?id=" + result.id;
         }
 
-        function backupImage() {
-          angular.forEach(scope.results, function(result) {
-            if(result.poster_path === null) {
-              result.img_path = "../../imgs/movie-backup.png";
-            }
-            else {
-              result.img_path = "http://image.tmdb.org/t/p/w185" + result.poster_path;
-            }
-          });
+        function backupImage(result) {
+          if(result.poster_path === null) {
+            result.img_path = "../../imgs/movie-backup.png";
+          }
+          else {
+            result.img_path = "http://image.tmdb.org/t/p/w185" + result.poster_path;
+          }
         }
 
-        function formatName() {
-          angular.forEach(scope.results, function(result) {
-            result.name = result.title;
-          });
+        function formatName(result) {
+          result.name = result.title;
         }
 
 
@@ -178,9 +177,11 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "userSea
           function successCallback(response) {
             changePage(response);
 
-            resultLink();
-            backupImage();
-            formatName();
+            angular.forEach(scope.results, function(result) {
+              resultLink(result);
+              backupImage(result);
+              formatName(result);
+            });
         });
       }
 
