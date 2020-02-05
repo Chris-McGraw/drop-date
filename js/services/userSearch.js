@@ -35,18 +35,6 @@ app.service("userSearch", function() {
 
 // ---
 
-var pageResults = [];
-
-this.setPageResults = function(input) {
-  pageResults = input;
-}
-
-this.getPageResults = function() {
-  return pageResults;
-}
-
-// ---
-
   var userDetail = "";
 
   this.setDetail = function(input) {
