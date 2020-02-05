@@ -188,36 +188,32 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "userSea
 // -----
 
       else if(scope.type === "tv") {
-        function resultLink() {
-          angular.forEach(scope.results, function(result) {
-            result.link = "#/tv/detail/?id=" + result.id;
-          });
+        function resultLink(result) {
+          result.link = "#/tv/detail/?id=" + result.id;
         }
 
-        function backupImage() {
-          angular.forEach(scope.results, function(result) {
-            if(result.poster_path === null) {
-              result.img_path = "../../imgs/tv-backup.png";
-            }
-            else {
-              result.img_path = "http://image.tmdb.org/t/p/w185" + result.poster_path;
-            }
-          });
+        function backupImage(result) {
+          if(result.poster_path === null) {
+            result.img_path = "../../imgs/tv-backup.png";
+          }
+          else {
+            result.img_path = "http://image.tmdb.org/t/p/w185" + result.poster_path;
+          }
         }
 
-        function formatDate() {
-          angular.forEach(scope.results, function(result) {
-            result.release_date = result.first_air_date;
-          });
+        function formatDate(result) {
+          result.release_date = result.first_air_date;
         }
 
         jsonPad.getData( tvApi.searchUrl(), tvApi.callback() ).then(
           function successCallback(response) {
-            scope.results = response.data.results;
+            changePage(response);
 
-            resultLink();
-            backupImage();
-            formatDate();
+            angular.forEach(scope.results, function(result) {
+              resultLink(result);
+              backupImage(result);
+              formatDate(result);
+            });
         });
       }
 
