@@ -22,7 +22,7 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "userSea
 
 
 // _____________ VARIABLES
-      scope.searchTest = $location.search().search;
+      // scope.searchTest = $location.search().search;
 
 
 // _____________ FUNCTIONS
@@ -78,7 +78,7 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "userSea
         }
 
         for(i = 0; i < pageCountTotal; i++) {
-          scope.pageButtons.push({number: i + 1});
+          scope.pageButtons.push({number: i + 1, page_path: "#/games/results/?search=" + $location.search().search});
         }
 
       // get the number of the first result on the current page
@@ -112,33 +112,25 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "userSea
 
 // ____ ATTRIBUTE HANDLERS
       if(scope.type === "games") {
-        function resultLink() {
-          angular.forEach(scope.results, function(result) {
-            result.link = "#/games/detail/?id=" + result.id;
-          });
+        function resultLink(result) {
+          result.link = "#/games/detail/?id=" + result.id;
         }
 
-        function backupImage() {
-          angular.forEach(scope.results, function(result) {
-            if(result.image.small_url === "https://www.giantbomb.com/api/image/scale_small/3026329-gb_default-16_9.png") {
-              result.img_path = "../../imgs/game-backup.png";
-            }
-            else {
-              result.img_path = result.image.small_url;
-            }
-          });
+        function backupImage(result) {
+          if(result.image.small_url === "https://www.giantbomb.com/api/image/scale_small/3026329-gb_default-16_9.png") {
+            result.img_path = "../../imgs/game-backup.png";
+          }
+          else {
+            result.img_path = result.image.small_url;
+          }
         }
 
-        function formatOverview() {
-          angular.forEach(scope.results, function(result) {
-            result.overview = result.deck;
-          });
+        function formatOverview(result) {
+          result.overview = result.deck;
         }
 
-        function formatDate() {
-          angular.forEach(scope.results, function(result) {
-            result.release_date = new Date(result.expected_release_year + "/" + result.expected_release_month + "/" + result.expected_release_day);
-          });
+        function formatDate(result) {
+          result.release_date = new Date(result.expected_release_year + "/" + result.expected_release_month + "/" + result.expected_release_day);
         }
 
 
@@ -146,10 +138,12 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "userSea
           function successCallback(response) {
             changePage(response);
 
-            resultLink();
-            backupImage();
-            formatOverview();
-            formatDate();
+            angular.forEach(scope.results, function(result) {
+              resultLink(result);
+              backupImage(result);
+              formatOverview(result);
+              formatDate(result);
+            });
         });
       }
 
@@ -179,9 +173,10 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "userSea
           });
         }
 
+
         jsonPad.getData( movieApi.searchUrl(), movieApi.callback() ).then(
           function successCallback(response) {
-            scope.results = response.data.results;
+            changePage(response);
 
             resultLink();
             backupImage();
