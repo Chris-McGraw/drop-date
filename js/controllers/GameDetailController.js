@@ -129,44 +129,6 @@ app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "country
         $scope.detail.summary = response.data.results.deck;
       }
 
-  // ------------------- CHARACTERS
-      var charIdArray = [];
-
-      if($scope.detail.characters === null || $scope.detail.characters === undefined || $scope.detail.characters === "" || $scope.detail.characters.length === 0) {
-        charIdArray = [];
-      }
-      else {
-        for(i = 0; i < 10; i++) {
-          if(i === response.data.results.characters.length) {
-            break;
-          }
-          else {
-            charIdArray.push(response.data.results.characters[i].id + "|");
-          }
-        }
-      }
-
-      if(charIdArray.length === 0) {
-        document.getElementById("test-result").style.display = "block";
-      }
-      else {
-        document.getElementById("test-result").style.display = "none";
-
-        jsonPad.getData( gameApi.characterUrl( charIdArray.join("") ), gameApi.callback() ).then(
-          function successCallback(response) {
-            $scope.charList = response.data.results;
-
-            angular.forEach($scope.charList, function(char) {
-              if(char.image.small_url === "https://www.giantbomb.com/api/image/scale_small/3026329-gb_default-16_9.png") {
-                char.img_path = "../../imgs/cast-backup.png";
-              }
-              else {
-                char.img_path = char.image.small_url;
-              }
-            });
-        });
-      }
-
   // --------------------- RELEASES
       getReleaseList();
   });
