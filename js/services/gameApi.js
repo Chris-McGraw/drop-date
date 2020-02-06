@@ -26,7 +26,8 @@ app.service("gameApi", ["countrySelect", "localDate", "userSearch", function(cou
   this.searchUrl = function() {
     return "https://www.giantbomb.com/api/search/?api_key=" + key
     + "&query=" + userSearch.getQuery() + "&resources=game"
-    + "&format=jsonp&limit=20&offset=0"
+    + "&format=jsonp&limit=20"
+    + "&page=" + userSearch.getSearchPage()
     + "&field_list=id,name,image,deck,original_release_date,expected_release_month,expected_release_day,expected_release_year";
   }
 

@@ -20,7 +20,8 @@ app.service("movieApi", ["countrySelect", "localDate", "userSearch", function(co
     + "?api_key=" + key
     + "&query=" + userSearch.getQuery()
     + "&language=en-US&region=" + countrySelect.getCountryAlt()
-    + "&page=1&include_adult=false";
+    + "&page=" + userSearch.getSearchPage()
+    + "&include_adult=false";
   }
 
   this.detailUrl = function() {

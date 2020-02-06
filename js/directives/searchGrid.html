@@ -1,14 +1,20 @@
-<div id="result-grid-container">
-  <a class="result-tile" href="{{ result.link }}"
-  ng-repeat="result in results | limitTo: 8">
+<a class="result-tile" href="{{ result.link }}"
+ng-repeat="result in results | limitTo: 10">
 
-    <div class="result-tile-img-contain">
-      <img class="result-media-img" ng-src="{{ result.img_path }}">
-    </div>
+  <div class="result-tile-img-contain">
+    <img class="result-media-img" ng-src="{{ result.img_path }}">
+  </div>
 
-    <div class="result-tile-info-contain">
-      <h3>{{ result.name }}</h3>
-      <p>{{ result.overview }}</p>>
-    </div>
-  </a>
-</div>
+  <div class="result-tile-info-contain">
+    <h3>{{ result.name }}</h3>
+    <p>{{ result.overview }}</p>
+  </div>
+</a>
+
+<ul class="result-page-btn-list">
+  <a class="result-page-btn" href="{{ button.page_path }}&page={{$index + 1}}"
+  ng-repeat="button in pageButtons | limitTo: 7">{{ button.number }}</a>
+</ul>
+
+<p class="current-page-search-results">showing: {{ pageResultFirst }} - {{ pageResultLast }}</p>
+<p class="total-search-results">total results: {{ totalResults }}</p>
