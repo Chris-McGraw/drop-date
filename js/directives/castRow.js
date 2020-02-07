@@ -65,10 +65,10 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", "gameApi", function(js
         jsonPad.getData( movieApi.castUrl(), movieApi.callback() ).then(
           function successCallback(response) {
             if(response.data.cast === null || response.data.cast === undefined || response.data.cast === "" || response.data.cast.length === 0) {
-              document.getElementById("test-result").style.display = "block";
+              document.getElementById("carousel-results-none").style.display = "block";
             }
             else {
-              document.getElementById("test-result").style.display = "none";
+              document.getElementById("carousel-results-none").style.display = "none";
 
               scope.castList = response.data.cast;
 
@@ -85,10 +85,10 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", "gameApi", function(js
         jsonPad.getData( tvApi.castUrl(), tvApi.callback() ).then(
           function successCallback(response) {
             if(response.data.cast === null || response.data.cast === undefined || response.data.cast === "" || response.data.cast.length === 0) {
-              document.getElementById("test-result").style.display = "block";
+              document.getElementById("carousel-results-none").style.display = "block";
             }
             else {
-              document.getElementById("test-result").style.display = "none";
+              document.getElementById("carousel-results-none").style.display = "none";
 
               scope.castList = response.data.cast;
 
@@ -137,10 +137,10 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", "gameApi", function(js
             getGameCharacters(response);
 
             if(getGameCharacters(response).length === 0) {
-              document.getElementById("test-result").style.display = "block";
+              document.getElementById("carousel-results-none").style.display = "block";
             }
             else {
-              document.getElementById("test-result").style.display = "none";
+              document.getElementById("carousel-results-none").style.display = "none";
 
               jsonPad.getData( gameApi.characterUrl( getGameCharacters(response).join("") ), gameApi.callback() ).then(
                 function successCallback(response) {
