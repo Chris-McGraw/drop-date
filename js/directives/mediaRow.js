@@ -182,11 +182,24 @@ app.directive("mediaRow", ["fillMediaRow", "$location", function(fillMediaRow, $
 
       window.onresize = function() {
         clearTimeout(debounceTimeout);
+
         debounceTimeout = setTimeout(function() {
           for (i = 0; i < carouselMain.length; i++) {
             toggleCarouselControls(carouselMain[i]);
           }
         }, 100);
+      }
+
+      for (i = 0; i < carouselMain.length; i++) {
+        carouselMain[i].onscroll = function() {
+          clearTimeout(debounceTimeout);
+
+          var thisCarousel = this;
+
+          debounceTimeout = setTimeout(function() {
+            toggleCarouselControls(thisCarousel);
+          }, 100);
+        };
       }
 
 // ---

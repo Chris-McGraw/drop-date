@@ -183,6 +183,11 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", "gameApi", function(js
         debounceTimeout = setTimeout(toggleCarouselControls, 100);
       }
 
+      carousel.onscroll= function() {
+        clearTimeout(debounceTimeout);
+        debounceTimeout = setTimeout(toggleCarouselControls, 100);
+      };
+
 
     }
   };
