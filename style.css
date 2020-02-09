@@ -17,18 +17,6 @@
   cursor: default;
 }
 
-input {
-  width: 100%;
-  height: 40px;
-  margin-bottom: 20px;
-
-  font-family: sans-serif;
-  font-size: 16px;
-  color: black;
-
-  border: 1px solid black;
-}
-
 button {
   padding: 0;
   border: none;
@@ -406,7 +394,26 @@ p {
 
 
 
-/* ----------------------------- VIEW : GAMES ----------------------------- */
+/* --------------------------- VIEW : MEDIA HOME --------------------------- */
+#media-search-form {
+  text-align: center;
+}
+
+#media-search-input {
+  width: 90%;
+  max-width: 1440px;
+  height: 40px;
+  margin-bottom: 20px;
+
+  font-family: sans-serif;
+  font-size: 16px;
+  color: black;
+
+  border: 1px solid black;
+
+  cursor: text;
+}
+
 .submit-btn {
   display: flex;
   justify-content: center;
@@ -459,6 +466,16 @@ p {
   color: rgba(0,0,0, 0.6);
 }
 
+#result-page-container {
+  position: relative;
+  left: 0;
+  right: 0;
+
+  width: 90%;
+  max-width: 1440px;
+  margin: auto;
+}
+
 .result-tile {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -466,9 +483,9 @@ p {
   grid-row-gap: 10px;
 
   position: relative;
-  left: 5%;
+  left: 0;
 
-  width: 90%;
+  width: 100%;
   max-width: 1000px;
   height: 200px;
   margin-bottom: 80px;
@@ -557,8 +574,7 @@ p {
   grid-column-gap: 10px;
 
   position: relative;
-  top: -20px;
-  left: 5%;
+  top: -10px;
 
   width: 242px;
   height: 26px;
@@ -583,7 +599,8 @@ p {
 .current-page-search-results {
   display: inline;
   position: relative;
-  left: 5%;
+  top: 10px;
+  left: 0;
 
   font-family: sans-serif;
   font-size: 12px;
@@ -593,7 +610,8 @@ p {
 .total-search-results {
   display: inline;
   position: relative;
-  left: 10%;
+  top: 10px;
+  left: 5%;
 
   font-family: sans-serif;
   font-size: 12px;
