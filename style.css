@@ -342,9 +342,14 @@ p {
 
 /* --------------------------- SLIDING CAROUSEL --------------------------- */
 #carousel-container {
+  position: relative;
+  left: 0;
+  right: 0;
+
+  width: 90%;
+  max-width: 1440px;
+  margin: auto;
   margin-top: 40px;
-  padding-left: 5%;
-  padding-right: 5%;
 }
 
 .carousel-main {
@@ -392,11 +397,11 @@ p {
 }
 
 .scroll-left {
-  left: 1%;
+  left: -4.4%;
 }
 
 .scroll-right {
-  right: 1%;
+  right: -4.4%;
 }
 
 
@@ -935,6 +940,26 @@ p {
 }
 
 
+
+
+
+/* -------------------------- MEDIA QUERY <= 1440 -------------------------- */
+@media screen and (max-width: 1440px) {
+  #carousel-container {
+    width: 100%;
+
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .scroll-left {
+    left: 1%;
+  }
+
+  .scroll-right {
+    right: 1%;
+  }
+}
 
 
 
