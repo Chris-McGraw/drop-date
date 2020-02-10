@@ -2,8 +2,8 @@
   <h3 class="media-row-title">{{ rowTitle }}</h3>
 
   <div class="carousel-main">
-    <button id="carousel-scroll-left" class="carousel-scroll scroll-left"
-    aria-label="Scroll {{ rowTitle }} carousel left" style="display:none">
+    <button class="carousel-scroll scroll-left" style="display:none"
+    ng-click="scrollCarouselLeft($event)" aria-label="Scroll {{ rowTitle }} release carousel left">
       <i class="fas fa-chevron-left"></i>
     </button>
 
@@ -16,8 +16,8 @@
       <p class="media-date">{{ media.release_date | date:"MMM dd, yyyy" }}</p>
     </a>
 
-    <button id="carousel-scroll-right" class="carousel-scroll scroll-right"
-    aria-label="Scroll {{ rowTitle }} carousel right" style="display:none">
+    <button class="carousel-scroll scroll-right" style="display:none"
+    ng-click="scrollCarouselRight($event)" aria-label="Scroll {{ rowTitle }} release carousel right">
       <i class="fas fa-chevron-right"></i>
     </button>
   </div>
