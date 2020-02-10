@@ -652,7 +652,13 @@ p {
   grid-column-gap: 10px;
   grid-row-gap: 10px;
 
+  position: relative;
+  top: 0;
+  left: 0;
+
   width: 100%;
+  max-width: 1440px;
+  margin: auto;
 }
 
 #media-detail-img-container {
@@ -733,16 +739,14 @@ p {
 }
 
 #overview-container {
-  grid-column: span 3;
+  position: relative;
+  left: 0;
+  right: 0;
 
+  width: 90%;
+  max-width: 1440px;
+  margin: auto;
   margin-top: 40px;
-  padding: 0 5%;
-}
-
-.cast-row {
-  margin-top: 40px;
-  padding-left: 5%;
-  padding-right: 5%;
 }
 
 #cast {
@@ -750,10 +754,6 @@ p {
   padding-left: 5%;
   padding-right: 5%;
 }
-
-/* #cast h3 {
-  padding-left: 5%;
-} */
 
 #sliding-carousel {
   display: flex;
