@@ -9,9 +9,8 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", "gameApi", function(js
 
 
 // _____________ VARIABLES
-      var carousel = document.getElementById("sliding-carousel");
-      var carouselSlideLeft = document.getElementById("carousel-slide-left");
-      var carouselSlideRight = document.getElementById("carousel-slide-right");
+      var castCarousel = document.getElementById("cast-carousel");
+      var carouselScrollRight = document.getElementById("carousel-scroll-right");
 
 
 // _____________ FUNCTIONS
@@ -29,32 +28,54 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", "gameApi", function(js
 // ---
 
       scope.checkCarouselOverflow = function() {
-        if(carousel.scrollWidth - carousel.offsetWidth > 0) {
-          carouselSlideRight.style.display = "flex";
+        if(castCarousel.scrollWidth - castCarousel.offsetWidth > 0) {
+          carouselScrollRight.style.display = "flex";
         }
         else {
-          carouselSlideRight.style.display = "none";
+          carouselScrollRight.style.display = "none";
         }
       }
 
 // ---
 
-      function toggleCarouselControls() {
+      function toggleCarouselControls(carousel) {
         var scrollPos = carousel.scrollLeft;
 
         if(scrollPos === 0) {
-          carouselSlideLeft.style.display = "none";
+          carousel.children[0].style.display = "none";
         }
         else {
-          carouselSlideLeft.style.display = "flex";
+          carousel.children[0].style.display = "flex";
         }
 
         if( scrollPos >= (carousel.scrollWidth - carousel.offsetWidth) ) {
-          carouselSlideRight.style.display = "none";
+          carousel.children[carousel.children.length - 1].style.display = "none";
         }
         else {
-          carouselSlideRight.style.display = "flex";
+          carousel.children[carousel.children.length - 1].style.display = "flex";
         }
+      }
+
+// ---
+
+      scope.scrollCarouselLeft = function($event) {
+        var carousel = $event.currentTarget.parentElement;
+        var scrollPos = carousel.scrollLeft;
+
+        carousel.scroll(scrollPos - ( 160 * Math.floor(carousel.offsetWidth / 160) ), 0);
+
+        toggleCarouselControls(carousel);
+      }
+
+// ---
+
+      scope.scrollCarouselRight = function($event) {
+        var carousel = $event.currentTarget.parentElement;
+        var scrollPos = carousel.scrollLeft;
+
+        carousel.scroll(scrollPos + ( 160 * Math.floor(carousel.offsetWidth / 160) ), 0);
+
+        toggleCarouselControls(carousel);
       }
 
 
@@ -158,34 +179,22 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", "gameApi", function(js
 
 
 // ________ EVENT HANDLERS
-      carouselSlideLeft.onclick = function() {
-        var scrollPos = carousel.scrollLeft;
-        carousel.scroll(scrollPos - ( 160 * Math.floor(carousel.offsetWidth / 160) ), 0);
-
-        toggleCarouselControls();
-      };
-
-// ---
-
-      carouselSlideRight.onclick = function() {
-        var scrollPos = carousel.scrollLeft;
-        carousel.scroll(scrollPos + ( 160 * Math.floor(carousel.offsetWidth / 160) ), 0);
-
-        toggleCarouselControls();
-      };
-
-// ---
-
       var debounceTimeout;
 
       window.onresize = function() {
         clearTimeout(debounceTimeout);
-        debounceTimeout = setTimeout(toggleCarouselControls, 100);
+
+        debounceTimeout = setTimeout(function() {
+          toggleCarouselControls(castCarousel);
+        }, 100);
       }
 
-      carousel.onscroll= function() {
+      castCarousel.onscroll= function() {
         clearTimeout(debounceTimeout);
-        debounceTimeout = setTimeout(toggleCarouselControls, 100);
+
+        debounceTimeout = setTimeout(function() {
+          toggleCarouselControls(castCarousel);
+        }, 100);
       };
 
 
