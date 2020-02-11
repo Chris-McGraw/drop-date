@@ -2,12 +2,10 @@
   <h1 class="main-title">Search Drop&nbsp;Date</h1>
   <h1 class="main-title-btm">for TV:</h1>
 
-  <div class="view-inner-container">
-    <form ng-submit="getInput()">
-      <input id="home-input" type="text" ng-model="inputVal"></input>
-      <button class="submit-btn" type="submit">{{ buttonText }}</button>
-    </form>
-  </div>
+  <form id="media-search-form" ng-submit="getInput()">
+    <input id="media-search-input" type="text" ng-model="inputVal"></input>
+    <button class="submit-btn" type="submit">{{ buttonText }}</button>
+  </form>
 
   <h2 class="media-page-header">Television Releases</h2>
   <media-row media="tv" type="recent" title="Recent"></media-row>

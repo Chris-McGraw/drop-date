@@ -1,10 +1,10 @@
-<section id="cast">
+<section id="carousel-container">
   <h3>{{ rowTitle }}</h3>
-  <p id="test-result">n/a</p>
+  <p id="carousel-results-none">n/a</p>
 
-  <div id="sliding-carousel">
-    <button id="carousel-slide-left" class="carousel-slide"
-    aria-label="Scroll carousel left" style="display:none">
+  <div id="cast-carousel">
+    <button class="carousel-scroll scroll-left" style="display:none"
+    ng-click="scrollCarouselLeft($event)" aria-label="Scroll carousel left">
       <i class="fas fa-chevron-left"></i>
     </button>
 
@@ -16,8 +16,8 @@
       <p class="cast-character">{{ cast.character }}</p>
     </div>
 
-    <button id="carousel-slide-right" class="carousel-slide"
-    aria-label="Scroll carousel right" style="display:none">
+    <button id="carousel-scroll-right" class="carousel-scroll scroll-right" style="display:none"
+    ng-click="scrollCarouselRight($event)" aria-label="Scroll carousel right">
       <i class="fas fa-chevron-right"></i>
     </button>
   </div>
