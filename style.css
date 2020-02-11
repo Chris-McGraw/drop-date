@@ -17,6 +17,10 @@
   cursor: default;
 }
 
+body {
+  background-color: #f8f8f8;
+}
+
 button {
   padding: 0;
   border: none;
@@ -365,6 +369,7 @@ p {
   height: auto;
   margin-right: 10px;
 
+  background-color: white;
   border: 1px solid black;
 }
 
@@ -501,7 +506,11 @@ p {
   width: 100%;
   max-width: 1000px;
   height: 200px;
+  padding-right: 10px;
   margin-bottom: 80px;
+
+  background-color: white;
+  box-shadow: 0.4em 0.55em 0.45em #e5e5e5;
 
   cursor: pointer;
 }
