@@ -423,6 +423,60 @@ p {
 
 
 /* --------------------------- VIEW : MEDIA HOME --------------------------- */
+.home-feature-container {
+  width: 100%;
+  height: 422px;
+
+  background-color: #f8f8f8;
+  background-size: cover;
+  /* background-image: url("https://image.tmdb.org/t/p/original/jUk4H1XYyMzdiNcF0VwNtEGrb1x.jpg"); */
+}
+
+#tv-home-hero-container {
+  width: 100%;
+  height: auto;
+
+  background-color: #f8f8f8;
+  background-size: cover;
+  /* background-image: url("https://image.tmdb.org/t/p/original/jUk4H1XYyMzdiNcF0VwNtEGrb1x.jpg"); */
+}
+
+#movie-home-hero-container {
+  width: 100%;
+  height: auto;
+
+  background-color: #f8f8f8;
+  background-size: cover;
+  /* background-image: url("https://image.tmdb.org/t/p/original/3Rfvhy1Nl6sSGJwyjb0QiZzZYlB.jpg"); */
+}
+
+#game-home-hero-container {
+  width: 100%;
+  height: auto;
+
+  background-color: #f8f8f8;
+  background-size: cover;
+  /* background-image: url("https://www.giantbomb.com/api/image/original/2643969-wiiu_zelda_scrn02_e3.jpg"); */
+}
+
+.media-home-hero-inner {
+  position: relative;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  padding: 40px 0;
+
+  background-color: rgba(0,0,0, 0.4);
+}
+
+.media-search-title {
+  color: white;
+
+  text-shadow: 0rem 0em 0.2em black;
+}
+
 #media-search-form {
   text-align: center;
 }
@@ -1037,5 +1091,14 @@ p {
 @media screen and (max-width: 500px) {
   .attribution {
     grid-column: span 4;
+  }
+}
+
+
+
+/* -------------------------- MEDIA QUERY <= 350 -------------------------- */
+@media screen and (max-width: 350px) {
+  .home-feature-container {
+    height: 468px;
   }
 }
