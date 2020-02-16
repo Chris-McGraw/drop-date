@@ -423,13 +423,182 @@ p {
 
 
 /* --------------------------- VIEW : MEDIA HOME --------------------------- */
-.home-feature-container {
+.featured-hero-backdrop {
   width: 100%;
   height: 422px;
 
   background-color: #f8f8f8;
   background-size: cover;
-  /* background-image: url("https://image.tmdb.org/t/p/original/jUk4H1XYyMzdiNcF0VwNtEGrb1x.jpg"); */
+}
+
+.featured-hero-inner {
+  display: flex;
+
+  position: relative;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  padding: 80px 0;
+
+  background-color: rgba(0,0,0, 0.4);
+}
+
+#hero-carousel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 10px;
+
+  position: relative;
+  left: 0;
+  right: 0;
+
+  width: 90%;
+  max-width: 1440px;
+  height: 100%;
+  margin: auto;
+}
+
+.hero-scroll {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+
+  z-index: 10;
+  position: absolute;
+
+  width: 29px;
+  height: 29px;
+
+  background-color: black;
+  border-radius: 100%;
+
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.hero-scroll i {
+  font-size: 25px;
+  color: white;
+
+  cursor: pointer;
+}
+
+.hero-scroll-left {
+  left: -4.4%;
+}
+
+.hero-scroll-right {
+  right: -4.4%;
+}
+
+.hero-media-img-container {
+  grid-column: span 1;
+
+  display: flex;
+  justify-content: center;
+
+  background-color: rgba(0,0,0, 0.8);
+}
+
+.hero-media-img {
+  display: flex;
+
+  width: auto;
+  /* height: 100%; */
+  height: 262px;
+
+  object-fit: cover;
+}
+
+.hero-media-info-container {
+  grid-column: span 2;
+
+  padding: 10px;
+
+  background-color: rgba(0,0,0, 0.8);
+}
+
+.hero-media-info-container p {
+  font-family: sans-serif;
+  font-size: 16px;
+  color: white;
+}
+
+.hero-media-name {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+
+  overflow: hidden;
+}
+
+.hero-media-subtitle {
+  margin-bottom: 20px;
+
+  text-align: center;
+  font-size: 12px !important;
+}
+
+.hero-media-release-date {
+  margin-bottom: 20px;
+
+  font-weight: bold !important;
+}
+
+.hero-media-overview {
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+.hero-carousel-page-select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  bottom: -46px;
+
+  width: 100%;
+  height: auto;
+}
+
+.carousel-page-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 16px;
+  height: 16px;
+
+  background-color: rgba(0,0,0, 0.8);
+  border: 1px solid white;
+  border-radius: 100%;
+
+  cursor: pointer;
+}
+
+.carousel-page-circle:nth-child(2) {
+  margin: 0 8px;
+}
+
+.carousel-page-selected {
+  height: 10px;
+  width: 10px;
+
+  background-color: white;
+  border-radius: 100%;
 }
 
 #tv-home-hero-container {
@@ -1089,16 +1258,19 @@ p {
 
 /* -------------------------- MEDIA QUERY <= 500 -------------------------- */
 @media screen and (max-width: 500px) {
+  .featured-hero-backdrop {
+    height: 100%;
+  }
+
+  .hero-media-img-container {
+    grid-column: span 3;
+  }
+
+  .hero-media-info-container {
+    grid-column: span 3;
+  }
+
   .attribution {
     grid-column: span 4;
-  }
-}
-
-
-
-/* -------------------------- MEDIA QUERY <= 350 -------------------------- */
-@media screen and (max-width: 350px) {
-  .home-feature-container {
-    height: 468px;
   }
 }
