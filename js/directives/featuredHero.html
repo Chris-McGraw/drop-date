@@ -1,7 +1,7 @@
 <div class="featured-hero-backdrop">
   <div class="featured-hero-inner">
     <section id="hero-carousel">
-      <button class="hero-scroll hero-scroll-left">
+      <button class="hero-scroll hero-scroll-left" ng-click="decreaseHeroCarouselPage()">
         <i class="fas fa-chevron-left"></i>
       </button>
 
@@ -16,7 +16,7 @@
         <p class="hero-media-overview">{{ overview }}</p>
       </div>
 
-      <button class="hero-scroll hero-scroll-right">
+      <button class="hero-scroll hero-scroll-right" ng-click="increaseHeroCarouselPage()">
         <i class="fas fa-chevron-right"></i>
       </button>
 

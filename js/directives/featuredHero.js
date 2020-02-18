@@ -7,6 +7,7 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
     templateUrl: "js/directives/featuredHero.html",
     link: function(scope, element, attrs) {
 // _____________ VARIABLES
+      var currentHeroCarouselPage = 1;
       var featuredGame = [];
       var featuredGameDetail = [];
       var featuredMovie = [];
@@ -108,6 +109,14 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
         element[0].firstChild.style.backgroundImage = `url( ${scope.backdrop_path} )`;
       }
 
+// ---
+
+      function clearCarouselPageButtons() {
+        angular.forEach(document.getElementsByClassName("carousel-page-button"), function(button) {
+          button.children[0].style.display = "none";
+        });
+      }
+
 
 // ________ PAGE VIEW LOAD
       setRandomFeaturedGame();
@@ -116,6 +125,55 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
 
 
 // ________ EVENT HANDLERS
+      scope.decreaseHeroCarouselPage = function() {
+        clearCarouselPageButtons();
+
+        if(currentHeroCarouselPage === 1) {
+          currentHeroCarouselPage = 3;
+          document.getElementById("hero-carousel-page-3").children[0].style.display = "block";
+
+          getCurrentFeaturedTv();
+        }
+        else if(currentHeroCarouselPage === 2) {
+          currentHeroCarouselPage = 1;
+          document.getElementById("hero-carousel-page-1").children[0].style.display = "block";
+
+          getCurrentFeaturedGame();
+        }
+        else if(currentHeroCarouselPage === 3) {
+          currentHeroCarouselPage = 2;
+          document.getElementById("hero-carousel-page-2").children[0].style.display = "block";
+          getCurrentFeaturedMovie();
+        }
+      }
+
+// ---
+
+      scope.increaseHeroCarouselPage = function() {
+        clearCarouselPageButtons();
+
+        if(currentHeroCarouselPage === 1) {
+          currentHeroCarouselPage = 2;
+          document.getElementById("hero-carousel-page-2").children[0].style.display = "block";
+
+          getCurrentFeaturedMovie();
+        }
+        else if(currentHeroCarouselPage === 2) {
+          currentHeroCarouselPage = 3;
+          document.getElementById("hero-carousel-page-3").children[0].style.display = "block";
+
+          getCurrentFeaturedTv();
+        }
+        else if(currentHeroCarouselPage === 3) {
+          currentHeroCarouselPage = 1;
+          document.getElementById("hero-carousel-page-1").children[0].style.display = "block";
+
+          getCurrentFeaturedGame();
+        }
+      }
+
+// ---
+
       scope.changeHeroCarouselPage = function($event) {
       // hide carousel-page-selected child for all carousel-page-buttons
         angular.forEach($event.currentTarget.parentElement.children, function(button) {
@@ -127,12 +185,15 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
 
       // get featured media results for current carousel page
         if($event.currentTarget.id === "hero-carousel-page-1") {
+          currentHeroCarouselPage = 1;
           getCurrentFeaturedGame();
         }
         else if($event.currentTarget.id === "hero-carousel-page-2") {
+          currentHeroCarouselPage = 2;
           getCurrentFeaturedMovie();
         }
         else if($event.currentTarget.id === "hero-carousel-page-3") {
+          currentHeroCarouselPage = 3;
           getCurrentFeaturedTv();
         }
       }
