@@ -574,7 +574,7 @@ p {
   height: auto;
 }
 
-.carousel-page-circle {
+.carousel-page-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -589,7 +589,7 @@ p {
   cursor: pointer;
 }
 
-.carousel-page-circle:nth-child(2) {
+.carousel-page-button:nth-child(2) {
   margin: 0 8px;
 }
 
@@ -599,6 +599,8 @@ p {
 
   background-color: white;
   border-radius: 100%;
+
+  cursor: pointer;
 }
 
 #tv-home-hero-container {

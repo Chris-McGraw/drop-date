@@ -6,16 +6,14 @@
       </button>
 
       <div class="hero-media-img-container">
-        <img class="hero-media-img" ng-src="{{ detail.img_path }}">
+        <img class="hero-media-img" ng-src="{{ img_path }}">
       </div>
 
       <div class="hero-media-info-container">
         <h3 class="hero-media-name">{{ name }}</h3>
         <p class="hero-media-subtitle">{{ type }}</p>
-
         <p class="hero-media-release-date">{{ release_date | date:"MMM dd, yyyy" }}</p>
-
-        <p class="hero-media-overview">{{ detail.deck }}</p>
+        <p class="hero-media-overview">{{ overview }}</p>
       </div>
 
       <button class="hero-scroll hero-scroll-right">
@@ -23,11 +21,17 @@
       </button>
 
       <div class="hero-carousel-page-select">
-        <div class="carousel-page-circle">
+        <div id="hero-carousel-page-1" class="carousel-page-button" ng-click="changeHeroCarouselPage($event)">
           <div class="carousel-page-selected"></div>
         </div>
-        <div class="carousel-page-circle"></div>
-        <div class="carousel-page-circle"></div>
+
+        <div id="hero-carousel-page-2" class="carousel-page-button" ng-click="changeHeroCarouselPage($event)">
+          <div class="carousel-page-selected" style="display:none;"></div>
+        </div>
+
+        <div id="hero-carousel-page-3" class="carousel-page-button" ng-click="changeHeroCarouselPage($event)">
+          <div class="carousel-page-selected" style="display:none;"></div>
+        </div>
       </div>
     </section>
   </div>
