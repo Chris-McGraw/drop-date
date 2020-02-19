@@ -1,0 +1,38 @@
+<div class="featured-hero-backdrop">
+  <div class="featured-hero-inner">
+    <section id="hero-carousel">
+      <button class="hero-scroll hero-scroll-left" ng-click="decreaseHeroCarouselPage()">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+
+      <div class="hero-media-img-container">
+        <img class="hero-media-img" ng-src="{{ img_path }}">
+      </div>
+
+      <div class="hero-media-info-container">
+        <h3 class="hero-media-name">{{ name }}</h3>
+        <p class="hero-media-subtitle">{{ type }}</p>
+        <p class="hero-media-release-date">{{ release_date | date:"MMM dd, yyyy" }}</p>
+        <p class="hero-media-overview">{{ overview }}</p>
+      </div>
+
+      <button class="hero-scroll hero-scroll-right" ng-click="increaseHeroCarouselPage()">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+
+      <div class="hero-carousel-page-select">
+        <div id="hero-carousel-page-1" class="carousel-page-button" ng-click="changeHeroCarouselPage($event)">
+          <div class="carousel-page-selected"></div>
+        </div>
+
+        <div id="hero-carousel-page-2" class="carousel-page-button" ng-click="changeHeroCarouselPage($event)">
+          <div class="carousel-page-selected" style="display:none;"></div>
+        </div>
+
+        <div id="hero-carousel-page-3" class="carousel-page-button" ng-click="changeHeroCarouselPage($event)">
+          <div class="carousel-page-selected" style="display:none;"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
