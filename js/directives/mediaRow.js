@@ -158,6 +158,8 @@ app.directive("mediaRow", ["fillMediaRow", "$location", function(fillMediaRow, $
       var countrySelect = document.getElementById("country-select");
 
       countrySelect.onchange = function() {
+        countrySelect.blur();
+
         if($location.$$url === "/") {
           fillMediaRow.getRecentGames().then(function(data) {
             scope.$$prevSibling.$$prevSibling.mediaList = data;

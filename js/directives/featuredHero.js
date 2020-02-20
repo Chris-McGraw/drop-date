@@ -1,4 +1,4 @@
-app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi", function(fillMediaRow, userSearch, jsonPad, gameApi) {
+app.directive("featuredHero", ["$location", "fillMediaRow", "userSearch", "jsonPad", "gameApi", function($location, fillMediaRow, userSearch, jsonPad, gameApi) {
   return {
     restrict: "E",
     scope: {
@@ -195,6 +195,30 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
         else if($event.currentTarget.id === "hero-carousel-page-3") {
           currentHeroCarouselPage = 3;
           getCurrentFeaturedTv();
+        }
+      }
+
+// ---
+
+      var countrySelectCurrent = "";
+
+      document.getElementById("country-select").onfocus = function() {
+        if($location.$$url === "/") {
+          countrySelectCurrent = this.value;
+        }
+      }
+
+      document.getElementById("country-select").onblur = function() {
+        if($location.$$url === "/") {
+          if(countrySelectCurrent !== this.value) {
+            clearCarouselPageButtons();
+            document.getElementById("hero-carousel-page-1").children[0].style.display = "block";
+            currentHeroCarouselPage = 1;
+
+            setRandomFeaturedGame();
+            setRandomFeaturedMovie();
+            setRandomFeaturedTv();
+          }
         }
       }
 
