@@ -10,7 +10,7 @@
 
     <div class="carousel-tile" ng-repeat="cast in castList | limitTo: 10" ng-init="$last && checkCarouselOverflow()">
       <img class="cast-img" ng-src="{{ cast.img_path }}"
-      alt="{{ cast.name }} headshot">
+      alt="{{ cast.name }} headshot" err-src>
 
       <p class="cast-name">{{ cast.name }}</p>
       <p class="cast-character">{{ cast.character }}</p>

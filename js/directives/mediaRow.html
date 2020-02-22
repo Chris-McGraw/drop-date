@@ -10,7 +10,7 @@
     <a class="carousel-tile" href="{{ media.idPath }}"
     ng-repeat="media in mediaList | limitTo: 10" ng-init="$last && checkCarouselOverflow()">
       <img class="media-img" ng-src="{{ media.imgPath }}"
-      alt="{{ media.title }} image">
+      alt="{{ media.title }} image" err-src>
 
       <p class="media-name">{{ media.title }}</p>
       <p class="media-date">{{ media.release_date | date:"MMM dd, yyyy" }}</p>

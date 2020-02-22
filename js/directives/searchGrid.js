@@ -2,7 +2,7 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "userSea
   return {
     restrict: "E",
     scope: {
-      type: "@"
+      media: "@"
     },
     templateUrl: "js/directives/searchGrid.html",
     link: function(scope, element, attrs) {
@@ -78,7 +78,7 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "userSea
         }
 
         for(i = 0; i < pageCountTotal; i++) {
-          scope.pageButtons.push({number: i + 1, page_path: "#/" + scope.type + "/results/?search=" + $location.search().search});
+          scope.pageButtons.push({number: i + 1, page_path: "#/" + scope.media + "/results/?search=" + $location.search().search});
         }
 
       // get the number of the first result on the current page
@@ -111,7 +111,7 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "userSea
 
 
 // ____ ATTRIBUTE HANDLERS
-      if(scope.type === "games") {
+      if(scope.media === "games") {
         function formatTotalResultNumber(response) {
           response.data.total_results = response.data.number_of_total_results;
         }
@@ -154,7 +154,7 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "userSea
 
 // -----
 
-      else if(scope.type === "movies") {
+      else if(scope.media === "movies") {
         function resultLink(result) {
           result.link = "#/movies/detail/?id=" + result.id;
         }
@@ -187,7 +187,7 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "userSea
 
 // -----
 
-      else if(scope.type === "tv") {
+      else if(scope.media === "tv") {
         function resultLink(result) {
           result.link = "#/tv/detail/?id=" + result.id;
         }
