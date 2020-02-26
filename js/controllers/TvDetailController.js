@@ -94,16 +94,4 @@ app.controller("TvDetailController", ["$scope", "jsonPad", "tvApi", "countrySele
   });
 
 
-
-
-
-// --------------- EVENT HANDLERS
-  document.getElementById("country-select").onchange = function() {
-    jsonPad.getData( tvApi.detailUrl(), tvApi.callback() ).then(
-      function successCallback(response) {
-        getReleaseList(response);
-    });
-  }
-
-
 }]);

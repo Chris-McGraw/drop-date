@@ -119,13 +119,4 @@ app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "count
   });
 
 
-
-
-
-// --------------- EVENT HANDLERS
-  document.getElementById("country-select").onchange = function() {
-    getReleaseList();
-  }
-
-
 }]);

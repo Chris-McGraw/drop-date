@@ -135,13 +135,4 @@ app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "country
   });
 
 
-
-
-
-  // --------------- EVENT HANDLERS
-    document.getElementById("country-select").onchange = function() {
-      getReleaseList();
-    }
-
-
 }]);

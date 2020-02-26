@@ -36,7 +36,7 @@
       <a id="drop-date-logo" href="#/home/"><img src="imgs/drop-date-logo.png"></a>
 
       <form>
-        <select id="country-select" name="country">
+        <select id="country-select" name="country" country-select-change>
           <option value="us" selected>US 🇺🇸</option>
           <option value="uk">UK 🇬🇧</option>
           <option value="jp">JP 🇯🇵</option>
@@ -139,6 +139,8 @@
   <script src="js/controllers/TvDetailController.js"></script>
 
   <!-- Directives -->
+  <script src="js/directives/countrySelectChange.js"></script>
+
   <script src="js/directives/errSrc.js"></script>
   <script src="js/directives/detailErrSrc.js"></script>
 

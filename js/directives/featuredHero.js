@@ -19,8 +19,8 @@ app.directive("featuredHero", ["$location", "$route", "fillMediaRow", "userSearc
         scope.featuredGameImgErr = false;
 
         fillMediaRow.getRecentGames().then(function(data) {
-          // var randomGame = Math.floor(Math.random() * Math.floor(data.length));
-          featuredGame = data[9];
+          var randomGame = Math.floor(Math.random() * Math.floor(data.length));
+          featuredGame = data[randomGame];
 
           userSearch.setDetail( featuredGame.game.id );
 
@@ -207,24 +207,6 @@ app.directive("featuredHero", ["$location", "$route", "fillMediaRow", "userSearc
         else if($event.currentTarget.id === "hero-carousel-page-3") {
           currentHeroCarouselPage = 3;
           getCurrentFeaturedTv();
-        }
-      }
-
-// ---
-
-      var countrySelectCurrent = "";
-
-      document.getElementById("country-select").onfocus = function() {
-        if($location.$$url === "/") {
-          countrySelectCurrent = this.value;
-        }
-      }
-
-      document.getElementById("country-select").onblur = function() {
-        if($location.$$url === "/") {
-          if(countrySelectCurrent !== this.value) {
-            $route.reload();
-          }
         }
       }
 

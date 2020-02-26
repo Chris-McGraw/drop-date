@@ -153,58 +153,6 @@ app.directive("mediaRow", ["fillMediaRow", "$location", function(fillMediaRow, $
         };
       }
 
-// ---
-
-      var countrySelect = document.getElementById("country-select");
-
-      countrySelect.onchange = function() {
-        countrySelect.blur();
-
-        // if($location.$$url === "/") {
-        //   fillMediaRow.getRecentGames().then(function(data) {
-        //     scope.$$prevSibling.$$prevSibling.mediaList = data;
-        //   });
-        //
-        //   fillMediaRow.getRecentMovies().then(function(data) {
-        //     scope.$$prevSibling.mediaList = data;
-        //   });
-        //
-        //   fillMediaRow.getRecentTv().then(function(data) {
-        //     scope.mediaList = data;
-        //   });
-        // }
-
-        if($location.$$url === "/games/") {
-          fillMediaRow.getRecentGames().then(function(data) {
-            scope.$$prevSibling.mediaList = data;
-          });
-
-          fillMediaRow.getUpcomingGames().then(function(data) {
-            scope.mediaList = data;
-          });
-        }
-
-        else if($location.$$url === "/movies/") {
-          fillMediaRow.getRecentMovies().then(function(data) {
-            scope.$$prevSibling.mediaList = data;
-          });
-
-          fillMediaRow.getUpcomingMovies().then(function(data) {
-            scope.mediaList = data;
-          });
-        }
-
-        else if($location.$$url === "/tv/") {
-          fillMediaRow.getRecentTv().then(function(data) {
-            scope.$$prevSibling.mediaList = data;
-          });
-
-          fillMediaRow.getUpcomingTv().then(function(data) {
-            scope.mediaList = data;
-          });
-        }
-      }
-
 
     }
   };
