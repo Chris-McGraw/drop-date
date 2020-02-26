@@ -1,4 +1,4 @@
-app.directive("featuredHero", ["$location", "fillMediaRow", "userSearch", "jsonPad", "gameApi", function($location, fillMediaRow, userSearch, jsonPad, gameApi) {
+app.directive("featuredHero", ["$location", "$route", "fillMediaRow", "userSearch", "jsonPad", "gameApi", function($location, $route, fillMediaRow, userSearch, jsonPad, gameApi) {
   return {
     restrict: "E",
     scope: {
@@ -16,9 +16,11 @@ app.directive("featuredHero", ["$location", "fillMediaRow", "userSearch", "jsonP
 
 // _____________ FUNCTIONS
       function setRandomFeaturedGame() {
+        scope.featuredGameImgErr = false;
+
         fillMediaRow.getRecentGames().then(function(data) {
-          var randomGame = Math.floor(Math.random() * Math.floor(data.length));
-          featuredGame = data[randomGame];
+          // var randomGame = Math.floor(Math.random() * Math.floor(data.length));
+          featuredGame = data[9];
 
           userSearch.setDetail( featuredGame.game.id );
 
@@ -39,14 +41,24 @@ app.directive("featuredHero", ["$location", "fillMediaRow", "userSearch", "jsonP
 
         scope.overview = featuredGameDetail.deck;
 
-        if(featuredGameDetail.image.small_url === "https://www.giantbomb.com/api/image/scale_small/3026329-gb_default-16_9.png") {
-          scope.img_path = "../../imgs/game-backup.png";
-        }
-        else {
-          scope.img_path = featuredGameDetail.image.small_url;
+        // console.log(scope.featuredGameImgErr);
+
+        if(scope.featuredGameImgErr === false) {
+          if(featuredGameDetail.image.small_url === "https://www.giantbomb.com/api/image/scale_small/3026329-gb_default-16_9.png") {
+            scope.img_path = "../../imgs/game-backup.png";
+          }
+          else {
+            scope.img_path = featuredGameDetail.image.small_url;
+          }
+
+          element[0].firstChild.style.backgroundImage = `url( ${scope.img_path} )`;
         }
 
-        element[0].firstChild.style.backgroundImage = `url( ${scope.img_path} )`;
+        else {
+          scope.img_path = "../../imgs/game-backup.png";
+
+          element[0].firstChild.style.backgroundImage = "none";
+        }
       }
 
 // ---
@@ -211,13 +223,7 @@ app.directive("featuredHero", ["$location", "fillMediaRow", "userSearch", "jsonP
       document.getElementById("country-select").onblur = function() {
         if($location.$$url === "/") {
           if(countrySelectCurrent !== this.value) {
-            clearCarouselPageButtons();
-            document.getElementById("hero-carousel-page-1").children[0].style.display = "block";
-            currentHeroCarouselPage = 1;
-
-            setRandomFeaturedGame();
-            setRandomFeaturedMovie();
-            setRandomFeaturedTv();
+            $route.reload();
           }
         }
       }

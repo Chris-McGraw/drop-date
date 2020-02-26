@@ -160,21 +160,21 @@ app.directive("mediaRow", ["fillMediaRow", "$location", function(fillMediaRow, $
       countrySelect.onchange = function() {
         countrySelect.blur();
 
-        if($location.$$url === "/") {
-          fillMediaRow.getRecentGames().then(function(data) {
-            scope.$$prevSibling.$$prevSibling.mediaList = data;
-          });
+        // if($location.$$url === "/") {
+        //   fillMediaRow.getRecentGames().then(function(data) {
+        //     scope.$$prevSibling.$$prevSibling.mediaList = data;
+        //   });
+        //
+        //   fillMediaRow.getRecentMovies().then(function(data) {
+        //     scope.$$prevSibling.mediaList = data;
+        //   });
+        //
+        //   fillMediaRow.getRecentTv().then(function(data) {
+        //     scope.mediaList = data;
+        //   });
+        // }
 
-          fillMediaRow.getRecentMovies().then(function(data) {
-            scope.$$prevSibling.mediaList = data;
-          });
-
-          fillMediaRow.getRecentTv().then(function(data) {
-            scope.mediaList = data;
-          });
-        }
-
-        else if($location.$$url === "/games/") {
+        if($location.$$url === "/games/") {
           fillMediaRow.getRecentGames().then(function(data) {
             scope.$$prevSibling.mediaList = data;
           });
