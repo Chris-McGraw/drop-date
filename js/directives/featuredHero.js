@@ -1,4 +1,4 @@
-app.directive("featuredHero", ["$location", "$route", "fillMediaRow", "userSearch", "jsonPad", "gameApi", function($location, $route, fillMediaRow, userSearch, jsonPad, gameApi) {
+app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi", function(fillMediaRow, userSearch, jsonPad, gameApi) {
   return {
     restrict: "E",
     scope: {

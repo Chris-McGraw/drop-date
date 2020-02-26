@@ -1,4 +1,4 @@
-app.directive("mediaRow", ["fillMediaRow", "$location", function(fillMediaRow, $location) {
+app.directive("mediaRow", ["fillMediaRow", function(fillMediaRow) {
   return {
     restrict: "E",
     scope: {
