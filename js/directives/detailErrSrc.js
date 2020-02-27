@@ -10,6 +10,13 @@ app.directive("detailErrSrc", function() {
             attrs.$set("src", "../../imgs/game-backup.png");
           }
         }
+        else if(scope.type === "Movie") {
+          if(attrs.src != attrs.detailErrSrc) {
+            scope.featuredMovieImgErr = true;
+
+            attrs.$set("src", "../../imgs/movie-backup.png");
+          }
+        }
 
       // check detail feature grid for broken imgPath and replace with backup image
         else if(scope.media === "games") {
@@ -17,13 +24,11 @@ app.directive("detailErrSrc", function() {
             attrs.$set("src", "../../imgs/game-backup.png");
           }
         }
-
         else if(scope.media === "movies") {
           if(attrs.src != attrs.detailErrSrc) {
             attrs.$set("src", "../../imgs/movie-backup.png");
           }
         }
-
         else if(scope.media === "tv") {
           if(attrs.src != attrs.detailErrSrc) {
             attrs.$set("src", "../../imgs/tv-backup.png");
