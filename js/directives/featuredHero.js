@@ -104,6 +104,8 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
 // ---
 
       function setRandomFeaturedTv() {
+        scope.featuredTvImgErr = false;
+
         fillMediaRow.getRecentTv().then(function(data) {
           var featureList = [];
 
@@ -125,7 +127,18 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
         scope.release_date = featuredTv.first_air_date;
         scope.overview = featuredTv.overview;
 
-        scope.img_path = "http://image.tmdb.org/t/p/w185" + featuredTv.poster_path;
+      // check featured hero for previous tv img error
+        if(scope.featuredTvImgErr === false) {
+          if(featuredTv.poster_path === null) {
+            scope.img_path = "../../imgs/tv-backup.png";
+          }
+          else {
+            scope.img_path = "http://image.tmdb.org/t/p/w185" + featuredTv.poster_path;
+          }
+        }
+        else {
+          scope.img_path = "../../imgs/tv-backup.png";
+        }
 
         scope.backdrop_path = "http://image.tmdb.org/t/p/w500" + featuredTv.backdrop_path;
         element[0].firstChild.style.backgroundImage = `url( ${scope.backdrop_path} )`;

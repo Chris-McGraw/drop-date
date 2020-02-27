@@ -6,15 +6,19 @@ app.directive("detailErrSrc", function() {
         if(scope.type === "Video Game") {
           if(attrs.src != attrs.detailErrSrc) {
             scope.featuredGameImgErr = true;
-
             attrs.$set("src", "../../imgs/game-backup.png");
           }
         }
         else if(scope.type === "Movie") {
           if(attrs.src != attrs.detailErrSrc) {
             scope.featuredMovieImgErr = true;
-
             attrs.$set("src", "../../imgs/movie-backup.png");
+          }
+        }
+        else if(scope.type === "Television") {
+          if(attrs.src != attrs.detailErrSrc) {
+            scope.featuredTvImgErr = true;
+            attrs.$set("src", "../../imgs/tv-backup.png");
           }
         }
 
