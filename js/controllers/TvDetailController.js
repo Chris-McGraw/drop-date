@@ -32,6 +32,7 @@ app.controller("TvDetailController", ["$scope", "jsonPad", "tvApi", "countrySele
   jsonPad.getData( tvApi.detailUrl(), tvApi.callback() ).then(
     function successCallback(response) {
       $scope.detail = response.data;
+      $scope.media = "tv";
 
   // ____ DETAIL IMAGE
       if($scope.detail.poster_path === null) {
