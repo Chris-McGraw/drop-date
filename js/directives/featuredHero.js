@@ -16,6 +16,8 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
 
 // _____________ FUNCTIONS
       function setRandomFeaturedGame() {
+        scope.featuredGameImgErr = false;
+
         fillMediaRow.getRecentGames().then(function(data) {
           var randomGame = Math.floor(Math.random() * Math.floor(data.length));
           featuredGame = data[randomGame];
@@ -36,22 +38,31 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
         scope.name = featuredGame.title;
         scope.type = "Video Game";
         scope.release_date = featuredGame.release_date;
-
         scope.overview = featuredGameDetail.deck;
 
-        if(featuredGameDetail.image.small_url === "https://www.giantbomb.com/api/image/scale_small/3026329-gb_default-16_9.png") {
-          scope.img_path = "../../imgs/game-backup.png";
+      // check featured hero for previous game img error
+        if(scope.featuredGameImgErr === false) {
+          if(featuredGameDetail.image.small_url === "https://www.giantbomb.com/api/image/scale_small/3026329-gb_default-16_9.png") {
+            scope.img_path = "../../imgs/game-backup.png";
+          }
+          else {
+            scope.img_path = featuredGameDetail.image.small_url;
+          }
+
+          element[0].firstChild.style.backgroundImage = `url( ${scope.img_path} )`;
         }
         else {
-          scope.img_path = featuredGameDetail.image.small_url;
-        }
+          scope.img_path = "../../imgs/game-backup.png";
 
-        element[0].firstChild.style.backgroundImage = `url( ${scope.img_path} )`;
+          element[0].firstChild.style.backgroundImage = "none";
+        }
       }
 
 // ---
 
       function setRandomFeaturedMovie() {
+        scope.featuredMovieImgErr = false;
+
         fillMediaRow.getRecentMovies().then(function(data) {
           var featureList = [];
 
@@ -73,7 +84,18 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
         scope.release_date = featuredMovie.release_date;
         scope.overview = featuredMovie.overview;
 
-        scope.img_path = "http://image.tmdb.org/t/p/w185" + featuredMovie.poster_path;
+      // check featured hero for previous movie img error
+        if(scope.featuredMovieImgErr === false) {
+          if(featuredMovie.poster_path === null) {
+            scope.img_path = "../../imgs/movie-backup.png";
+          }
+          else {
+            scope.img_path = "http://image.tmdb.org/t/p/w185" + featuredMovie.poster_path;
+          }
+        }
+        else {
+          scope.img_path = "../../imgs/movie-backup.png";
+        }
 
         scope.backdrop_path = "http://image.tmdb.org/t/p/w500" + featuredMovie.backdrop_path;
         element[0].firstChild.style.backgroundImage = `url( ${scope.backdrop_path} )`;
@@ -82,6 +104,8 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
 // ---
 
       function setRandomFeaturedTv() {
+        scope.featuredTvImgErr = false;
+
         fillMediaRow.getRecentTv().then(function(data) {
           var featureList = [];
 
@@ -103,7 +127,18 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
         scope.release_date = featuredTv.first_air_date;
         scope.overview = featuredTv.overview;
 
-        scope.img_path = "http://image.tmdb.org/t/p/w185" + featuredTv.poster_path;
+      // check featured hero for previous tv img error
+        if(scope.featuredTvImgErr === false) {
+          if(featuredTv.poster_path === null) {
+            scope.img_path = "../../imgs/tv-backup.png";
+          }
+          else {
+            scope.img_path = "http://image.tmdb.org/t/p/w185" + featuredTv.poster_path;
+          }
+        }
+        else {
+          scope.img_path = "../../imgs/tv-backup.png";
+        }
 
         scope.backdrop_path = "http://image.tmdb.org/t/p/w500" + featuredTv.backdrop_path;
         element[0].firstChild.style.backgroundImage = `url( ${scope.backdrop_path} )`;

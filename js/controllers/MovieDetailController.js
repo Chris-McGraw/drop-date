@@ -57,6 +57,7 @@ app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "count
   jsonPad.getData( movieApi.detailUrl(), movieApi.callback() ).then(
     function successCallback(response) {
       $scope.detail = response.data;
+      $scope.media = "movies";
 
   // ____ DETAIL IMAGE
       if($scope.detail.poster_path === null) {
@@ -117,15 +118,6 @@ app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "count
   // --------------------- RELEASES
       getReleaseList();
   });
-
-
-
-
-
-// --------------- EVENT HANDLERS
-  document.getElementById("country-select").onchange = function() {
-    getReleaseList();
-  }
 
 
 }]);

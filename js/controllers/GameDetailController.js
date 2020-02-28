@@ -82,6 +82,7 @@ app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "country
   jsonPad.getData( gameApi.detailUrl(), gameApi.callback() ).then(
     function successCallback(response) {
       $scope.detail = response.data.results;
+      $scope.media = "games";
 
       // console.log($scope.detail.releases);
 
@@ -132,15 +133,6 @@ app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "country
   // --------------------- RELEASES
       getReleaseList();
   });
-
-
-
-
-
-  // --------------- EVENT HANDLERS
-    document.getElementById("country-select").onchange = function() {
-      getReleaseList();
-    }
 
 
 }]);
