@@ -44,19 +44,22 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
         if(scope.featuredGameImgErr === false) {
           if(featuredGameDetail.image.small_url === "https://www.giantbomb.com/api/image/scale_small/3026329-gb_default-16_9.png") {
             scope.img_path = "../../imgs/game-backup.png";
+
+            element[0].firstChild.style.backgroundImage = "none";
+            document.getElementById("featured-hero-inner").style.backgroundColor = "rgba(0,0,0, 0.4)";
           }
           else {
             scope.img_path = featuredGameDetail.image.small_url;
+
+            element[0].firstChild.style.backgroundImage = `url( ${scope.img_path} )`;
+            colorPalette.getPalette( scope.img_path, document.getElementById("featured-hero-inner") );
           }
-
-          element[0].firstChild.style.backgroundImage = `url( ${scope.img_path} )`;
-
-          colorPalette.getPalette( scope.img_path, document.getElementById("featured-hero-inner") );
         }
         else {
           scope.img_path = "../../imgs/game-backup.png";
 
           element[0].firstChild.style.backgroundImage = "none";
+          document.getElementById("featured-hero-inner").style.backgroundColor = "rgba(0,0,0, 0.4)";
         }
       }
 
