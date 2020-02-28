@@ -1,6 +1,6 @@
 app.service("colorPalette", ["localDate", "userSearch", function(localDate, userSearch) {
 
-  this.getPalette = function(detailImg) {
+  this.getPalette = function(detailImg, backdropElement) {
     var img = document.createElement('img');
     img.setAttribute('crossorigin', 'anonymous');
     img.setAttribute('src', detailImg);
@@ -26,8 +26,9 @@ app.service("colorPalette", ["localDate", "userSearch", function(localDate, user
       // console.log(swatches);
       // console.log(paletteColor);
 
-      document.getElementById("detail-feature-container").style.backgroundColor = "rgba(" + paletteColor + ")";
+      backdropElement.style.backgroundColor = "rgba(" + paletteColor + ")";
     });
   }
+
 
 }]);

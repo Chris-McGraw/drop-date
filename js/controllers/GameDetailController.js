@@ -98,7 +98,7 @@ app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "country
       document.getElementById("detail-img-background").style.backgroundImage = "url(" + $scope.detail.img_path + ")";
 
   // ___ COLOR PALETTE
-      colorPalette.getPalette( $scope.detail.img_path );
+      colorPalette.getPalette( $scope.detail.img_path, document.getElementById("detail-feature-container") );
 
   // ______ PRODUCTION
       $scope.production = response.data.results.developers;

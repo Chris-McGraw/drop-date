@@ -83,7 +83,7 @@ app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "count
       document.getElementById("detail-img-background").style.backgroundImage = "url(" + $scope.detail.backdrop + ")";
 
   // ___ COLOR PALETTE
-      colorPalette.getPalette( $scope.detail.img_path );
+      colorPalette.getPalette( $scope.detail.img_path, document.getElementById("detail-feature-container") );
 
   // ______ PRODUCTION
       $scope.production = response.data.production_companies;

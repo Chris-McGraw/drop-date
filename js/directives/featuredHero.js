@@ -1,4 +1,4 @@
-app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi", function(fillMediaRow, userSearch, jsonPad, gameApi) {
+app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi", "colorPalette", function(fillMediaRow, userSearch, jsonPad, gameApi, colorPalette) {
   return {
     restrict: "E",
     scope: {
@@ -50,6 +50,8 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
           }
 
           element[0].firstChild.style.backgroundImage = `url( ${scope.img_path} )`;
+
+          colorPalette.getPalette( scope.img_path, document.getElementById("featured-hero-inner") );
         }
         else {
           scope.img_path = "../../imgs/game-backup.png";
@@ -90,7 +92,9 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
             scope.img_path = "../../imgs/movie-backup.png";
           }
           else {
-            scope.img_path = "http://image.tmdb.org/t/p/w185" + featuredMovie.poster_path;
+            scope.img_path = "http://image.tmdb.org/t/p/w500" + featuredMovie.poster_path;
+
+            colorPalette.getPalette( scope.img_path, document.getElementById("featured-hero-inner") );
           }
         }
         else {
@@ -133,7 +137,9 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
             scope.img_path = "../../imgs/tv-backup.png";
           }
           else {
-            scope.img_path = "http://image.tmdb.org/t/p/w185" + featuredTv.poster_path;
+            scope.img_path = "http://image.tmdb.org/t/p/w500" + featuredTv.poster_path;
+
+            colorPalette.getPalette( scope.img_path, document.getElementById("featured-hero-inner") );
           }
         }
         else {
