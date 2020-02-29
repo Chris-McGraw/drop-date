@@ -58,7 +58,7 @@ app.controller("TvDetailController", ["$scope", "jsonPad", "tvApi", "countrySele
       document.getElementById("detail-img-background").style.backgroundImage = "url(" + $scope.detail.backdrop + ")";
 
   // ___ COLOR PALETTE
-      colorPalette.getPalette( $scope.detail.img_path );
+      colorPalette.getPalette( $scope.detail.img_path, document.getElementById("detail-feature-container") );
 
   // ________ RELEASES
       getReleaseList(response);

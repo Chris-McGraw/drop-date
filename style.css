@@ -423,7 +423,7 @@ p {
 
 
 /* --------------------------- VIEW : MEDIA HOME --------------------------- */
-.featured-hero-backdrop {
+#featured-hero-backdrop {
   width: 100%;
   height: 422px;
 
@@ -431,7 +431,7 @@ p {
   background-size: cover;
 }
 
-.featured-hero-inner {
+#featured-hero-inner {
   display: flex;
 
   position: relative;
@@ -1261,7 +1261,7 @@ p {
 
 /* -------------------------- MEDIA QUERY <= 500 -------------------------- */
 @media screen and (max-width: 500px) {
-  .featured-hero-backdrop {
+  #featured-hero-backdrop {
     height: 100%;
   }
 
