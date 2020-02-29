@@ -1,37 +1,55 @@
 <div id="featured-hero-backdrop">
   <div id="featured-hero-inner">
     <section id="hero-carousel">
-      <button class="hero-scroll hero-scroll-left" ng-click="decreaseHeroCarouselPage()">
+      <button class="hero-scroll hero-scroll-left" ng-click="decreaseHeroCarouselPage()"
+      aria-label="scroll featured media carousel left">
         <i class="fas fa-chevron-left"></i>
       </button>
 
-      <div class="hero-media-img-container">
-        <img class="hero-media-img" ng-src="{{ img_path }}" detail-err-src>
-      </div>
+      <a class="hero-media-img-container" href="{{ id_path }}"
+      aria-label="featured {{ type }} link">
+        <img class="hero-media-img" ng-src="{{ img_path }}"
+        alt="featured {{ type }} image" detail-err-src>
+      </a>
 
       <div class="hero-media-info-container">
-        <h3 class="hero-media-name">{{ name }}</h3>
-        <p class="hero-media-subtitle">{{ type }}</p>
-        <p class="hero-media-release-date">{{ release_date | date:"MMM dd, yyyy" }}</p>
+        <h3 class="hero-media-name">
+          <a href="{{ id_path }}" aria-label="featured {{ type }} link">{{ name }}</a>
+        </h3>
+
+        <p class="hero-media-type">
+          <a href="{{ type_path }}">
+            <i class="fas fa-tags"></i>{{ type }}
+          </a>
+        </p>
+
+        <div class="hero-media-release-date">
+          <p>{{ release_date | date:"MMM dd, yyyy" }}</p>
+        </div>
+
         <p class="hero-media-overview">{{ overview }}</p>
       </div>
 
-      <button class="hero-scroll hero-scroll-right" ng-click="increaseHeroCarouselPage()">
+      <button class="hero-scroll hero-scroll-right" ng-click="increaseHeroCarouselPage()"
+      aria-label="scroll featured media carousel right">
         <i class="fas fa-chevron-right"></i>
       </button>
 
       <div class="hero-carousel-page-select">
-        <div id="hero-carousel-page-1" class="carousel-page-button" ng-click="changeHeroCarouselPage($event)">
+        <button id="hero-carousel-page-1" class="carousel-page-button"
+        ng-click="changeHeroCarouselPage($event)" aria-label="featured media carousel page 1">
           <div class="carousel-page-selected"></div>
-        </div>
+        </button>
 
-        <div id="hero-carousel-page-2" class="carousel-page-button" ng-click="changeHeroCarouselPage($event)">
+        <button id="hero-carousel-page-2" class="carousel-page-button"
+        ng-click="changeHeroCarouselPage($event)" aria-label="featured media carousel page 2">
           <div class="carousel-page-selected" style="display:none;"></div>
-        </div>
+        </button>
 
-        <div id="hero-carousel-page-3" class="carousel-page-button" ng-click="changeHeroCarouselPage($event)">
+        <button id="hero-carousel-page-3" class="carousel-page-button"
+        ng-click="changeHeroCarouselPage($event)" aria-label="featured media carousel page 3">
           <div class="carousel-page-selected" style="display:none;"></div>
-        </div>
+        </button>
       </div>
     </section>
   </div>
