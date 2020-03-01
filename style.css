@@ -313,6 +313,7 @@ p {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 
+  padding: 0 4px;
   margin-top: 6px;
 
   font-family: sans-serif;
@@ -329,6 +330,7 @@ p {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 
+  padding: 0 4px;
   margin-top: 2px;
   margin-bottom: 6px;
 
@@ -511,6 +513,8 @@ p {
   height: 262px;
 
   object-fit: cover;
+
+  cursor: pointer;
 }
 
 .hero-media-info-container {
@@ -541,25 +545,38 @@ p {
   overflow: hidden;
 }
 
-.hero-media-subtitle {
+.hero-media-type {
+  margin-top: 5px;
   margin-bottom: 20px;
 
   text-align: center;
   font-size: 12px !important;
 }
 
+.hero-media-type i {
+  cursor: pointer;
+  margin-right: 5px;
+}
+
 .hero-media-release-date {
   margin-bottom: 20px;
+}
+
+.hero-media-release-date p {
+  display: inline;
 
   font-weight: bold !important;
+
+  cursor: text;
 }
 
 .hero-media-overview {
   display: -webkit-box;
-  -webkit-line-clamp: 7;
+  -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
 
   overflow: hidden;
+  cursor: text;
 }
 
 .hero-carousel-page-select {

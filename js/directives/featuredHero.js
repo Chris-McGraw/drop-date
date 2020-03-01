@@ -35,6 +35,8 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
 
 
       function getCurrentFeaturedGame() {
+        scope.id_path = "#/games/detail/?id=" + featuredGame.game.id;
+        scope.type_path = "#/games/";
         scope.name = featuredGame.title;
         scope.type = "Video Game";
         scope.release_date = featuredGame.release_date;
@@ -84,6 +86,8 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
 
 
       function getCurrentFeaturedMovie() {
+        scope.id_path = "#/movies/detail/?id=" + featuredMovie.id;
+        scope.type_path = "#/movies/";
         scope.name = featuredMovie.title;
         scope.type = "Movie";
         scope.release_date = featuredMovie.release_date;
@@ -129,6 +133,8 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
 
 
       function getCurrentFeaturedTv() {
+        scope.id_path = "#/tv/detail/?id=" + featuredTv.id;
+        scope.type_path = "#/tv/";
         scope.name = featuredTv.name;
         scope.type = "Television";
         scope.release_date = featuredTv.first_air_date;
