@@ -15,6 +15,12 @@ app.service("movieApi", ["countrySelect", "localDate", "userSearch", function(co
     + "&sort_by=release_date.asc&include_adult=false&include_video=false&page=1";
   }
 
+  this.searchBackdropUrl = function() {
+    return "https://api.themoviedb.org/3/movie/862/images"
+    + "?api_key=" + key
+    + "&language=en-US&include_image_language=null";
+  }
+
   this.searchUrl = function() {
     return "https://api.themoviedb.org/3/search/movie"
     + "?api_key=" + key

@@ -626,7 +626,6 @@ p {
 
   background-color: #f8f8f8;
   background-size: cover;
-  /* background-image: url("https://image.tmdb.org/t/p/original/jUk4H1XYyMzdiNcF0VwNtEGrb1x.jpg"); */
 }
 
 #movie-home-hero-container {
@@ -635,7 +634,6 @@ p {
 
   background-color: #f8f8f8;
   background-size: cover;
-  /* background-image: url("https://image.tmdb.org/t/p/original/3Rfvhy1Nl6sSGJwyjb0QiZzZYlB.jpg"); */
 }
 
 #game-home-hero-container {
@@ -712,7 +710,7 @@ p {
 
 .media-page-header {
   width: 100%;
-  margin-top: 20px;
+  margin-top: 50px;
   margin-bottom: 20px;
 
   text-align: center;

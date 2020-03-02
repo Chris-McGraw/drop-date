@@ -1,4 +1,4 @@
-app.controller("MovieController", ["$scope", "userSearch", "$location", function($scope, userSearch, $location) {
+app.controller("MovieController", ["$scope", "userSearch", "$location", "jsonPad", "movieApi", "$filter", function($scope, userSearch, $location, jsonPad, movieApi, $filter) {
   $scope.buttonText = "Search";
 
   $scope.getInput = function() {
@@ -8,4 +8,15 @@ app.controller("MovieController", ["$scope", "userSearch", "$location", function
     $location.search("search", userSearch.getData());
     $location.path("/movies/results/");
   }
+
+// ----------------------- IMAGES
+  jsonPad.getData( movieApi.searchBackdropUrl(), movieApi.callback() ).then(
+    function successCallback(response) {
+      // console.log(response.data.backdrops);
+      var searchBackdrop = $filter("filter")(response.data.backdrops, {file_path: "/3Rfvhy1Nl6sSGJwyjb0QiZzZYlB.jpg"});
+
+      document.getElementById("movie-home-hero-container").style.backgroundImage = "url(https://image.tmdb.org/t/p/original" + searchBackdrop[0].file_path + ")";
+  });
+
+
 }]);

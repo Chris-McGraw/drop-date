@@ -19,6 +19,11 @@ app.service("tvApi", ["countrySelect", "localDate", "userSearch", function(count
     + "&first_air_date.gte=" + localDate.getTomorrowDate();
   }
 
+  this.searchBackdropUrl = function() {
+    return "https://api.themoviedb.org/3/tv/456/images"
+    + "?api_key=" + key;
+  }
+
   this.searchUrl = function() {
     return "https://api.themoviedb.org/3/search/tv?api_key=" + key
     + "&query=" + userSearch.getQuery()
