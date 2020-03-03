@@ -23,6 +23,15 @@ app.service("gameApi", ["countrySelect", "localDate", "userSearch", function(cou
     + "&field_list=guid,id,game,name,image,region,release_date,expected_release_day,expected_release_month,expected_release_year";
   }
 
+  this.searchBackdropUrl = function() {
+    return "https://www.giantbomb.com/api/images/3030-41355/"
+    + "?api_key=" + key
+    + "&format=jsonp"
+    + "&field_list=original_url"
+    + "&offset=200"
+    + "&filter=image_tags:Screenshots";
+  }
+
   this.searchUrl = function() {
     return "https://www.giantbomb.com/api/search/?api_key=" + key
     + "&query=" + userSearch.getQuery() + "&resources=game"
