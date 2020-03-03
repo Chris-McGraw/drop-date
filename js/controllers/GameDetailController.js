@@ -87,7 +87,7 @@ app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "country
       // console.log($scope.detail.releases);
 
   // ____ DETAIL IMAGE
-      if($scope.detail.image.small_url === "https://www.giantbomb.com/api/image/scale_small/3026329-gb_default-16_9.png") {
+      if( $scope.detail.image.small_url.includes("gb_default") ) {
         $scope.detail.img_path = "../../imgs/game-backup.png";
       }
       else {

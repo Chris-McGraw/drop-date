@@ -121,7 +121,7 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "userSea
         }
 
         function backupImage(result) {
-          if(result.image.small_url === "https://www.giantbomb.com/api/image/scale_small/3026329-gb_default-16_9.png") {
+          if( result.image.small_url.includes("gb_default") ) {
             result.img_path = "../../imgs/game-backup.png";
           }
           else {

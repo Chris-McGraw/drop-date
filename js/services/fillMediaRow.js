@@ -173,7 +173,7 @@ app.service("fillMediaRow", ["jsonPad", "movieApi", "tvApi", "gameApi", "country
   }
 
   function backupGameImages(game) {
-    if(game.image.small_url === "https://www.giantbomb.com/api/image/scale_small/3026329-gb_default-16_9.png") {
+    if( game.image.small_url.includes("gb_default") ) {
       game.imgPath = "../../imgs/game-backup.png";
     }
     else {
