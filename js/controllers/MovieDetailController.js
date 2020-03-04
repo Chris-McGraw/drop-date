@@ -1,4 +1,6 @@
-app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "countrySelect", "userSearch", "colorPalette", "$location", "$filter", function($scope, jsonPad, movieApi, countrySelect, userSearch, colorPalette, $location, $filter) {
+app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "countrySelect", "mediaView", "userSearch", "colorPalette", "$location", "$filter", function($scope, jsonPad, movieApi, countrySelect, mediaView, userSearch, colorPalette, $location, $filter) {
+  mediaView.getCurrentType();
+
   userSearch.setDetail( $location.search().id );
 
 

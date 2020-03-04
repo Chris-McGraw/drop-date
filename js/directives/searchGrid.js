@@ -1,4 +1,4 @@
-app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "userSearch", "$location", function(jsonPad, gameApi, movieApi, tvApi, userSearch, $location) {
+app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "mediaView", "userSearch", "$location", function(jsonPad, gameApi, movieApi, tvApi, mediaView, userSearch, $location) {
   return {
     restrict: "E",
     scope: {
@@ -6,6 +6,8 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "userSea
     },
     templateUrl: "js/directives/searchGrid.html",
     link: function(scope, element, attrs) {
+
+      mediaView.getCurrentType();
 
 // __________ SEARCH SETUP
       userSearch.setQuery( $location.search().search );

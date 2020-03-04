@@ -1,4 +1,6 @@
-app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "countrySelect", "userSearch", "colorPalette", "$location", "$filter", function($scope, jsonPad, gameApi, countrySelect, userSearch, colorPalette, $location, $filter) {
+app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "countrySelect", "mediaView", "userSearch", "colorPalette", "$location", "$filter", function($scope, jsonPad, gameApi, countrySelect, mediaView, userSearch, colorPalette, $location, $filter) {
+  mediaView.getCurrentType();
+
   userSearch.setDetail( $location.search().id );
 
 

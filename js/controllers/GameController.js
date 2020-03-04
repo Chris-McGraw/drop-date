@@ -1,5 +1,7 @@
-app.controller("GameController", ["$scope", "userSearch", "$location", "jsonPad", "gameApi", "$filter", function($scope, userSearch, $location, jsonPad, gameApi, $filter) {
+app.controller("GameController", ["$scope", "mediaView", "userSearch", "$location", "jsonPad", "gameApi", "$filter", function($scope, mediaView, userSearch, $location, jsonPad, gameApi, $filter) {
   $scope.buttonText = "Search";
+
+  mediaView.getCurrentType();
 
   $scope.getInput = function() {
     var input = $scope.inputVal;
