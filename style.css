@@ -377,13 +377,22 @@ p {
 }
 
 .recent-release-title {
+  display: flex;
+  justify-content: center;
+
   width: 100%;
   margin-top: 50px;
+}
+
+.recent-release-title p {
+  display: inline;
 
   font-family: sans-serif;
   font-size: 30px;
   text-align: center;
   color: black;
+
+  cursor: text;
 }
 
 .media-row-title {
@@ -391,6 +400,24 @@ p {
   margin-top: 20px;
   margin-bottom: 10px;
 
+  font-family: sans-serif;
+  font-size: 20px;
+  color: black;
+}
+
+.media-row-title-link {
+  position: relative;
+  left: 0;
+  right: 0;
+
+  width: 90%;
+  max-width: 1440px;
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: -30px;
+}
+
+.media-row-title-link a {
   font-family: sans-serif;
   font-size: 20px;
   color: black;
