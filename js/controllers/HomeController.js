@@ -1,3 +1,3 @@
-app.controller("HomeController", ["$scope", function($scope) {
-  // $scope.title = "Current View : Home";
+app.controller("HomeController", ["mediaView", function(mediaView) {
+  mediaView.getCurrentType();
 }]);

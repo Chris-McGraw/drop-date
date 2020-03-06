@@ -1,4 +1,6 @@
-app.controller("TvDetailController", ["$scope", "jsonPad", "tvApi", "countrySelect", "userSearch", "colorPalette", "$location", function($scope, jsonPad, tvApi, countrySelect, userSearch, colorPalette, $location) {
+app.controller("TvDetailController", ["$scope", "jsonPad", "tvApi", "countrySelect", "mediaView", "userSearch", "colorPalette", "$location", function($scope, jsonPad, tvApi, countrySelect, mediaView, userSearch, colorPalette, $location) {
+  mediaView.getCurrentType();
+
   userSearch.setDetail( $location.search().id );
 
 

@@ -44,7 +44,7 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
 
       // check featured hero for previous game img error
         if(scope.featuredGameImgErr === false) {
-          if(featuredGameDetail.image.small_url === "https://www.giantbomb.com/api/image/scale_small/3026329-gb_default-16_9.png") {
+          if( featuredGameDetail.image.small_url.includes("gb_default") ) {
             scope.img_path = "../../imgs/game-backup.png";
 
             element[0].firstChild.style.backgroundImage = "none";
