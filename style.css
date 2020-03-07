@@ -16,8 +16,15 @@
 
   cursor: default;
 }
+html {
+  height: 100%;
+}
 
 body {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+
   background-color: #f8f8f8;
 }
 
@@ -273,6 +280,9 @@ p {
 .view-main-container {
   position: relative;
   top: 80px;
+
+  margin-bottom: 160px;
+  /* border: 1px solid blue; */
 }
 
 .main-title {
@@ -1010,6 +1020,7 @@ p {
 
   width: 242px;
   height: 26px;
+  margin-bottom: 10px;
 }
 
 .result-page-btn {
@@ -1031,7 +1042,6 @@ p {
 .current-page-search-results {
   display: inline;
   position: relative;
-  top: 10px;
   left: 0;
 
   font-family: sans-serif;
@@ -1042,7 +1052,6 @@ p {
 .total-search-results {
   display: inline;
   position: relative;
-  top: 10px;
   left: 5%;
 
   font-family: sans-serif;
@@ -1242,13 +1251,13 @@ p {
 
 /* -------------------------------- FOOTER -------------------------------- */
 #footer {
+  grid-row-start: 2;
+  grid-row-end: 3;
+
   z-index: 10;
-  position: relative;
-  top: 120px;
 
   height: auto;
   width: 100%;
-  margin-top: 40px;
   padding: 20px 5%;
 
   font-family: sans-serif;
