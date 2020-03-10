@@ -9,6 +9,7 @@ app.directive("dropdownNavbar", ["$location", function($location) {
       var dropdownNavActive = true;
 
       var dropdownNav = document.getElementById("dropdown-nav");
+      var dropdownLink = document.getElementsByClassName("dropdown-link");
       var gameViewDropdownLink = document.getElementById("game-view-dropdown-link");
       var movieViewDropdownLink = document.getElementById("movie-view-dropdown-link");
       var tvViewDropdownLink = document.getElementById("tv-view-dropdown-link");
@@ -21,6 +22,10 @@ app.directive("dropdownNavbar", ["$location", function($location) {
         hamburgerBarBottom.classList.add("rotate-bar-bottom");
 
         dropdownNav.classList.add("dropdown-nav-expand");
+
+        angular.forEach(dropdownLink, function(link) {
+          link.tabIndex = 0;
+        });
       }
 
 
@@ -30,6 +35,10 @@ app.directive("dropdownNavbar", ["$location", function($location) {
         hamburgerBarBottom.classList.remove("rotate-bar-bottom");
 
         dropdownNav.classList.remove("dropdown-nav-expand");
+
+        angular.forEach(dropdownLink, function(link) {
+          link.tabIndex = -1;
+        });
       }
 
 

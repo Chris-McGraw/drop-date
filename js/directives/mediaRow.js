@@ -4,14 +4,13 @@ app.directive("mediaRow", ["fillMediaRow", function(fillMediaRow) {
     scope: {
       media:"@",
       type: "@",
-      title: "@"
+      rowTitle: "@"
     },
     templateUrl: "js/directives/mediaRow.html",
     link: function(scope, element, attrs) {
 
 
 // _____________ VARIABLES
-      scope.rowTitle = scope.title;
       var carouselMain = document.getElementsByClassName("carousel-main");
 
 
@@ -75,6 +74,27 @@ app.directive("mediaRow", ["fillMediaRow", function(fillMediaRow) {
 
 
 // ____ ATTRIBUTE HANDLERS
+      if(scope.rowTitle === "Video Games") {
+        element[0].firstChild.children[0].style.display = "none";
+
+        scope.rowLink = "#/games/";
+      }
+      else if(scope.rowTitle === "Movies") {
+        element[0].firstChild.children[0].style.display = "none";
+
+        scope.rowLink = "#/movies/";
+      }
+      else if(scope.rowTitle === "Television") {
+        element[0].firstChild.children[0].style.display = "none";
+
+        scope.rowLink = "#/tv/";
+      }
+      else {
+        element[0].firstChild.children[1].style.display = "none";
+      }
+
+// ---
+
       if(scope.media === "movies") {
         if(scope.type === "recent") {
           fillMediaRow.getRecentMovies().then(function(data) {

@@ -1,8 +1,12 @@
 <main class="view-main-container">
   <div id="movie-home-hero-container">
     <div class="media-home-hero-inner">
-      <h1 class="main-title media-search-title">Search Drop&nbsp;Date</h1>
-      <h1 class="main-title-btm media-search-title">for Movies:</h1>
+      <h1 class="main-title media-search-title">
+        <p>Search Drop&nbsp;Date</p>
+      </h1>
+      <h1 class="main-title-btm media-search-title">
+        <p>for Movies:</p>
+      </h1>
 
       <form id="media-search-form" ng-submit="getInput()">
         <input id="media-search-input" type="text" ng-model="inputVal"></input>
@@ -11,7 +15,9 @@
     </div>
   </div>
 
-  <h2 class="media-page-header">Movie Releases</h2>
-  <media-row media="movies" type="recent" title="Recent"></media-row>
-  <media-row media="movies" type="upcoming" title="Upcoming"></media-row>
+  <h2 class="media-page-header">
+    <p>Movie Releases</p>
+  </h2>
+  <media-row media="movies" type="recent" row-title="Recent"></media-row>
+  <media-row media="movies" type="upcoming" row-title="Upcoming"></media-row>
 </main>

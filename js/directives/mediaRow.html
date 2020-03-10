@@ -1,5 +1,11 @@
 <section id="carousel-container">
-  <h3 class="media-row-title">{{ rowTitle }}</h3>
+  <h3 class="media-row-title">
+    <p>{{ rowTitle }}</p>
+  </h3>
+
+  <h3 class="media-row-title-link">
+    <a href="{{ rowLink }}">{{ rowTitle }}</a>
+  </h3>
 
   <div class="carousel-main">
     <button class="carousel-scroll scroll-left" style="display:none"

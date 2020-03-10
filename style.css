@@ -17,7 +17,15 @@
   cursor: default;
 }
 
+html {
+  height: 100%;
+}
+
 body {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+
   background-color: #f8f8f8;
 }
 
@@ -273,6 +281,10 @@ p {
 .view-main-container {
   position: relative;
   top: 80px;
+
+  margin-bottom: 160px;
+
+  /* border: 1px solid blue; */
 }
 
 .main-title {
@@ -377,20 +389,55 @@ p {
 }
 
 .recent-release-title {
+  display: flex;
+  justify-content: center;
+
   width: 100%;
-  margin-top: 50px;
+  margin-top: 40px;
+}
+
+.recent-release-title p {
+  display: inline;
 
   font-family: sans-serif;
   font-size: 30px;
   text-align: center;
   color: black;
+
+  cursor: text;
 }
 
 .media-row-title {
-  width: 100%;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  position: absolute;
+  top: -35px;
+  left: 0;
 
+  width: 100%;
+  max-width: 1440px;
+  margin: auto;
+}
+
+.media-row-title p {
+  display: inline;
+
+  font-family: sans-serif;
+  font-size: 20px;
+  color: black;
+
+  cursor: text;
+}
+
+.media-row-title-link {
+  position: absolute;
+  top: -35px;
+  left: 0;
+
+  width: 100%;
+  max-width: 1440px;
+  margin: auto;
+}
+
+.media-row-title-link a {
   font-family: sans-serif;
   font-size: 20px;
   color: black;
@@ -475,7 +522,7 @@ p {
   width: 90%;
   max-width: 1440px;
   margin: auto;
-  margin-top: 40px;
+  margin-top: 80px;
 }
 
 .carousel-main {
@@ -495,6 +542,7 @@ p {
 
 .carousel-main::-webkit-scrollbar {
   width: 0 !important;
+  height: 0 !important;
 }
 
 .carousel-tile {
@@ -779,10 +827,13 @@ p {
   background-color: rgba(0,0,0, 0.4);
 }
 
-.media-search-title {
-  color: white;
+.media-search-title p {
+  display: inline;
 
   text-shadow: 0rem 0em 0.2em black;
+  color: white;
+
+  cursor: text;
 }
 
 #media-search-form {
@@ -833,13 +884,20 @@ p {
 
 .media-page-header {
   width: 100%;
-  margin-top: 50px;
-  margin-bottom: 20px;
+  margin-top: 40px;
+
+  text-align: center;
+}
+
+.media-page-header p {
+  display: inline;
 
   text-align: center;
   font-family: sans-serif;
   font-size: 30px;
   color: black;
+
+  cursor: text;
 }
 
 
@@ -983,6 +1041,7 @@ p {
 
   width: 242px;
   height: 26px;
+  margin-bottom: 10px;
 }
 
 .result-page-btn {
@@ -1004,7 +1063,6 @@ p {
 .current-page-search-results {
   display: inline;
   position: relative;
-  top: 10px;
   left: 0;
 
   font-family: sans-serif;
@@ -1015,7 +1073,6 @@ p {
 .total-search-results {
   display: inline;
   position: relative;
-  top: 10px;
   left: 5%;
 
   font-family: sans-serif;
@@ -1215,13 +1272,13 @@ p {
 
 /* -------------------------------- FOOTER -------------------------------- */
 #footer {
+  grid-row-start: 2;
+  grid-row-end: 3;
+
   z-index: 10;
-  position: relative;
-  top: 120px;
 
   height: auto;
   width: 100%;
-  margin-top: 40px;
   padding: 20px 5%;
 
   font-family: sans-serif;
@@ -1284,9 +1341,15 @@ p {
   position: relative;
 
   margin-bottom: 10px;
+}
+
+#footer-copyright p {
+  display: inline;
 
   font-size: 16px;
   color: white;
+
+  cursor: text;
 }
 
 #footer-link-list {
@@ -1323,26 +1386,6 @@ p {
 }
 
 
-
-
-
-/* -------------------------- MEDIA QUERY <= 1440 -------------------------- */
-@media screen and (max-width: 1440px) {
-  #carousel-container {
-    width: 100%;
-
-    padding-left: 5%;
-    padding-right: 5%;
-  }
-
-  .scroll-left {
-    left: 1%;
-  }
-
-  .scroll-right {
-    right: 1%;
-  }
-}
 
 
 
