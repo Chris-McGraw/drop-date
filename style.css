@@ -16,6 +16,7 @@
 
   cursor: default;
 }
+
 html {
   height: 100%;
 }
@@ -282,6 +283,7 @@ p {
   top: 80px;
 
   margin-bottom: 160px;
+
   /* border: 1px solid blue; */
 }
 
@@ -391,7 +393,7 @@ p {
   justify-content: center;
 
   width: 100%;
-  margin-top: 50px;
+  margin-top: 40px;
 }
 
 .recent-release-title p {
@@ -406,25 +408,33 @@ p {
 }
 
 .media-row-title {
+  position: absolute;
+  top: -35px;
+  left: 0;
+
   width: 100%;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  max-width: 1440px;
+  margin: auto;
+}
+
+.media-row-title p {
+  display: inline;
 
   font-family: sans-serif;
   font-size: 20px;
   color: black;
+
+  cursor: text;
 }
 
 .media-row-title-link {
-  position: relative;
+  position: absolute;
+  top: -35px;
   left: 0;
-  right: 0;
 
-  width: 90%;
+  width: 100%;
   max-width: 1440px;
   margin: auto;
-  margin-top: 40px;
-  margin-bottom: -30px;
 }
 
 .media-row-title-link a {
@@ -512,7 +522,7 @@ p {
   width: 90%;
   max-width: 1440px;
   margin: auto;
-  margin-top: 40px;
+  margin-top: 80px;
 }
 
 .carousel-main {
@@ -532,6 +542,7 @@ p {
 
 .carousel-main::-webkit-scrollbar {
   width: 0 !important;
+  height: 0 !important;
 }
 
 .carousel-tile {
@@ -816,10 +827,13 @@ p {
   background-color: rgba(0,0,0, 0.4);
 }
 
-.media-search-title {
-  color: white;
+.media-search-title p {
+  display: inline;
 
   text-shadow: 0rem 0em 0.2em black;
+  color: white;
+
+  cursor: text;
 }
 
 #media-search-form {
@@ -870,13 +884,20 @@ p {
 
 .media-page-header {
   width: 100%;
-  margin-top: 50px;
-  margin-bottom: 20px;
+  margin-top: 40px;
+
+  text-align: center;
+}
+
+.media-page-header p {
+  display: inline;
 
   text-align: center;
   font-family: sans-serif;
   font-size: 30px;
   color: black;
+
+  cursor: text;
 }
 
 
@@ -1320,9 +1341,15 @@ p {
   position: relative;
 
   margin-bottom: 10px;
+}
+
+#footer-copyright p {
+  display: inline;
 
   font-size: 16px;
   color: white;
+
+  cursor: text;
 }
 
 #footer-link-list {
@@ -1359,26 +1386,6 @@ p {
 }
 
 
-
-
-
-/* -------------------------- MEDIA QUERY <= 1440 -------------------------- */
-@media screen and (max-width: 1440px) {
-  #carousel-container {
-    width: 100%;
-
-    padding-left: 5%;
-    padding-right: 5%;
-  }
-
-  .scroll-left {
-    left: 1%;
-  }
-
-  .scroll-right {
-    right: 1%;
-  }
-}
 
 
 
