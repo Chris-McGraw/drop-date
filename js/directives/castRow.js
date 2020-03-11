@@ -81,7 +81,7 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", "gameApi", function(js
 
 // ____ ATTRIBUTE HANDLERS
       if(scope.type === "movies") {
-        scope.rowTitle = "Cast:";
+        scope.rowTitle = "Cast";
 
         jsonPad.getData( movieApi.castUrl(), movieApi.callback() ).then(
           function successCallback(response) {
@@ -101,7 +101,7 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", "gameApi", function(js
 // ---
 
       else if(scope.type === "tv") {
-        scope.rowTitle = "Cast:";
+        scope.rowTitle = "Cast";
 
         jsonPad.getData( tvApi.castUrl(), tvApi.callback() ).then(
           function successCallback(response) {
@@ -121,7 +121,7 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", "gameApi", function(js
 // ---
 
       else if(scope.type === "games") {
-        scope.rowTitle = "Characters:";
+        scope.rowTitle = "Characters";
 
         function getGameCharacters(response) {
           var charIdArray = [];
