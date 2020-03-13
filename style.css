@@ -52,6 +52,14 @@ p {
   color: black;
 }
 
+.inline-text {
+  display: inline;
+
+  cursor: text;
+
+  /* border: 1px dashed black; */
+}
+
 
 
 /* -------------------------------- NAVBAR -------------------------------- */
@@ -277,6 +285,7 @@ p {
 }
 
 
+
 /* ------------------------- MAIN BODY CONTAINER ------------------------- */
 .view-main-container {
   position: relative;
@@ -394,17 +403,11 @@ p {
 
   width: 100%;
   margin-top: 40px;
-}
-
-.recent-release-title p {
-  display: inline;
 
   font-family: sans-serif;
   font-size: 30px;
   text-align: center;
   color: black;
-
-  cursor: text;
 }
 
 .media-row-title {
@@ -731,14 +734,8 @@ p {
 
 .hero-media-release-date {
   margin-bottom: 20px;
-}
-
-.hero-media-release-date p {
-  display: inline;
 
   font-weight: bold !important;
-
-  cursor: text;
 }
 
 .hero-media-overview {
@@ -747,7 +744,6 @@ p {
   -webkit-box-orient: vertical;
 
   overflow: hidden;
-  cursor: text;
 }
 
 .hero-carousel-page-select {
@@ -1248,15 +1244,18 @@ p {
   max-width: 1440px;
   margin: auto;
   margin-top: 40px;
-
-  /* border: 1px dashed red; */
 }
 
-#cast-carousel-container h3 {
+.cast-carousel-title {
   margin-bottom: 12px;
 
   font-family: sans-serif;
   font-size: 20px;
+}
+
+#carousel-results-none {
+  font-family: sans-serif;
+  font-size: 16px;
 }
 
 #cast-carousel {
@@ -1264,8 +1263,6 @@ p {
 
   height: auto;
   width: 100%;
-
-  user-select: none;
 
   overflow-x: auto;
   overflow: -moz-scrollbars-none;

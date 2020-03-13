@@ -7,31 +7,47 @@
         </div>
 
         <div id="media-info-container">
-          <h2>{{ detail.name }}</h2>
+          <h2>
+            <span class="inline-text">{{ detail.name }}</span>
+          </h2>
 
           <div id="release-dates">
-            <h3 class="media-info-tile">{{ selectedCountry }} Release Dates:</h3>
+            <h3 class="media-info-tile">
+              <span class="inline-text">{{ selectedCountry }} Release Dates:</span>
+            </h3>
             <div class="media-info-tile">
               <div ng-repeat="release in releases">
-                <p>{{ release.date | date:"MMM dd, yyyy" }}</p>
-                <p class="release-note">{{ release.name }} {{ release.platform.name }}</p>
+                <p>
+                  <span class="inline-text">{{ release.date | date:"MMM dd, yyyy" }}</span>
+                </p>
+                <p class="release-note">
+                  <span class="inline-text">{{ release.name }} {{ release.platform.name }}</span>
+                </p>
               </div>
             </div>
           </div>
 
           <div id="production">
-            <h3 class="media-info-tile">Production Companies:</h3>
+            <h3 class="media-info-tile">
+              <span class="inline-text">Production Companies:</span>
+            </h3>
             <div class="media-info-tile">
-              <p ng-repeat="prod in productionList">{{ prod.name }}</p>
+              <p ng-repeat="prod in productionList">
+                <span class="inline-text">{{ prod.name }}</span>
+              </p>
             </div>
           </div>
 
           <!-- <p>{{ detail.platforms[0].name }}</p> -->
 
           <div id="genre">
-            <h3 class="media-info-tile">Genres:</h3>
+            <h3 class="media-info-tile">
+              <span class="inline-text">Genres:</span>
+            </h3>
             <div class="media-info-tile">
-              <p ng-repeat="genre in genreList">{{ genre.name }}</p>
+              <p ng-repeat="genre in genreList">
+                <span class="inline-text">{{ genre.name }}</span>
+              </p>
             </div>
           </div>
         </div>
@@ -40,8 +56,12 @@
   </div>
 
   <div id="overview-container">
-    <h3>Overview</h3>
-    <p>{{ detail.summary }}</p>
+    <h3>
+      <span class="inline-text">Overview</span>
+    </h3>
+    <p>
+      <span class="inline-text">{{ detail.summary }}</span>
+    </p>
   </div>
 
   <cast-row type="games"></cast-row>

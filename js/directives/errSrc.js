@@ -20,7 +20,7 @@ app.directive("errSrc", function() {
         }
 
       // check castRow for broken imgPath and replace with backup image
-        else if(scope.$parent.rowTitle === "Characters:") {
+        else if(scope.$parent.rowTitle === "Characters") {
           if(attrs.src != attrs.errSrc) {
             attrs.$set("src", "../../imgs/cast-backup.png");
           }

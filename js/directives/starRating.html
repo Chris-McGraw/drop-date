@@ -1,4 +1,6 @@
-<p>{{ starRating }} stars</p>
+<p>
+  <span class="inline-text">{{ starRating }} stars</span>
+</p>
 
 <i ng-class="oneStar" class="rating-star"></i>
 <i ng-class="twoStar" class="rating-star"></i>
@@ -6,5 +8,9 @@
 <i ng-class="fourStar" class="rating-star"></i>
 <i ng-class="fiveStar" class="rating-star"></i>
 
-<p id="rating-count-header">Numbers of Ratings:</p>
-<p id="rating-count">{{ ratingCount | number }}</p>
+<p id="rating-count-header">
+  <span class="inline-text">Numbers of Ratings:</span>
+</p>
+<p id="rating-count">
+  <span class="inline-text">{{ ratingCount | number }}</span>
+</p>
