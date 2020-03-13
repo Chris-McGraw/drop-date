@@ -1,6 +1,6 @@
 <section id="carousel-container">
   <h3 class="media-row-title">
-    <p>{{ rowTitle }}</p>
+    <span class="inline-text">{{ rowTitle }}</span>
   </h3>
 
   <h3 class="media-row-title-link">
@@ -15,7 +15,7 @@
 
     <a class="carousel-tile" href="{{ media.idPath }}"
     ng-repeat="media in mediaList | limitTo: 10" ng-init="$last && checkCarouselOverflow()">
-      <img class="media-img" ng-src="{{ media.imgPath }}"
+      <img class="media-img" ng-src="{{ media.imgPath }}" draggable="false"
       alt="{{ media.title }} image" err-src>
 
       <p class="media-name">{{ media.title }}</p>
