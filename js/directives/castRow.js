@@ -144,7 +144,7 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", "gameApi", function(js
         }
 
         function backupGameCastImage(cast) {
-          if(cast.image.small_url === "https://www.giantbomb.com/api/image/scale_small/3026329-gb_default-16_9.png") {
+          if( cast.image.small_url.includes("gb_default") ) {
             cast.img_path = "../../imgs/cast-backup.png";
           }
           else {
