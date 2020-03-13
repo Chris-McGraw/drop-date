@@ -3,7 +3,7 @@
   ng-repeat="result in results | limitTo: 10">
 
     <div class="result-tile-img-contain">
-      <img class="result-media-img" ng-src="{{ result.img_path }}" err-src>
+      <img class="result-media-img" ng-src="{{ result.img_path }}" draggable="false" err-src>
     </div>
 
     <div class="result-tile-info-contain">
@@ -17,6 +17,10 @@
     ng-repeat="button in pageButtons | limitTo: 7">{{ button.number }}</a>
   </ul>
 
-  <p class="current-page-search-results">showing: {{ pageResultFirst }} - {{ pageResultLast }}</p>
-  <p class="total-search-results">total results: {{ totalResults }}</p>
+  <p class="current-page-search-results">
+    <span class="inline-text">showing: {{ pageResultFirst }} - {{ pageResultLast }}</span>
+  </p>
+  <p class="total-search-results">
+    <span class="inline-text">total results: {{ totalResults }}</span>
+  </p>
 </div>
