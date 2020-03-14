@@ -81,7 +81,7 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", "gameApi", function(js
 
 // ____ ATTRIBUTE HANDLERS
       if(scope.type === "movies") {
-        scope.rowTitle = "Cast:";
+        scope.rowTitle = "Cast";
 
         jsonPad.getData( movieApi.castUrl(), movieApi.callback() ).then(
           function successCallback(response) {
@@ -101,7 +101,7 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", "gameApi", function(js
 // ---
 
       else if(scope.type === "tv") {
-        scope.rowTitle = "Cast:";
+        scope.rowTitle = "Cast";
 
         jsonPad.getData( tvApi.castUrl(), tvApi.callback() ).then(
           function successCallback(response) {
@@ -121,7 +121,7 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", "gameApi", function(js
 // ---
 
       else if(scope.type === "games") {
-        scope.rowTitle = "Characters:";
+        scope.rowTitle = "Characters";
 
         function getGameCharacters(response) {
           var charIdArray = [];
@@ -144,7 +144,7 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", "gameApi", function(js
         }
 
         function backupGameCastImage(cast) {
-          if(cast.image.small_url === "https://www.giantbomb.com/api/image/scale_small/3026329-gb_default-16_9.png") {
+          if( cast.image.small_url.includes("gb_default") ) {
             cast.img_path = "../../imgs/cast-backup.png";
           }
           else {

@@ -1,6 +1,11 @@
-<section id="carousel-container">
-  <h3>{{ rowTitle }}</h3>
-  <p id="carousel-results-none">n/a</p>
+<section id="cast-carousel-container">
+  <h3 class="cast-carousel-title">
+    <span class="inline-text">{{ rowTitle }}</span>
+  </h3>
+
+  <p id="carousel-results-none">
+    <span class="inline-text">n/a</span>
+  </p>
 
   <div id="cast-carousel">
     <button class="carousel-scroll scroll-left" style="display:none"
@@ -12,8 +17,12 @@
       <img class="cast-img" ng-src="{{ cast.img_path }}"
       alt="{{ cast.name }} headshot" err-src>
 
-      <p class="cast-name">{{ cast.name }}</p>
-      <p class="cast-character">{{ cast.character }}</p>
+      <p class="cast-name">
+        <span class="inline-text">{{ cast.name }}</span>
+      </p>
+      <p class="cast-character">
+        <span class="inline-text">{{ cast.character }}</span>
+      </p>
     </div>
 
     <button id="carousel-scroll-right" class="carousel-scroll scroll-right" style="display:none"

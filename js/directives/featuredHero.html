@@ -8,7 +8,7 @@
 
       <a class="hero-media-img-container" href="{{ id_path }}"
       aria-label="featured {{ type }} link">
-        <img class="hero-media-img" ng-src="{{ img_path }}"
+        <img class="hero-media-img" ng-src="{{ img_path }}" draggable="false"
         alt="featured {{ type }} image" detail-err-src>
       </a>
 
@@ -23,11 +23,13 @@
           </a>
         </p>
 
-        <div class="hero-media-release-date">
-          <p>{{ release_date | date:"MMM dd, yyyy" }}</p>
-        </div>
+        <p class="hero-media-release-date">
+          <span class="inline-text">{{ release_date | date:"MMM dd, yyyy" }}</span>
+        </p>
 
-        <p class="hero-media-overview">{{ overview }}</p>
+        <p class="hero-media-overview">
+          <span class="inline-text">{{ overview }}</span>
+        </p>
       </div>
 
       <button class="hero-scroll hero-scroll-right" ng-click="increaseHeroCarouselPage()"

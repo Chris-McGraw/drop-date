@@ -2,7 +2,7 @@ app.directive("errSrc", function() {
   return {
     link: function(scope, element, attrs) {
       element.bind("error", function() {
-      // check mediaRow for broken imgPath and replace with backup image
+      // check mediaRow & searchGrid for broken imgPath and replace with backup image
         if(scope.$parent.media === "games") {
           if(attrs.src != attrs.errSrc) {
             attrs.$set("src", "../../imgs/game-backup.png");
@@ -20,7 +20,7 @@ app.directive("errSrc", function() {
         }
 
       // check castRow for broken imgPath and replace with backup image
-        else if(scope.$parent.rowTitle === "Characters:") {
+        else if(scope.$parent.rowTitle === "Characters") {
           if(attrs.src != attrs.errSrc) {
             attrs.$set("src", "../../imgs/cast-backup.png");
           }
