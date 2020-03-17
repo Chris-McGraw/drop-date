@@ -24,7 +24,7 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "mediaVi
 
 
 // _____________ VARIABLES
-      // scope.searchTest = $location.search().search;
+      var emptySearchResult = document.getElementById("empty-search-result");
 
 
 // _____________ FUNCTIONS
@@ -84,7 +84,12 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "mediaVi
         }
 
       // get the number of the first result on the current page
-        scope.pageResultFirst = ((currentPage * 10) - 9);
+        if(response.data.total_results === 0) {
+          scope.pageResultFirst = 0;
+        }
+        else {
+          scope.pageResultFirst = ((currentPage * 10) - 9);
+        }
 
       // get the number of the last result on the current page
         if(response.data.total_results > (currentPage * 10)) {
@@ -92,6 +97,26 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "mediaVi
         }
         else {
           scope.pageResultLast = response.data.total_results;
+        }
+
+      // check for empty search results or search result page error
+        if(response.data.total_results === 0) {
+          scope.searchErrorText = "No results. Would you like to search again?";
+
+          emptySearchResult.style.marginBottom = "-10px";
+          emptySearchResult.style.display = "block";
+        }
+        else if(scope.pageResultFirst > scope.pageResultLast) {
+          scope.pageResultFirst = 0;
+          scope.pageResultLast = 0;
+
+          scope.searchErrorText = "This page does not exist. Please select another page.";
+
+          emptySearchResult.style.marginBottom = "40px";
+          emptySearchResult.style.display = "block";
+        }
+        else {
+          emptySearchResult.style.display = "none";
         }
       }
 
