@@ -25,6 +25,7 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "mediaVi
 
 // _____________ VARIABLES
       var emptySearchResult = document.getElementById("empty-search-result");
+      var resultPageBtnList = document.getElementById("result-page-btn-list");
 
 
 // _____________ FUNCTIONS
@@ -103,6 +104,7 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "mediaVi
         if(response.data.total_results === 0) {
           scope.searchErrorText = "No results. Would you like to search again?";
 
+          resultPageBtnList.style.zIndex = "-100";
           emptySearchResult.style.marginBottom = "-10px";
           emptySearchResult.style.display = "block";
         }
@@ -112,10 +114,12 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "mediaVi
 
           scope.searchErrorText = "This page does not exist. Please select another page.";
 
+          resultPageBtnList.style.zIndex = "auto";
           emptySearchResult.style.marginBottom = "40px";
           emptySearchResult.style.display = "block";
         }
         else {
+          resultPageBtnList.style.zIndex = "auto";
           emptySearchResult.style.display = "none";
         }
       }
