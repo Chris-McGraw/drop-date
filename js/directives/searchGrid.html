@@ -1,4 +1,10 @@
 <div id="result-page-container">
+  <div id="empty-search-result" display="none">
+    <p>
+      <span class="inline-text">{{ searchErrorText }}</span>
+    </p>
+  </div>
+
   <a class="result-tile" href="{{ result.link }}"
   ng-repeat="result in results | limitTo: 10">
 

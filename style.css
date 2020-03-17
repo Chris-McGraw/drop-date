@@ -881,6 +881,29 @@ p {
 
 
 /* ---------------------------- VIEW : RESULTS ---------------------------- */
+#empty-search-result {
+  /* border: 1px dashed red; */
+}
+
+#empty-search-result p {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+#empty-search-result::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: 0;
+
+  height: 1px;
+  background-color: rgba(0,0,0, 0.2);
+  width: 100%;
+
+  pointer-events: none;
+  cursor: default;
+}
+
 .user-search-query {
   position: relative;
 
@@ -932,10 +955,11 @@ p {
   cursor: pointer;
 }
 
-.result-tile:nth-child(1)::before {
+.result-tile:nth-child(2)::before {
   content: "";
   position: absolute;
   top: -40px;
+  left: 0;
 
   height: 1px;
   background-color: rgba(0,0,0, 0.2);
@@ -949,6 +973,7 @@ p {
   content: "";
   position: absolute;
   top: 240px;
+  left: 0;
 
   height: 1px;
   background-color: rgba(0,0,0, 0.2);
