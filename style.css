@@ -138,11 +138,32 @@ p {
   transform: translateY(-10px) rotate(-45deg);
 }
 
-#dropdown-search-icon {
-  position: absolute;
-  left: 45px;
+#navbar-search-toggle-container-left {
+  display: none;
 
+  align-items: center;
+
+  position: absolute;
+  top: 0;
+  left: 25px;
+
+  width: auto;
+  height: 80px;
+  margin-left: 5%;
+}
+
+#navbar-search-toggle-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+#navbar-search-toggle-left i {
   font-size: 22px;
+
+  cursor: pointer;
 }
 
 #dropdown-nav {
@@ -243,6 +264,33 @@ p {
 
 #drop-date-logo > img {
   height: 60px;
+
+  cursor: pointer;
+}
+
+#navbar-search-toggle-container-right {
+  display: flex;
+  align-items: center;
+
+  position: absolute;
+  top: 0;
+  right: 75px;
+
+  width: auto;
+  height: 80px;
+  margin-right: 5%;
+}
+
+#navbar-search-toggle-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+#navbar-search-toggle-right i {
+  font-size: 22px;
 
   cursor: pointer;
 }
@@ -1496,15 +1544,18 @@ p {
 
     display: flex;
     align-items: center;
+    justify-content: center;
 
     height: 100%;
-    width: 27px;
-
-    /* border: 1px dashed white; */
+    width: 25px;
   }
 
   #hamburger-menu {
     display: block;
+  }
+
+  #navbar-search-toggle-container-left {
+    display: flex;
   }
 
   #dropdown-nav {
@@ -1512,6 +1563,10 @@ p {
   }
 
   #navbar-page-link-list {
+    display: none;
+  }
+
+  #navbar-search-toggle-container-right {
     display: none;
   }
 
