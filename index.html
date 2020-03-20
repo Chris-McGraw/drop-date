@@ -31,7 +31,7 @@
       </div>
 
       <div id="navbar-search-toggle-container-left">
-        <button id="navbar-search-toggle-left">
+        <button id="navbar-search-toggle-left" dropdown-search ng-click="toggleDropdownSearch()">
           <i class="fas fa-search"></i>
         </button>
       </div>
@@ -51,7 +51,7 @@
       <a id="drop-date-logo" href="#/home/"><img src="imgs/drop-date-logo.png"></a>
 
       <div id="navbar-search-toggle-container-right">
-        <button id="navbar-search-toggle-right">
+        <button id="navbar-search-toggle-right" dropdown-search ng-click="toggleDropdownSearch()">
           <i class="fas fa-search"></i>
         </button>
       </div>
@@ -77,6 +77,27 @@
     <a class="dropdown-link" href="#/tv/">
       <p id="tv-view-dropdown-link">TV</p>
     </a>
+  </div>
+
+  <div id="dropdown-search-container">
+    <form id="dropdown-search-form" ng-submit="getInput()">
+      <div class="dropdown-search-grid-tile dsg-tile-left">
+        <i class="fas fa-search dropdown-search-icon"></i>
+      </div>
+
+      <div class="dropdown-search-grid-tile dsg-tile-mid">
+        <input id="dropdown-search-input" type="text"
+        placeholder="do a thing..." ng-model="inputVal"></input>
+      </div>
+
+      <div class="dropdown-search-grid-tile dsg-tile-right">
+        <select id="media-search-select" name="media-search-select">
+          <option value="games" selected>Games</option>
+          <option value="movies">Movies</option>
+          <option value="tv">TV</option>
+        </select>
+      </div>
+    </form>
   </div>
 
 
@@ -175,6 +196,7 @@
 
   <!-- Directives -->
   <script src="js/directives/dropdownNavbar.js"></script>
+  <script src="js/directives/dropdownSearch.js"></script>
   <script src="js/directives/countrySelectChange.js"></script>
 
   <script src="js/directives/errSrc.js"></script>
