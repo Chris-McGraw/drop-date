@@ -25,14 +25,20 @@
         <button id="hamburger-menu" aria-label="navigation dropdown toggle"
         dropdown-navbar ng-click="toggleDropdownNav()">
           <div id="hamburger-bar-top" class="hamburger-bar rotate-bar-top"></div>
-          <div id="hamburger-bar-middle" class="hamburger-bar hide-bar-middle"></div>
+          <div id="hamburger-bar-middle" class="hamburger-bar hamburger-bar-middle hide-bar-middle"></div>
           <div id="hamburger-bar-bottom" class="hamburger-bar rotate-bar-bottom"></div>
         </button>
       </div>
 
       <div id="navbar-search-toggle-container-left">
         <button id="navbar-search-toggle-left" dropdown-search ng-click="toggleDropdownSearch()">
-          <i class="fas fa-search"></i>
+          <i class="fas fa-search search-toggle-icon-open"></i>
+
+          <div class="search-toggle-icon-close">
+            <div class="hamburger-bar rotate-bar-top"></div>
+            <div class="hamburger-bar hamburger-bar-middle hide-bar-middle"></div>
+            <div class="hamburger-bar rotate-bar-bottom"></div>
+          </div>
         </button>
       </div>
 
@@ -52,7 +58,13 @@
 
       <div id="navbar-search-toggle-container-right">
         <button id="navbar-search-toggle-right" dropdown-search ng-click="toggleDropdownSearch()">
-          <i class="fas fa-search"></i>
+          <i class="fas fa-search search-toggle-icon-open"></i>
+
+          <div class="search-toggle-icon-close">
+            <div class="hamburger-bar rotate-bar-top"></div>
+            <div class="hamburger-bar hamburger-bar-middle hide-bar-middle"></div>
+            <div class="hamburger-bar rotate-bar-bottom"></div>
+          </div>
         </button>
       </div>
 
@@ -86,12 +98,12 @@
       </div>
 
       <div class="dropdown-search-grid-tile">
-        <input id="dropdown-search-input" type="text"
+        <input id="dropdown-search-input" type="text" tabindex="-1"
         placeholder="do a thing..." ng-model="inputVal"></input>
       </div>
 
       <div class="dropdown-search-grid-tile">
-        <select id="media-search-select" name="media-search-select">
+        <select id="media-search-select" name="media-search-select" tabindex="-1">
           <option value="games" selected>Games</option>
           <option value="movies">Movies</option>
           <option value="tv">TV</option>
