@@ -7,7 +7,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="imgs/drop-date-favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
   <link rel="stylesheet" type="text/css" href="style.css">
-  <title>Drop Date - Popular Media Release Info</title>
+  <title>Drop Date - Media Release Info</title>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous">
@@ -22,7 +22,7 @@
   <nav id="navbar">
     <div id="navbar-inner">
       <div id="hamburger-container">
-        <button id="hamburger-menu" aria-label="navigation dropdown toggle"
+        <button id="hamburger-menu" type="button" aria-label="dropdown navigation toggle"
         dropdown-navbar ng-click="toggleDropdownNav()">
           <div id="hamburger-bar-top" class="hamburger-bar rotate-bar-top"></div>
           <div id="hamburger-bar-middle" class="hamburger-bar hamburger-bar-middle hide-bar-middle"></div>
@@ -31,7 +31,8 @@
       </div>
 
       <div id="navbar-search-toggle-container-left">
-        <button id="navbar-search-toggle-left" dropdown-search ng-click="toggleDropdownSearch()">
+        <button id="navbar-search-toggle-left" type="button" aria-label="dropdown search toggle"
+        dropdown-search ng-click="toggleDropdownSearch()">
           <i class="fas fa-search search-toggle-icon-open"></i>
 
           <div class="search-toggle-icon-close">
@@ -57,7 +58,8 @@
       <a id="drop-date-logo" href="#/home/"><img src="imgs/drop-date-logo.png"></a>
 
       <div id="navbar-search-toggle-container-right">
-        <button id="navbar-search-toggle-right" dropdown-search ng-click="toggleDropdownSearch()">
+        <button id="navbar-search-toggle-right" type="button" aria-label="dropdown search toggle"
+        dropdown-search ng-click="toggleDropdownSearch()">
           <i class="fas fa-search search-toggle-icon-open"></i>
 
           <div class="search-toggle-icon-close">
@@ -94,7 +96,9 @@
   <div id="dropdown-search-container">
     <form id="dropdown-search-form" ng-submit="getInput()">
       <div class="dropdown-search-grid-tile">
-        <i class="fas fa-search dropdown-search-icon"></i>
+        <button type="submit" aria-label="submit search">
+          <i class="fas fa-search dropdown-search-icon"></i>
+        </button>
       </div>
 
       <div class="dropdown-search-grid-tile">
