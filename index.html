@@ -23,7 +23,7 @@
     <div id="navbar-inner">
       <div id="hamburger-container">
         <button id="hamburger-menu" type="button" aria-label="dropdown navigation toggle"
-        dropdown-navbar ng-click="toggleDropdownNav()">
+        navbar-dropdown ng-click="toggleDropdownNav()">
           <div id="hamburger-bar-top" class="hamburger-bar rotate-bar-top"></div>
           <div id="hamburger-bar-middle" class="hamburger-bar hamburger-bar-middle hide-bar-middle"></div>
           <div id="hamburger-bar-bottom" class="hamburger-bar rotate-bar-bottom"></div>
@@ -32,7 +32,7 @@
 
       <div id="navbar-search-toggle-container-left">
         <button id="navbar-search-toggle-left" type="button" aria-label="dropdown search toggle"
-        dropdown-search ng-click="toggleDropdownSearch()">
+        navbar-dropdown ng-click="toggleDropdownSearch()">
           <i class="fas fa-search search-toggle-icon-open"></i>
 
           <div class="search-toggle-icon-close">
@@ -59,7 +59,7 @@
 
       <div id="navbar-search-toggle-container-right">
         <button id="navbar-search-toggle-right" type="button" aria-label="dropdown search toggle"
-        dropdown-search ng-click="toggleDropdownSearch()">
+        navbar-dropdown ng-click="toggleDropdownSearch()">
           <i class="fas fa-search search-toggle-icon-open"></i>
 
           <div class="search-toggle-icon-close">
@@ -96,7 +96,7 @@
   <div id="dropdown-search-container">
     <form id="dropdown-search-form" ng-submit="getInput()">
       <div class="dropdown-search-grid-tile">
-        <button type="submit" aria-label="submit search">
+        <button id="dropdown-search-submit" type="submit" aria-label="submit search" tabindex="-1">
           <i class="fas fa-search dropdown-search-icon"></i>
         </button>
       </div>
@@ -211,8 +211,7 @@
   <script src="js/controllers/TvDetailController.js"></script>
 
   <!-- Directives -->
-  <script src="js/directives/dropdownNavbar.js"></script>
-  <script src="js/directives/dropdownSearch.js"></script>
+  <script src="js/directives/navbarDropdown.js"></script>
   <script src="js/directives/countrySelectChange.js"></script>
 
   <script src="js/directives/errSrc.js"></script>

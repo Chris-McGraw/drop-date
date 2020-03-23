@@ -413,6 +413,12 @@ p {
     cursor: pointer;
   }
 
+  #dropdown-search-submit {
+    display: flex;
+
+    cursor: pointer;
+  }
+
   .dropdown-search-icon {
     cursor: pointer;
   }
