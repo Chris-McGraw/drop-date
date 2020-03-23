@@ -1,4 +1,4 @@
-app.directive("dropdownSearch", ["$location", function($location) {
+app.directive("dropdownSearch", ["$location", "userSearch", function($location, userSearch) {
   return {
     link: function(scope, element, attrs) {
 // _____________ VARIABLES
@@ -63,6 +63,42 @@ app.directive("dropdownSearch", ["$location", function($location) {
           expandDropdownSearch();
 
           dropdownSearchActive = true;
+        }
+      }
+
+
+      scope.getInput = function() {
+        var input = scope.dropdownSearchInputVal;
+        userSearch.setData(input);
+
+        if(mediaSearchSelect.value === "games") {
+          $location.search("search", userSearch.getData());
+          $location.path("/games/results/");
+        }
+        else if(mediaSearchSelect.value === "movies") {
+          $location.search("search", userSearch.getData());
+          $location.path("/movies/results/");
+        }
+        else if(mediaSearchSelect.value === "tv") {
+          $location.search("search", userSearch.getData());
+          $location.path("/tv/results/");
+        }
+
+        dropdownSearchInput.value = "";
+        dropdownSearchInput.blur();
+      }
+
+
+// ________ EVENT HANDLERS
+      mediaSearchSelect.onchange = function() {
+        if(mediaSearchSelect.value === "games") {
+          dropdownSearchInput.placeholder = "enter a video game title...";
+        }
+        else if(mediaSearchSelect.value === "movies") {
+          dropdownSearchInput.placeholder = "enter a movie title...";
+        }
+        else if(mediaSearchSelect.value === "tv") {
+          dropdownSearchInput.placeholder = "enter a television show title...";
         }
       }
 
