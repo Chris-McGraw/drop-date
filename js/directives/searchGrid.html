@@ -19,7 +19,7 @@
     </div>
   </a>
 
-  <ul class="result-page-btn-list">
+  <ul id="result-page-btn-list">
     <a class="result-page-btn" href="{{ button.page_path }}&page={{$index + 1}}"
     ng-repeat="button in pageButtons | limitTo: 7">{{ button.number }}</a>
   </ul>
