@@ -4,6 +4,7 @@ app.directive("navbarDropdown", ["$location", "userSearch", function($location, 
 // _____________ VARIABLES
       var dropdownNavActive = true;
 
+      var hamburgerMenu = document.getElementById("hamburger-menu");
       var hamburgerBarTop = document.getElementById("hamburger-bar-top");
       var hamburgerBarMiddle = document.getElementById("hamburger-bar-middle");
       var hamburgerBarBottom = document.getElementById("hamburger-bar-bottom");
@@ -18,6 +19,8 @@ app.directive("navbarDropdown", ["$location", "userSearch", function($location, 
 
       var dropdownSearchActive = false;
 
+      var navbarSearchToggleLeft = document.getElementById("navbar-search-toggle-left");
+      var navbarSearchToggleRight = document.getElementById("navbar-search-toggle-right");
       var searchToggleIconOpen = document.getElementsByClassName("search-toggle-icon-open");
       var searchToggleIconClose = document.getElementsByClassName("search-toggle-icon-close");
 
@@ -56,14 +59,49 @@ app.directive("navbarDropdown", ["$location", "userSearch", function($location, 
 
       scope.toggleDropdownNav = function() {
         if(dropdownNavActive === true) {
-          retractDropdownNav();
+          hamburgerMenu.disabled = true;
+          navbarSearchToggleLeft.disabled = true;
+          navbarSearchToggleRight.disabled = true;
 
+          retractDropdownNav();
           dropdownNavActive = false;
+
+          setTimeout(function() {
+            hamburgerMenu.disabled = false;
+            navbarSearchToggleLeft.disabled = false;
+            navbarSearchToggleRight.disabled = false;
+          }, 300);
         }
         else if(dropdownNavActive === false) {
-          expandDropdownNav();
+          hamburgerMenu.disabled = true;
+          navbarSearchToggleLeft.disabled = true;
+          navbarSearchToggleRight.disabled = true;
 
-          dropdownNavActive = true;
+          if(dropdownSearchActive === true) {
+            retractDropdownSearch();
+            dropdownSearchActive = false;
+
+            setTimeout(function() {
+              expandDropdownNav();
+              dropdownNavActive = true;
+            }, 300);
+
+            setTimeout(function() {
+              hamburgerMenu.disabled = false;
+              navbarSearchToggleLeft.disabled = false;
+              navbarSearchToggleRight.disabled = false;
+            }, 600);
+          }
+          else {
+            expandDropdownNav();
+            dropdownNavActive = true;
+
+            setTimeout(function() {
+              hamburgerMenu.disabled = false;
+              navbarSearchToggleLeft.disabled = false;
+              navbarSearchToggleRight.disabled = false;
+            }, 300);
+          }
         }
       }
 
@@ -120,14 +158,64 @@ app.directive("navbarDropdown", ["$location", "userSearch", function($location, 
 
       scope.toggleDropdownSearch = function() {
         if(dropdownSearchActive === true) {
-          retractDropdownSearch();
+          hamburgerMenu.disabled = true;
+          navbarSearchToggleLeft.disabled = true;
+          navbarSearchToggleRight.disabled = true;
 
+          retractDropdownSearch();
           dropdownSearchActive = false;
+
+          setTimeout(function() {
+            hamburgerMenu.disabled = false;
+            navbarSearchToggleLeft.disabled = false;
+            navbarSearchToggleRight.disabled = false;
+          }, 300)
         }
         else if(dropdownSearchActive === false) {
-          expandDropdownSearch();
+          hamburgerMenu.disabled = true;
+          navbarSearchToggleLeft.disabled = true;
+          navbarSearchToggleRight.disabled = true;
 
-          dropdownSearchActive = true;
+          if(dropdownNavActive === true) {
+            if(window.innerWidth > 500) {
+              retractDropdownNav();
+              dropdownNavActive = false;
+
+              expandDropdownSearch();
+              dropdownSearchActive = true;
+
+              setTimeout(function() {
+                hamburgerMenu.disabled = false;
+                navbarSearchToggleLeft.disabled = false;
+                navbarSearchToggleRight.disabled = false;
+              }, 300);
+            }
+            else {
+              retractDropdownNav();
+              dropdownNavActive = false;
+
+              setTimeout(function() {
+                expandDropdownSearch();
+                dropdownSearchActive = true;
+              }, 300);
+
+              setTimeout(function() {
+                hamburgerMenu.disabled = false;
+                navbarSearchToggleLeft.disabled = false;
+                navbarSearchToggleRight.disabled = false;
+              }, 600);
+            }
+          }
+          else {
+            expandDropdownSearch();
+            dropdownSearchActive = true;
+
+            setTimeout(function() {
+              hamburgerMenu.disabled = false;
+              navbarSearchToggleLeft.disabled = false;
+              navbarSearchToggleRight.disabled = false;
+            }, 300);
+          }
         }
       }
 
