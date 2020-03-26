@@ -10,19 +10,19 @@ app.directive("errSrc", function() {
         }
         else if(scope.$parent.media === "movies") {
           if(attrs.src != attrs.errSrc) {
-            attrs.$set("src", "../../imgs/movie-backup.png");
+            attrs.$set("src", "imgs/movie-backup.png");
           }
         }
         else if(scope.$parent.media === "tv") {
           if(attrs.src != attrs.errSrc) {
-            attrs.$set("src", "../../imgs/tv-backup.png");
+            attrs.$set("src", "imgs/tv-backup.png");
           }
         }
 
       // check castRow for broken imgPath and replace with backup image
         else if(scope.$parent.rowTitle === "Characters") {
           if(attrs.src != attrs.errSrc) {
-            attrs.$set("src", "../../imgs/cast-backup.png");
+            attrs.$set("src", "imgs/cast-backup.png");
           }
         }
 

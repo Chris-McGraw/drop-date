@@ -90,7 +90,7 @@ app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "country
 
   // ____ DETAIL IMAGE
       if( $scope.detail.image.small_url.includes("gb_default") ) {
-        $scope.detail.img_path = "../../imgs/game-backup.png";
+        $scope.detail.img_path = "imgs/game-backup.png";
       }
       else {
         $scope.detail.img_path = $scope.detail.image.small_url;

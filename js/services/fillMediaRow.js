@@ -10,7 +10,7 @@ app.service("fillMediaRow", ["jsonPad", "movieApi", "tvApi", "gameApi", "country
 
   function backupMovieImages(movie) {
     if(movie.poster_path === null) {
-      movie.imgPath = "../../imgs/movie-backup.png";
+      movie.imgPath = "imgs/movie-backup.png";
     }
     else {
       movie.imgPath = "http://image.tmdb.org/t/p/w185" + movie.poster_path;
@@ -80,7 +80,7 @@ app.service("fillMediaRow", ["jsonPad", "movieApi", "tvApi", "gameApi", "country
 
   function backupTvImages(show) {
     if(show.poster_path === null) {
-      show.imgPath = "../../imgs/tv-backup.png";
+      show.imgPath = "imgs/tv-backup.png";
     }
     else {
       show.imgPath = "http://image.tmdb.org/t/p/w185" + show.poster_path;

@@ -17,7 +17,7 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", "gameApi", function(js
       function backupImage() {
         angular.forEach(scope.castList, function(cast) {
           if(cast.profile_path === null) {
-            cast.img_path = "../../imgs/cast-backup.png";
+            cast.img_path = "imgs/cast-backup.png";
           }
           else {
             cast.img_path = "http://image.tmdb.org/t/p/w185" + cast.profile_path;
@@ -145,7 +145,7 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", "gameApi", function(js
 
         function backupGameCastImage(cast) {
           if( cast.image.small_url.includes("gb_default") ) {
-            cast.img_path = "../../imgs/cast-backup.png";
+            cast.img_path = "imgs/cast-backup.png";
           }
           else {
             cast.img_path = cast.image.small_url;

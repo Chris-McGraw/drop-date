@@ -153,7 +153,7 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "mediaVi
 
         function backupImage(result) {
           if( result.image.small_url.includes("gb_default") ) {
-            result.img_path = "../../imgs/game-backup.png";
+            result.img_path = "imgs/game-backup.png";
           }
           else {
             result.img_path = result.image.small_url;
@@ -192,7 +192,7 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "mediaVi
 
         function backupImage(result) {
           if(result.poster_path === null) {
-            result.img_path = "../../imgs/movie-backup.png";
+            result.img_path = "imgs/movie-backup.png";
           }
           else {
             result.img_path = "http://image.tmdb.org/t/p/w185" + result.poster_path;
@@ -225,7 +225,7 @@ app.directive("searchGrid", ["jsonPad", "gameApi", "movieApi", "tvApi", "mediaVi
 
         function backupImage(result) {
           if(result.poster_path === null) {
-            result.img_path = "../../imgs/tv-backup.png";
+            result.img_path = "imgs/tv-backup.png";
           }
           else {
             result.img_path = "http://image.tmdb.org/t/p/w185" + result.poster_path;

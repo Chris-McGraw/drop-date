@@ -45,7 +45,7 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
       // check featured hero for previous game img error
         if(scope.featuredGameImgErr === false) {
           if( featuredGameDetail.image.small_url.includes("gb_default") ) {
-            scope.img_path = "../../imgs/game-backup.png";
+            scope.img_path = "imgs/game-backup.png";
 
             element[0].firstChild.style.backgroundImage = "none";
             document.getElementById("featured-hero-inner").style.backgroundColor = "rgba(0,0,0, 0.4)";
@@ -58,7 +58,7 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
           }
         }
         else {
-          scope.img_path = "../../imgs/game-backup.png";
+          scope.img_path = "imgs/game-backup.png";
 
           element[0].firstChild.style.backgroundImage = "none";
           document.getElementById("featured-hero-inner").style.backgroundColor = "rgba(0,0,0, 0.4)";
@@ -74,7 +74,7 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
           var featureList = [];
 
           angular.forEach(data, function(movie) {
-            if(movie.imgPath !== "../../imgs/movie-backup.png" && movie.backdrop_path !== null) {
+            if(movie.imgPath !== "imgs/movie-backup.png" && movie.backdrop_path !== null) {
               featureList.push(movie);
             }
           });
@@ -96,7 +96,7 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
       // check featured hero for previous movie img error
         if(scope.featuredMovieImgErr === false) {
           if(featuredMovie.poster_path === null) {
-            scope.img_path = "../../imgs/movie-backup.png";
+            scope.img_path = "imgs/movie-backup.png";
           }
           else {
             scope.img_path = "http://image.tmdb.org/t/p/w500" + featuredMovie.poster_path;
@@ -105,7 +105,7 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
           }
         }
         else {
-          scope.img_path = "../../imgs/movie-backup.png";
+          scope.img_path = "imgs/movie-backup.png";
         }
 
         scope.backdrop_path = "http://image.tmdb.org/t/p/w500" + featuredMovie.backdrop_path;
@@ -121,7 +121,7 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
           var featureList = [];
 
           angular.forEach(data, function(tv) {
-            if(tv.imgPath !== "../../imgs/tv-backup.png" && tv.backdrop_path !== null) {
+            if(tv.imgPath !== "imgs/tv-backup.png" && tv.backdrop_path !== null) {
               featureList.push(tv);
             }
           });
@@ -143,7 +143,7 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
       // check featured hero for previous tv img error
         if(scope.featuredTvImgErr === false) {
           if(featuredTv.poster_path === null) {
-            scope.img_path = "../../imgs/tv-backup.png";
+            scope.img_path = "imgs/tv-backup.png";
           }
           else {
             scope.img_path = "http://image.tmdb.org/t/p/w500" + featuredTv.poster_path;
@@ -152,7 +152,7 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
           }
         }
         else {
-          scope.img_path = "../../imgs/tv-backup.png";
+          scope.img_path = "imgs/tv-backup.png";
         }
 
         scope.backdrop_path = "http://image.tmdb.org/t/p/w500" + featuredTv.backdrop_path;
