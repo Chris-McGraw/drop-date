@@ -63,7 +63,7 @@ app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "count
 
   // ____ DETAIL IMAGE
       if($scope.detail.poster_path === null) {
-        $scope.detail.img_path = "../../imgs/movie-backup.png";
+        $scope.detail.img_path = "imgs/movie-backup.png";
       }
       else {
         $scope.detail.img_path = "http://image.tmdb.org/t/p/w500" + $scope.detail.poster_path;
@@ -75,7 +75,7 @@ app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "count
           $scope.detail.backdrop = $scope.detail.img_path;
         }
         else {
-          $scope.detail.backdrop = "../imgs/movie-backup.png";
+          $scope.detail.backdrop = "imgs/movie-backup.png";
         }
       }
       else {
