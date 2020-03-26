@@ -174,7 +174,7 @@ app.service("fillMediaRow", ["jsonPad", "movieApi", "tvApi", "gameApi", "country
 
   function backupGameImages(game) {
     if( game.image.small_url.includes("gb_default") ) {
-      game.imgPath = "../imgs/game-backup.png";
+      game.imgPath = "imgs/game-backup.png";
     }
     else {
       game.imgPath = game.image.small_url;
