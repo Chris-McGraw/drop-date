@@ -5,7 +5,7 @@ app.directive("errSrc", function() {
       // check mediaRow & searchGrid for broken imgPath and replace with backup image
         if(scope.$parent.media === "games") {
           if(attrs.src != attrs.errSrc) {
-            attrs.$set("src", "../../imgs/game-backup.png");
+            attrs.$set("src", "../imgs/game-backup.png");
           }
         }
         else if(scope.$parent.media === "movies") {
