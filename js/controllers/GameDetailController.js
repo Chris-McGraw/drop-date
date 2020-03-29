@@ -48,7 +48,7 @@ app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "country
               }
             }
             else {
-              release.date = new Date( release.release_date );
+              release.date = new Date( release.release_date.replace(/-/g, "/") );
             }
           });
 
