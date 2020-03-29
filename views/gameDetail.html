@@ -19,7 +19,7 @@
             <div class="media-info-tile">
               <div ng-repeat="release in releases">
                 <p>
-                  <span class="inline-text">{{ release.date | date:"MMM dd, yyyy":"UTC" }}</span>
+                  <span class="inline-text">{{ release.date | date:"MMM dd, yyyy" }}</span>
                 </p>
                 <p class="release-note">
                   <span class="inline-text">{{ release.name }} {{ release.platform.name }}</span>
