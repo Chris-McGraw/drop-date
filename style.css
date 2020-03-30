@@ -434,6 +434,7 @@ p {
 
     border: 1px solid #aaa;
     border-right: none;
+    border-radius: 0;
 
     cursor: text;
   }
@@ -719,8 +720,9 @@ p {
   overflow-x: auto;
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
 
-  /* scroll-behavior: smooth; */
+  scroll-behavior: smooth;
 }
 
 .carousel-main::-webkit-scrollbar {
@@ -1469,6 +1471,9 @@ p {
   overflow-x: auto;
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+
+  scroll-behavior: smooth;
  }
 
 #cast-carousel::-webkit-scrollbar {
@@ -1584,7 +1589,7 @@ p {
 
   margin-bottom: 10px;
 
-  font-size: 16px;
+  font-size: 14px;
   color: white;
 }
 

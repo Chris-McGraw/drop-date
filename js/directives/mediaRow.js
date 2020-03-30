@@ -1,4 +1,4 @@
-app.directive("mediaRow", ["fillMediaRow", function(fillMediaRow) {
+app.directive("mediaRow", ["fillMediaRow", "carouselScrollDelay", function(fillMediaRow, carouselScrollDelay) {
   return {
     restrict: "E",
     scope: {
@@ -53,23 +53,27 @@ app.directive("mediaRow", ["fillMediaRow", function(fillMediaRow) {
 // ---
 
       scope.scrollCarouselLeft = function($event) {
-        var carousel = $event.currentTarget.parentElement;
-        var scrollPos = carousel.scrollLeft;
+        if(carouselScrollDelay.scrollStatus() === true) {
+          var carousel = $event.currentTarget.parentElement;
+          var scrollPos = carousel.scrollLeft;
 
-        carousel.scroll(scrollPos - ( 160 * Math.floor(carousel.offsetWidth / 160) ), 0);
+          carousel.scroll(scrollPos - ( 160 * Math.floor(carousel.offsetWidth / 160) ), 0);
 
-        toggleCarouselControls(carousel);
+          toggleCarouselControls(carousel);
+        }
       }
 
 // ---
 
       scope.scrollCarouselRight = function($event) {
-        var carousel = $event.currentTarget.parentElement;
-        var scrollPos = carousel.scrollLeft;
+        if(carouselScrollDelay.scrollStatus() === true) {
+          var carousel = $event.currentTarget.parentElement;
+          var scrollPos = carousel.scrollLeft;
 
-        carousel.scroll(scrollPos + ( 160 * Math.floor(carousel.offsetWidth / 160) ), 0);
+          carousel.scroll(scrollPos + ( 160 * Math.floor(carousel.offsetWidth / 160) ), 0);
 
-        toggleCarouselControls(carousel);
+          toggleCarouselControls(carousel);
+        }
       }
 
 
@@ -165,9 +169,13 @@ app.directive("mediaRow", ["fillMediaRow", function(fillMediaRow) {
         carouselMain[i].onscroll = function() {
           clearTimeout(debounceTimeout);
 
+          carouselScrollDelay.preventScroll();
+
           var thisCarousel = this;
 
           debounceTimeout = setTimeout(function() {
+            carouselScrollDelay.allowScroll();
+
             toggleCarouselControls(thisCarousel);
           }, 100);
         };
