@@ -1,4 +1,4 @@
-app.directive("castRow", ["jsonPad", "movieApi", "tvApi", "gameApi", function(jsonPad, movieApi, tvApi, gameApi) {
+app.directive("castRow", ["jsonPad", "movieApi", "tvApi", "gameApi", "carouselScrollDelay", function(jsonPad, movieApi, tvApi, gameApi, carouselScrollDelay) {
   return {
     restrict: "E",
     scope: {
@@ -59,23 +59,27 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", "gameApi", function(js
 // ---
 
       scope.scrollCarouselLeft = function($event) {
-        var carousel = $event.currentTarget.parentElement;
-        var scrollPos = carousel.scrollLeft;
+        if(carouselScrollDelay.scrollStatus() === true) {
+          var carousel = $event.currentTarget.parentElement;
+          var scrollPos = carousel.scrollLeft;
 
-        carousel.scroll(scrollPos - ( 160 * Math.floor(carousel.offsetWidth / 160) ), 0);
+          carousel.scroll(scrollPos - ( 160 * Math.floor(carousel.offsetWidth / 160) ), 0);
 
-        toggleCarouselControls(carousel);
+          toggleCarouselControls(carousel);
+        }
       }
 
 // ---
 
       scope.scrollCarouselRight = function($event) {
-        var carousel = $event.currentTarget.parentElement;
-        var scrollPos = carousel.scrollLeft;
+        if(carouselScrollDelay.scrollStatus() === true) {
+          var carousel = $event.currentTarget.parentElement;
+          var scrollPos = carousel.scrollLeft;
 
-        carousel.scroll(scrollPos + ( 160 * Math.floor(carousel.offsetWidth / 160) ), 0);
+          carousel.scroll(scrollPos + ( 160 * Math.floor(carousel.offsetWidth / 160) ), 0);
 
-        toggleCarouselControls(carousel);
+          toggleCarouselControls(carousel);
+        }
       }
 
 
@@ -192,7 +196,11 @@ app.directive("castRow", ["jsonPad", "movieApi", "tvApi", "gameApi", function(js
       castCarousel.onscroll= function() {
         clearTimeout(debounceTimeout);
 
+        carouselScrollDelay.preventScroll();
+
         debounceTimeout = setTimeout(function() {
+          carouselScrollDelay.allowScroll();
+
           toggleCarouselControls(castCarousel);
         }, 100);
       };
