@@ -720,7 +720,7 @@ p {
   overflow-x: auto;
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
-  -webkit-overflow-scrolling: touch;
+  /* -webkit-overflow-scrolling: touch; */
 
   scroll-behavior: smooth;
 }
@@ -1471,7 +1471,7 @@ p {
   overflow-x: auto;
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
-  -webkit-overflow-scrolling: touch;
+  /* -webkit-overflow-scrolling: touch; */
 
   scroll-behavior: smooth;
  }
