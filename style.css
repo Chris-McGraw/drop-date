@@ -102,7 +102,7 @@ p {
 }
 
 #navbar-page-link-list a {
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-weight: bold;
   color: white;
@@ -154,13 +154,15 @@ p {
   -webkit-appearance: none;
   appearance: none;
 
-  width: 100%;
+  width: 75px;
   max-width: 100%;
-  padding-left: 25px;
+  padding-left: 20px;
+
+  font-family: "Montserrat", sans-serif;
 
   background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"), linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
   background-repeat: no-repeat, repeat;
-  background-position: left 10px top 55%, 0 0;
+  background-position: left 5px top 55%, 0 0;
   background-size: 10px auto, 100%;
   border: 1px solid #aaa;
 
@@ -260,7 +262,7 @@ p {
 
     height: 100%;
 
-    font-family: sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 14px;
     font-weight: bold;
     color: black;
@@ -428,7 +430,7 @@ p {
     height: 20px;
     padding: 0 10px;
 
-    font-family: sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 14px;
     color: black;
 
@@ -436,6 +438,9 @@ p {
     border-right: none;
     border-radius: 0;
 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     cursor: text;
   }
 
@@ -449,7 +454,7 @@ p {
     max-width: 100%;
     padding-left: 20px;
 
-    font-family: sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 14px;
     color: black;
 
@@ -489,7 +494,7 @@ p {
   margin-top: 40px;
   margin-bottom: 10px;
 
-  font-family: sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 40px;
   text-align: center;
   color: black;
@@ -501,7 +506,7 @@ p {
   margin-top: 10px;
   margin-bottom: 20px;
 
-  font-family: sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 40px;
   text-align: center;
   color: black;
@@ -536,7 +541,7 @@ p {
   display: inline-block;
 }
 
-.change-view-btn {
+/* .change-view-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -578,7 +583,7 @@ p {
 
   opacity: 0.4;
   cursor: pointer;
-}
+} */
 
 #tv-page-icon {
   font-size: 65px;
@@ -591,7 +596,7 @@ p {
   width: 100%;
   margin-top: 40px;
 
-  font-family: sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 30px;
   text-align: center;
   color: black;
@@ -606,7 +611,7 @@ p {
   max-width: 1440px;
   margin: auto;
 
-  font-family: sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 20px;
   color: black;
 }
@@ -622,7 +627,7 @@ p {
 }
 
 .media-row-title-link a {
-  font-family: sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 20px;
   color: black;
 }
@@ -669,7 +674,7 @@ p {
   padding: 0 4px;
   margin-top: 6px;
 
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-weight: bold;
   color: black;
@@ -687,7 +692,7 @@ p {
   margin-top: 2px;
   margin-bottom: 6px;
 
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
   color: black;
 
@@ -782,7 +787,7 @@ p {
 /* --------------------------- VIEW : MEDIA HOME --------------------------- */
 #featured-hero-backdrop {
   width: 100%;
-  height: 422px;
+  height: 440px;
 
   background-color: #f8f8f8;
   background-size: cover;
@@ -857,7 +862,7 @@ p {
   display: flex;
   justify-content: center;
 
-  height: 262px;
+  height: 280px;
 
   background-color: rgba(0,0,0, 0.8);
 }
@@ -875,14 +880,15 @@ p {
 .hero-media-info-container {
   grid-column: span 2;
 
-  height: 262px;
+  height: 280px;
   padding: 10px;
 
   background-color: rgba(0,0,0, 0.8);
 }
 
 .hero-media-info-container p {
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
+
   font-size: 16px;
   color: white;
 }
@@ -893,7 +899,7 @@ p {
   -webkit-box-orient: vertical;
 
   text-align: center;
-  font-family: sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 20px;
   font-weight: bold;
   color: white;
@@ -1021,7 +1027,7 @@ p {
   margin-bottom: 20px;
   padding: 0 10px;
 
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
   color: black;
 
@@ -1044,7 +1050,7 @@ p {
   margin: auto;
   margin-bottom: 80px;
 
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
   color: white;
 
@@ -1061,7 +1067,7 @@ p {
   margin-top: 40px;
 
   text-align: center;
-  font-family: sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 30px;
   color: black;
 }
@@ -1073,9 +1079,9 @@ p {
   /* border: 1px dashed red; */
 }
 
-#empty-search-result p {
-  font-family: sans-serif;
-  font-size: 16px;
+#empty-search-result h3 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
 }
 
 #empty-search-result::before {
@@ -1098,7 +1104,7 @@ p {
   margin-top: -10px;
   margin-bottom: 20px;
 
-  font-family: sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 30px;
   text-align: center;
   color: rgba(0,0,0, 0.6);
@@ -1209,7 +1215,7 @@ p {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 
-  font-family: sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 20px;
   color: black;
 
@@ -1219,11 +1225,13 @@ p {
 
 .result-media-overview {
   display: -webkit-box;
-  -webkit-line-clamp: 9;
+  -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
 
-  font-family: sans-serif;
-  font-size: 12px;
+  padding-top: 4px;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
   color: black;
 
   overflow: hidden;
@@ -1249,7 +1257,7 @@ p {
   justify-content: center;
   align-items: center;
 
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 12px;
   color: black;
 
@@ -1264,7 +1272,7 @@ p {
   position: relative;
   left: 0;
 
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 12px;
   color: black;
 }
@@ -1274,7 +1282,7 @@ p {
   position: relative;
   left: 5%;
 
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 12px;
   color: black;
 }
@@ -1356,7 +1364,7 @@ p {
   margin-bottom: 10px;
 
   text-align: center;
-  font-family: sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 30px;
   padding: 6px 0;
 
@@ -1364,13 +1372,14 @@ p {
 }
 
 #media-info-container h3 {
+  font-family: "Open Sans", sans-serif !important;
   font-size: 20px;
 }
 
 .media-info-tile {
   grid-column: span 1;
 
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
 
   padding: 0 6px;
   margin-bottom: 10px;
@@ -1430,12 +1439,12 @@ p {
 #overview-container h3 {
   margin-bottom: 12px;
 
-  font-family: sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 20px;
 }
 
 #overview-container p {
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
 }
 
@@ -1453,12 +1462,12 @@ p {
 .cast-carousel-title {
   margin-bottom: 12px;
 
-  font-family: sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 20px;
 }
 
 #carousel-results-none {
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
 }
 
@@ -1499,7 +1508,7 @@ p {
   padding: 0 4px;
   margin-top: 6px;
 
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-weight: bold;
   color: black;
@@ -1516,7 +1525,7 @@ p {
   margin-top: 2px;
   margin-bottom: 6px;
 
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
   color: black;
 
@@ -1536,7 +1545,6 @@ p {
   width: 100%;
   padding: 20px 5%;
 
-  font-family: sans-serif;
   text-align: center;
 
   background-color: black;
@@ -1566,10 +1574,12 @@ p {
 }
 
 .attr-text {
+  font-family: "Open Sans", sans-serif;
   color: white;
 }
 
 .attr-link {
+  font-family: "Montserrat", sans-serif;
   margin-top: 10px;
 }
 
@@ -1589,6 +1599,7 @@ p {
 
   margin-bottom: 10px;
 
+  font-family: "Open Sans", sans-serif;
   font-size: 14px;
   color: white;
 }
@@ -1647,8 +1658,8 @@ p {
 
 
 
-/* -------------------------- MEDIA QUERY <= 900 -------------------------- */
-@media screen and (max-width: 900px) {
+/* -------------------------- MEDIA QUERY <= 1000 -------------------------- */
+@media screen and (max-width: 1000px) {
   .attribution {
     grid-column: span 2;
   }

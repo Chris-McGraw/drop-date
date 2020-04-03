@@ -10,7 +10,10 @@ app.service("colorPalette", ["localDate", "userSearch", function(localDate, user
       var swatches = vibrant.swatches();
       var paletteColor = "";
 
-      if(swatches.Muted === undefined) {
+      if(swatches.Muted === undefined && swatches.DarkMuted === undefined) {
+        paletteColor = "0,0,0, 0.4";
+      }
+      else if(swatches.Muted === undefined) {
         paletteColor = swatches.DarkMuted.rgb[0]
         + "," + swatches.DarkMuted.rgb[1]
         + "," + swatches.DarkMuted.rgb[2]
