@@ -1518,13 +1518,13 @@ p {
   cursor: pointer;
 }
 
-.attr-link:hover {
+/* .attr-link:hover {
   color: rgba(255,255,255, 1.0);
-}
+} */
 
-@media (hover: none) {
-  .attr-link {
-    color: rgba(255,255,255, 0.6);
+@media (hover: hover) {
+  .attr-link:hover {
+    color: rgba(255,255,255, 1.0);
   }
 }
 
