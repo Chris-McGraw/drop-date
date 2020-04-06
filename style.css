@@ -525,70 +525,6 @@ p {
 
 
 /* ----------------------------- VIEW : HOME ----------------------------- */
-#page-link-list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  margin-top: 20px;
-}
-
-#movie-page-link {
-  margin: 0 10px;
-}
-
-.page-link {
-  display: inline-block;
-}
-
-/* .change-view-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  position: relative;
-  left: 0;
-  right: 0;
-
-  width: 160px;
-  height: 80px;
-  margin: auto;
-
-  background-color: red;
-  border: 1px solid black;
-  border-radius: 4px;
-
-  cursor: pointer;
-
-  overflow: hidden;
-}
-
-.change-view-btn > p {
-  position: absolute;
-  left: 0;
-  right: 0;
-
-  margin: auto;
-
-  text-align: center;
-  font-family: sans-serif;
-  font-size: 16px;
-  color: white;
-
-  cursor: pointer;
-}
-
-.change-view-btn > i {
-  font-size: 80px;
-
-  opacity: 0.4;
-  cursor: pointer;
-} */
-
-#tv-page-icon {
-  font-size: 65px;
-}
-
 .recent-release-title {
   display: flex;
   justify-content: center;
@@ -602,189 +538,9 @@ p {
   color: black;
 }
 
-.media-row-title {
-  position: absolute;
-  top: -35px;
-  left: 0;
-
-  width: 100%;
-  max-width: 1440px;
-  margin: auto;
-
-  font-family: "Open Sans", sans-serif;
-  font-size: 20px;
-  color: black;
-}
-
-.media-row-title-link {
-  position: absolute;
-  top: -35px;
-  left: 0;
-
-  width: 100%;
-  max-width: 1440px;
-  margin: auto;
-}
-
-.media-row-title-link a {
-  font-family: "Open Sans", sans-serif;
-  font-size: 20px;
-  color: black;
-}
-
-.media-row {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-column-gap: 10px;
-
-  width: 100%;
-  height: auto;
-}
-
-.media-tile {
-  grid-column: span 1;
-
-  border: 1px solid black;
-
-  cursor: pointer;
-}
-
-.media-tile > li {
-  cursor: pointer;
-}
-
-.media-img {
-  width: 100%;
-  height: 200px;
-
-  background-color: black;
-
-  object-fit: cover;
-  /* border: 1px solid black; */
-  border-bottom: 1px solid black;
-
-  cursor: pointer;
-}
-
-.media-name {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-
-  padding: 0 4px;
-  margin-top: 6px;
-
-  font-family: "Montserrat", sans-serif;
-  font-size: 14px;
-  font-weight: bold;
-  color: black;
-
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.media-date {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-
-  padding: 0 4px;
-  margin-top: 2px;
-  margin-bottom: 6px;
-
-  font-family: "Montserrat", sans-serif;
-  font-size: 14px;
-  color: black;
-
-  overflow: hidden;
-  cursor: pointer;
-}
 
 
-
-/* --------------------------- SLIDING CAROUSEL --------------------------- */
-#carousel-container {
-  position: relative;
-  left: 0;
-  right: 0;
-
-  width: 90%;
-  max-width: 1440px;
-  margin: auto;
-  margin-top: 80px;
-}
-
-.carousel-main {
-  display: flex;
-
-  height: auto;
-  width: 100%;
-
-  user-select: none;
-
-  overflow-x: auto;
-  overflow: -moz-scrollbars-none;
-  -ms-overflow-style: none;
-  /* -webkit-overflow-scrolling: touch; */
-
-  scroll-behavior: smooth;
-}
-
-.carousel-main::-webkit-scrollbar {
-  width: 0 !important;
-  height: 0 !important;
-}
-
-.carousel-tile {
-  flex: 0 0 150px;
-
-  height: auto;
-  margin-right: 10px;
-
-  background-color: white;
-  border: 1px solid black;
-}
-
-/* .carousel-tile:last-child {
-  margin-right: 0px !important;
-} */
-
-.carousel-scroll {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-
-  position: absolute;
-
-  width: 29px;
-  height: 29px;
-
-  background-color: black;
-  border-radius: 100%;
-
-  opacity: 0.8;
-  cursor: pointer;
-}
-
-.carousel-scroll i {
-  font-size: 25px;
-  color: white;
-
-  cursor: pointer;
-}
-
-.scroll-left {
-  left: -4.4%;
-}
-
-.scroll-right {
-  right: -4.4%;
-}
-
-
-
-/* --------------------------- VIEW : MEDIA HOME --------------------------- */
+/* ---------------------------- FEATURED HERO ---------------------------- */
 #featured-hero-backdrop {
   width: 100%;
   height: 440px;
@@ -975,6 +731,171 @@ p {
   cursor: pointer;
 }
 
+
+
+/* --------------------------- SLIDING CAROUSEL --------------------------- */
+#carousel-container {
+  position: relative;
+  left: 0;
+  right: 0;
+
+  width: 90%;
+  max-width: 1440px;
+  margin: auto;
+  margin-top: 80px;
+}
+
+.carousel-main {
+  display: flex;
+
+  height: auto;
+  width: 100%;
+
+  user-select: none;
+
+  overflow-x: auto;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+  /* -webkit-overflow-scrolling: touch; */
+
+  scroll-behavior: smooth;
+}
+
+.carousel-main::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.carousel-tile {
+  flex: 0 0 150px;
+
+  height: auto;
+  margin-right: 10px;
+
+  background-color: white;
+  border: 1px solid black;
+}
+
+/* .carousel-tile:last-child {
+  margin-right: 0px !important;
+} */
+
+.carousel-scroll {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+
+  position: absolute;
+
+  width: 29px;
+  height: 29px;
+
+  background-color: black;
+  border-radius: 100%;
+
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.carousel-scroll i {
+  font-size: 25px;
+  color: white;
+
+  cursor: pointer;
+}
+
+.scroll-left {
+  left: -4.4%;
+}
+
+.scroll-right {
+  right: -4.4%;
+}
+
+
+
+/* ------------------------------ MEDIA ROW ------------------------------ */
+.media-row-title {
+  position: absolute;
+  top: -35px;
+  left: 0;
+
+  width: 100%;
+  max-width: 1440px;
+  margin: auto;
+
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+  color: black;
+}
+
+.media-row-title-link {
+  position: absolute;
+  top: -35px;
+  left: 0;
+
+  width: 100%;
+  max-width: 1440px;
+  margin: auto;
+}
+
+.media-row-title-link a {
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+  color: black;
+}
+
+.media-img {
+  width: 100%;
+  height: 200px;
+
+  background-color: black;
+
+  object-fit: cover;
+  /* border: 1px solid black; */
+  border-bottom: 1px solid black;
+
+  cursor: pointer;
+}
+
+.media-name {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+
+  padding: 0 4px;
+  margin-top: 6px;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.media-date {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+
+  padding: 0 4px;
+  margin-top: 2px;
+  margin-bottom: 6px;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  color: black;
+
+  overflow: hidden;
+  cursor: pointer;
+}
+
+
+
+/* -------------------------- VIEW : MEDIA HOME -------------------------- */
 #tv-home-hero-container {
   width: 100%;
   height: auto;
@@ -1075,6 +996,39 @@ p {
 
 
 /* ---------------------------- VIEW : RESULTS ---------------------------- */
+.result-view-main-title {
+  margin-top: 80px !important;
+}
+
+.user-search-query {
+  position: relative;
+
+  margin-top: -10px;
+  margin-bottom: 20px;
+
+  font-family: "Open Sans", sans-serif;
+  font-size: 30px;
+  text-align: center;
+  color: rgba(0,0,0, 0.6);
+}
+
+.result-view-submit-btn {
+  margin-bottom: 100px !important;
+}
+
+
+
+/* ----------------------------- SEARCH GRID ----------------------------- */
+#result-page-container {
+  position: relative;
+  left: 0;
+  right: 0;
+
+  width: 90%;
+  max-width: 1440px;
+  margin: auto;
+}
+
 #empty-search-result {
   /* border: 1px dashed red; */
 }
@@ -1096,36 +1050,6 @@ p {
 
   pointer-events: none;
   cursor: default;
-}
-
-.user-search-query {
-  position: relative;
-
-  margin-top: -10px;
-  margin-bottom: 20px;
-
-  font-family: "Open Sans", sans-serif;
-  font-size: 30px;
-  text-align: center;
-  color: rgba(0,0,0, 0.6);
-}
-
-.result-view-main-title {
-  margin-top: 80px !important;
-}
-
-.result-view-submit-btn {
-  margin-bottom: 100px !important;
-}
-
-#result-page-container {
-  position: relative;
-  left: 0;
-  right: 0;
-
-  width: 90%;
-  max-width: 1440px;
-  margin: auto;
 }
 
 .result-tile {
@@ -1448,6 +1372,9 @@ p {
   font-size: 16px;
 }
 
+
+
+/* ------------------------------- CAST ROW ------------------------------- */
 #cast-carousel-container {
   position: relative;
   left: 0;
@@ -1573,24 +1500,35 @@ p {
   font-size: 14px;
 }
 
-.attr-text {
+.attr-header {
   font-family: "Open Sans", sans-serif;
   color: white;
 }
 
-.attr-link {
-  font-family: "Montserrat", sans-serif;
+.attr-text {
   margin-top: 10px;
+
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
 }
 
-.attr-link a {
-  font-weight: bold;
+.attr-link {
   color: rgba(255,255,255, 0.6);
 
   cursor: pointer;
 }
 
-.attr-link a:hover {
+.attr-link:hover {
+  color: rgba(255,255,255, 1.0);
+}
+
+@media (hover: none) {
+  .attr-link {
+    color: rgba(255,255,255, 0.6);
+  }
+}
+
+.test-style {
   color: rgba(255,255,255, 1.0);
 }
 
