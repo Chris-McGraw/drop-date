@@ -1500,24 +1500,35 @@ p {
   font-size: 14px;
 }
 
-.attr-text {
+.attr-header {
   font-family: "Open Sans", sans-serif;
   color: white;
 }
 
-.attr-link {
-  font-family: "Montserrat", sans-serif;
+.attr-text {
   margin-top: 10px;
+
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
 }
 
-.attr-link a {
-  font-weight: bold;
+.attr-link {
   color: rgba(255,255,255, 0.6);
 
   cursor: pointer;
 }
 
-.attr-link a:hover {
+.attr-link:hover {
+  color: rgba(255,255,255, 1.0);
+}
+
+@media (hover: none) {
+  .attr-link {
+    color: rgba(255,255,255, 0.6);
+  }
+}
+
+.test-style {
   color: rgba(255,255,255, 1.0);
 }
 
