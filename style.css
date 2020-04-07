@@ -1519,6 +1519,10 @@ p {
 }
 
 @media (hover: hover) {
+  .attr-link {
+    transition: color 300ms ease-in-out;
+  }
+
   .attr-link:hover {
     color: rgba(255,255,255, 1.0);
   }
