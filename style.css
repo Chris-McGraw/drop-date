@@ -128,7 +128,7 @@ p {
 }
 
 .navbar-link-highlight {
-   color: #9b9b9b;
+   color: #9b9b9b !important;
 }
 
 #drop-date-logo {
@@ -848,10 +848,20 @@ p {
   margin: auto;
 }
 
-.media-row-title-link a {
+.media-row-link {
   font-family: "Open Sans", sans-serif;
   font-size: 20px;
   color: black;
+}
+
+@media (hover: hover) {
+  .media-row-link {
+    transition: color 300ms ease-in-out;
+  }
+
+  .media-row-link:hover {
+    color: #9b9b9b;
+  }
 }
 
 .media-img {
