@@ -97,15 +97,6 @@ p {
   position: absolute;
 
   height: 80px;
-
-  /* border: 1px dashed white; */
-}
-
-#navbar-page-link-list a {
-  font-family: "Montserrat", sans-serif;
-  font-size: 14px;
-  font-weight: bold;
-  color: white;
 }
 
 #navbar-page-link-list li {
@@ -113,14 +104,31 @@ p {
   align-items: center;
 
   height: 28px;
-
-  /* border: 1px solid red; */
 }
 
 #navbar-page-link-list li:nth-child(2) {
   margin: 0 10px;
+}
 
-  /* border-bottom: 2px solid red; */
+.navbar-page-link {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+}
+
+@media (hover: hover) {
+  .navbar-page-link {
+    transition: color 300ms ease-in-out;
+  }
+
+  .navbar-page-link:hover {
+    color: #9b9b9b;
+  }
+}
+
+.navbar-link-highlight {
+   color: #9b9b9b;
 }
 
 #drop-date-logo {
@@ -1513,7 +1521,7 @@ p {
 }
 
 .attr-link {
-  color: rgba(255,255,255, 0.6);
+  color: #9b9b9b;
 
   cursor: pointer;
 }
@@ -1558,14 +1566,6 @@ p {
   opacity: 1.0;
 
   transition: opacity 300ms ease-in-out;
-}
-
-.footer-link-hovered {
-  opacity: 0.5 !important;
-}
-
-.footer-link > a {
-  color: white;
 }
 
 .footer-link > a > i {
