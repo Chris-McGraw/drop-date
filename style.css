@@ -270,25 +270,37 @@ p {
 
     height: 100%;
 
-    font-family: "Montserrat", sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    color: black;
-
     background-image: linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
     background-repeat: repeat;
     background-position: 0 0;
     background-size: 100%;
   }
 
-  .dropdown-link p {
+  .dropdown-link-text {
     display: flex;
     align-items: center;
 
     height: 24px;
 
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+
     cursor: pointer;
   }
+
+  @media (hover: hover) {
+    .dropdown-link-text {
+      transition: color 300ms ease-in-out;
+    }
+
+    .dropdown-link:hover .dropdown-link-text {
+      color: #9b9b9b;
+    }
+  }
+
+
 
 
 
