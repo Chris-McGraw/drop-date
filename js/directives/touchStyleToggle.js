@@ -4,7 +4,13 @@ app.directive("touchStyleToggle", ["$route", function($route) {
 
 // ________ EVENT HANDLERS
       element[0].ontouchstart = function() {
-        if( this.classList.contains("navbar-page-link") || this.classList.contains("media-row-link") ) {
+        if(this.children.length > 0) {
+          if( this.children[0].classList.contains("dropdown-link-text") ) {
+            this.children[0].classList.add("navbar-link-highlight");
+          }
+        }
+
+        else if( this.classList.contains("navbar-page-link") || this.classList.contains("media-row-link") ) {
           this.classList.add("navbar-link-highlight");
         }
         else {
@@ -14,7 +20,13 @@ app.directive("touchStyleToggle", ["$route", function($route) {
 
 
       element[0].ontouchend = function() {
-        if( this.classList.contains("navbar-page-link") || this.classList.contains("media-row-link") ) {
+        if(this.children.length > 0) {
+          if( this.children[0].classList.contains("dropdown-link-text") ) {
+            this.children[0].classList.remove("navbar-link-highlight");
+          }
+        }
+
+        else if( this.classList.contains("navbar-page-link") || this.classList.contains("media-row-link") ) {
           this.classList.remove("navbar-link-highlight");
         }
         else {
