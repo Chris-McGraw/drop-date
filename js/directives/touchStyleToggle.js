@@ -4,15 +4,23 @@ app.directive("touchStyleToggle", ["$route", function($route) {
 
 // ________ EVENT HANDLERS
       element[0].ontouchstart = function() {
-        if(this.children.length > 0) {
-          if( this.children[0].classList.contains("dropdown-link-text") ) {
-            this.children[0].classList.add("navbar-link-highlight");
-          }
+        if(this.children.length === 1
+        && this.children[0].classList.contains("dropdown-link-text") ) {
+          this.children[0].classList.add("navbar-link-highlight");
+        }
+
+        else if( this.children.length > 1
+        && this.children[0].classList.contains("search-toggle-icon-open")
+        && this.children[1].classList.contains("search-toggle-icon-close") ) {
+          this.children[0].classList.add("navbar-link-highlight");
+          this.children[1].children[0].classList.add("hamburger-highlight");
+          this.children[1].children[2].classList.add("hamburger-highlight");
         }
 
         else if( this.classList.contains("navbar-page-link") || this.classList.contains("media-row-link") ) {
           this.classList.add("navbar-link-highlight");
         }
+
         else {
           this.classList.add("attr-link-highlight");
         }
@@ -20,15 +28,23 @@ app.directive("touchStyleToggle", ["$route", function($route) {
 
 
       element[0].ontouchend = function() {
-        if(this.children.length > 0) {
-          if( this.children[0].classList.contains("dropdown-link-text") ) {
-            this.children[0].classList.remove("navbar-link-highlight");
-          }
+        if(this.children.length === 1
+        && this.children[0].classList.contains("dropdown-link-text") ) {
+          this.children[0].classList.remove("navbar-link-highlight");
+        }
+
+        else if( this.children.length > 1
+        && this.children[0].classList.contains("search-toggle-icon-open")
+        && this.children[1].classList.contains("search-toggle-icon-close") ) {
+          this.children[0].classList.remove("navbar-link-highlight");
+          this.children[1].children[0].classList.remove("hamburger-highlight");
+          this.children[1].children[2].classList.remove("hamburger-highlight");
         }
 
         else if( this.classList.contains("navbar-page-link") || this.classList.contains("media-row-link") ) {
           this.classList.remove("navbar-link-highlight");
         }
+
         else {
           this.classList.remove("attr-link-highlight");
         }

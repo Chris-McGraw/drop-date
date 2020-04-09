@@ -331,6 +331,20 @@ p {
     cursor: pointer;
   }
 
+  @media (hover: hover) {
+    #navbar-search-toggle-left {
+      transition: color 300ms ease-in-out;
+    }
+
+    #navbar-search-toggle-left:hover {
+      color: #9b9b9b;
+    }
+
+    #navbar-search-toggle-left:hover .hamburger-bar {
+      background-color: #9b9b9b;
+    }
+  }
+
   #navbar-search-toggle-container-right {
     display: flex;
     align-items: center;
@@ -355,6 +369,28 @@ p {
     height: 25px;
 
     cursor: pointer;
+  }
+
+  @media (hover: hover) {
+    #navbar-search-toggle-right {
+      transition: color 300ms ease-in-out;
+    }
+
+    #navbar-search-toggle-right:hover {
+      color: #9b9b9b;
+    }
+
+    .hamburger-bar {
+      transition: transform 300ms ease-in-out, width 300ms ease-in-out, opacity 300ms ease-in-out, background-color 300ms ease-in-out;
+    }
+
+    #navbar-search-toggle-right:hover .hamburger-bar {
+      background-color: #9b9b9b;
+    }
+  }
+
+  .hamburger-highlight {
+     background-color: #9b9b9b !important;
   }
 
   .search-toggle-icon-open {
