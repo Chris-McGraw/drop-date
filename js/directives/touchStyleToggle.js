@@ -17,6 +17,14 @@ app.directive("touchStyleToggle", ["$route", function($route) {
           this.children[1].children[2].classList.add("hamburger-highlight");
         }
 
+        else if(this.id === "drop-date-logo") {
+          this.classList.add("logo-highlight");
+        }
+
+        else if(this.id === "country-select") {
+          this.classList.add("country-select-highlight");
+        }
+
         else if( this.classList.contains("navbar-page-link") || this.classList.contains("media-row-link") ) {
           this.classList.add("navbar-link-highlight");
         }
@@ -39,6 +47,14 @@ app.directive("touchStyleToggle", ["$route", function($route) {
           this.children[0].classList.remove("navbar-link-highlight");
           this.children[1].children[0].classList.remove("hamburger-highlight");
           this.children[1].children[2].classList.remove("hamburger-highlight");
+        }
+
+        else if(this.id === "drop-date-logo") {
+          this.classList.remove("logo-highlight");
+        }
+
+        else if(this.id === "country-select") {
+          this.classList.remove("country-select-highlight");
         }
 
         else if( this.classList.contains("navbar-page-link") || this.classList.contains("media-row-link") ) {
