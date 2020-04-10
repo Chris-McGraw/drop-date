@@ -140,6 +140,20 @@ p {
   height: 60px;
 }
 
+@media (hover: hover) {
+  #drop-date-logo {
+    transition: opacity 300ms ease-in-out;
+  }
+
+  #drop-date-logo:hover {
+    opacity: 0.6;
+  }
+}
+
+.logo-highlight {
+   opacity: 0.6 !important;
+}
+
 #drop-date-logo > img {
   height: 60px;
 
@@ -183,6 +197,20 @@ p {
 
 #country-select > option {
   height: 40px;
+}
+
+@media (hover: hover) {
+  #country-select {
+    transition: box-shadow 300ms ease-in-out;
+  }
+
+  #country-select:hover {
+    box-shadow: inset 0px 0px 10px #9b9b9b;
+  }
+}
+
+.country-select-highlight {
+  box-shadow: inset 0px 0px 10px #9b9b9b !important;
 }
 
 
