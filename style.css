@@ -231,6 +231,12 @@ p {
     cursor: pointer;
   }
 
+  @media (hover: hover) {
+    #hamburger-menu:hover .hamburger-bar {
+      background-color: #9b9b9b;
+    }
+  }
+
   .hamburger-bar {
     position: relative;
     left: 0;

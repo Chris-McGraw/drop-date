@@ -9,7 +9,7 @@ app.directive("touchStyleToggle", ["$route", function($route) {
           this.children[0].classList.add("navbar-link-highlight");
         }
 
-        else if( this.children.length > 1
+        else if( this.children.length === 2
         && this.children[0].classList.contains("search-toggle-icon-open")
         && this.children[1].classList.contains("search-toggle-icon-close") ) {
           this.children[0].classList.add("navbar-link-highlight");
@@ -25,7 +25,15 @@ app.directive("touchStyleToggle", ["$route", function($route) {
           this.classList.add("country-select-highlight");
         }
 
-        else if( this.classList.contains("navbar-page-link") || this.classList.contains("media-row-link") ) {
+        else if(this.children.length === 3
+        && this.id === "hamburger-menu") {
+          this.children[0].classList.add("hamburger-highlight");
+          this.children[1].classList.add("hamburger-highlight");
+          this.children[2].classList.add("hamburger-highlight");
+        }
+
+        else if( this.classList.contains("navbar-page-link")
+        || this.classList.contains("media-row-link") ) {
           this.classList.add("navbar-link-highlight");
         }
 
@@ -41,7 +49,7 @@ app.directive("touchStyleToggle", ["$route", function($route) {
           this.children[0].classList.remove("navbar-link-highlight");
         }
 
-        else if( this.children.length > 1
+        else if( this.children.length === 2
         && this.children[0].classList.contains("search-toggle-icon-open")
         && this.children[1].classList.contains("search-toggle-icon-close") ) {
           this.children[0].classList.remove("navbar-link-highlight");
@@ -57,7 +65,15 @@ app.directive("touchStyleToggle", ["$route", function($route) {
           this.classList.remove("country-select-highlight");
         }
 
-        else if( this.classList.contains("navbar-page-link") || this.classList.contains("media-row-link") ) {
+        else if(this.children.length === 3
+        && this.id === "hamburger-menu") {
+          this.children[0].classList.remove("hamburger-highlight");
+          this.children[1].classList.remove("hamburger-highlight");
+          this.children[2].classList.remove("hamburger-highlight");
+        }
+
+        else if( this.classList.contains("navbar-page-link")
+        || this.classList.contains("media-row-link") ) {
           this.classList.remove("navbar-link-highlight");
         }
 
