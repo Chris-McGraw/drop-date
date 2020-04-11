@@ -14,7 +14,8 @@
     </button>
 
     <a class="carousel-tile" href="{{ media.idPath }}"
-    ng-repeat="media in mediaList | limitTo: 10" ng-init="$last && checkCarouselOverflow()">
+    ng-repeat="media in mediaList | limitTo: 10" ng-init="$last && checkCarouselOverflow()"
+    touch-style-toggle>
       <img class="media-img" ng-src="{{ media.imgPath }}" draggable="false"
       alt="{{ media.title }} image" err-src>
 

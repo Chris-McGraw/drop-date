@@ -37,6 +37,10 @@ app.directive("touchStyleToggle", ["$route", function($route) {
           this.classList.add("navbar-link-highlight");
         }
 
+        else if( this.classList.contains("carousel-tile") ) {
+          this.classList.add("carousel-tile-highlight");
+        }
+
         else {
           this.classList.add("attr-link-highlight");
         }
@@ -75,6 +79,10 @@ app.directive("touchStyleToggle", ["$route", function($route) {
         else if( this.classList.contains("navbar-page-link")
         || this.classList.contains("media-row-link") ) {
           this.classList.remove("navbar-link-highlight");
+        }
+
+        else if( this.classList.contains("carousel-tile") ) {
+          this.classList.remove("carousel-tile-highlight");
         }
 
         else {
