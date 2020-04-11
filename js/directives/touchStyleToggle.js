@@ -41,6 +41,11 @@ app.directive("touchStyleToggle", ["$route", function($route) {
           this.classList.add("carousel-tile-highlight");
         }
 
+        else if( this.classList.contains("hero-scroll")
+        || this.classList.contains("carousel-scroll") ) {
+          this.classList.add("scroll-button-highlight");
+        }
+
         else {
           this.classList.add("attr-link-highlight");
         }
@@ -83,6 +88,11 @@ app.directive("touchStyleToggle", ["$route", function($route) {
 
         else if( this.classList.contains("carousel-tile") ) {
           this.classList.remove("carousel-tile-highlight");
+        }
+
+        else if( this.classList.contains("hero-scroll")
+        || this.classList.contains("carousel-scroll") ) {
+          this.classList.remove("scroll-button-highlight");
         }
 
         else {

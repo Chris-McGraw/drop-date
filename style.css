@@ -693,6 +693,24 @@ p {
   cursor: pointer;
 }
 
+@media (hover: hover) {
+ .hero-scroll {
+    transition: text-shadow 150ms ease-in-out, transform 150ms ease-in-out;
+  }
+
+  .hero-scroll:hover {
+    text-shadow: 0 0 4px white;
+
+    transform: scale(1.1);
+  }
+}
+
+.scroll-button-highlight {
+  text-shadow: 0 0 4px white !important;
+
+  transform: scale(1.1) !important;
+}
+
 .hero-scroll-left {
   left: -4.4%;
 }
@@ -906,6 +924,18 @@ p {
   color: white;
 
   cursor: pointer;
+}
+
+@media (hover: hover) {
+ .carousel-scroll {
+    transition: text-shadow 150ms ease-in-out, transform 150ms ease-in-out;
+  }
+
+  .carousel-scroll:hover {
+    text-shadow: 0 0 4px white;
+
+    transform: scale(1.1);
+  }
 }
 
 .scroll-left {
