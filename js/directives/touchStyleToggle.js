@@ -37,6 +37,16 @@ app.directive("touchStyleToggle", ["$route", function($route) {
           this.classList.add("navbar-link-highlight");
         }
 
+        else if(this.children.length === 1
+        && this.children[0].classList.contains("hero-media-img") ) {
+          this.children[0].classList.add("carousel-tile-highlight");
+        }
+
+        else if( this.classList.contains("hero-media-name-link")
+        || this.classList.contains("hero-media-type-link") ) {
+          this.classList.add("navbar-link-highlight");
+        }
+
         else if( this.classList.contains("carousel-tile") ) {
           this.classList.add("carousel-tile-highlight");
         }
@@ -83,6 +93,16 @@ app.directive("touchStyleToggle", ["$route", function($route) {
 
         else if( this.classList.contains("navbar-page-link")
         || this.classList.contains("media-row-link") ) {
+          this.classList.remove("navbar-link-highlight");
+        }
+
+        else if(this.children.length === 1
+        && this.children[0].classList.contains("hero-media-img") ) {
+          this.children[0].classList.remove("carousel-tile-highlight");
+        }
+
+        else if( this.classList.contains("hero-media-name-link")
+        || this.classList.contains("hero-media-type-link") ) {
           this.classList.remove("navbar-link-highlight");
         }
 

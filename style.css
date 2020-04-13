@@ -730,6 +730,16 @@ p {
   background-color: rgba(0,0,0, 0.8);
 }
 
+@media (hover: hover) {
+  .hero-media-img {
+    transition: opacity 300ms ease-in-out;
+  }
+
+  .hero-media-img-container:hover .hero-media-img {
+    opacity: 0.6;
+  }
+}
+
 .hero-media-img {
   display: flex;
 
@@ -770,12 +780,32 @@ p {
   overflow: hidden;
 }
 
+@media (hover: hover) {
+  .hero-media-name-link {
+    transition: color 300ms ease-in-out;
+  }
+
+  .hero-media-name-link:hover {
+    color: #9b9b9b;
+  }
+}
+
 .hero-media-type {
   margin-top: 5px;
   margin-bottom: 20px;
 
   text-align: center;
   font-size: 12px !important;
+}
+
+@media (hover: hover) {
+  .hero-media-type-link {
+    transition: color 300ms ease-in-out;
+  }
+
+  .hero-media-type-link:hover {
+    color: #9b9b9b;
+  }
 }
 
 .hero-media-type i {
