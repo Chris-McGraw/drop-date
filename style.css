@@ -1733,11 +1733,21 @@ p {
   transition: opacity 300ms ease-in-out;
 }
 
-.footer-link > a > i {
+.footer-link-icon {
   font-size: 18px;
   color: white;
 
   cursor: pointer;
+}
+
+@media (hover: hover) {
+  .footer-link-icon {
+    transition: color 300ms ease-in-out;
+  }
+
+  .footer-link a:hover .footer-link-icon {
+    color: #9b9b9b;
+  }
 }
 
 

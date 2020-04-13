@@ -56,6 +56,11 @@ app.directive("touchStyleToggle", ["$route", function($route) {
           this.classList.add("scroll-button-highlight");
         }
 
+        else if(this.children.length === 1
+        && this.children[0].classList.contains("footer-link-icon") ) {
+          this.children[0].classList.add("navbar-link-highlight");
+        }
+
         else {
           this.classList.add("attr-link-highlight");
         }
@@ -113,6 +118,11 @@ app.directive("touchStyleToggle", ["$route", function($route) {
         else if( this.classList.contains("hero-scroll")
         || this.classList.contains("carousel-scroll") ) {
           this.classList.remove("scroll-button-highlight");
+        }
+
+        else if(this.children.length === 1
+        && this.children[0].classList.contains("footer-link-icon") ) {
+          this.children[0].classList.remove("navbar-link-highlight");
         }
 
         else {
