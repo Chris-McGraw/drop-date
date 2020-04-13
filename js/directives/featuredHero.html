@@ -7,18 +7,19 @@
       </button>
 
       <a class="hero-media-img-container" href="{{ id_path }}"
-      aria-label="featured {{ type }} link">
+      aria-label="featured {{ type }} link" touch-style-toggle>
         <img class="hero-media-img" ng-src="{{ img_path }}" draggable="false"
         alt="featured {{ type }} image" detail-err-src>
       </a>
 
       <div class="hero-media-info-container">
         <h3 class="hero-media-name">
-          <a href="{{ id_path }}" aria-label="featured {{ type }} link">{{ name }}</a>
+          <a class="hero-media-name-link" href="{{ id_path }}"
+          aria-label="featured {{ type }} link" touch-style-toggle>{{ name }}</a>
         </h3>
 
         <p class="hero-media-type">
-          <a href="{{ type_path }}">
+          <a class="hero-media-type-link" href="{{ type_path }}" touch-style-toggle>
             <i class="fas fa-tags"></i>{{ type }}
           </a>
         </p>
