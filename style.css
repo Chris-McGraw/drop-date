@@ -1156,6 +1156,16 @@ p {
   cursor: pointer;
 }
 
+@media (hover: hover) {
+  .submit-btn {
+    transition: box-shadow 300ms ease-in-out;
+  }
+
+  .submit-btn:hover {
+    box-shadow: inset 0px 0px 10px #9b9b9b;
+  }
+}
+
 .media-page-header {
   width: 100%;
   margin-top: 40px;

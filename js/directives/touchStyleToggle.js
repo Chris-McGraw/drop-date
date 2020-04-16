@@ -59,6 +59,10 @@ app.directive("touchStyleToggle", ["$route", function($route) {
         || this.classList.contains("carousel-scroll") ) {
           this.classList.add("scroll-button-highlight");
         }
+      // submit button
+        else if( this.classList.contains("submit-btn") ) {
+          this.classList.add("country-select-highlight");
+        }
       // footer social link icon
         else if(this.children.length === 1
         && this.children[0].classList.contains("footer-link-icon") ) {
@@ -126,6 +130,10 @@ app.directive("touchStyleToggle", ["$route", function($route) {
         else if( this.classList.contains("hero-scroll")
         || this.classList.contains("carousel-scroll") ) {
           this.classList.remove("scroll-button-highlight");
+        }
+      // submit button
+        else if( this.classList.contains("submit-btn") ) {
+          this.classList.remove("country-select-highlight");
         }
       // footer social link icon
         else if(this.children.length === 1
