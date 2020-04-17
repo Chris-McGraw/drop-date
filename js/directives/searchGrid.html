@@ -6,7 +6,7 @@
   </div>
 
   <a class="result-tile" href="{{ result.link }}"
-  ng-repeat="result in results | limitTo: 10">
+  ng-repeat="result in results | limitTo: 10" touch-style-toggle>
 
     <div class="result-tile-img-contain">
       <img class="result-media-img" ng-src="{{ result.img_path }}" draggable="false"
@@ -21,7 +21,7 @@
 
   <ul id="result-page-btn-list">
     <a class="result-page-btn" href="{{ button.page_path }}&page={{$index + 1}}"
-    ng-repeat="button in pageButtons | limitTo: 7">{{ button.number }}</a>
+    ng-repeat="button in pageButtons | limitTo: 7" touch-style-toggle>{{ button.number }}</a>
   </ul>
 
   <p class="current-page-search-results">

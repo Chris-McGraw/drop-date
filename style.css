@@ -1256,6 +1256,16 @@ p {
   cursor: pointer;
 }
 
+@media (hover: hover) {
+  .result-tile {
+    transition: opacity 300ms ease-in-out;
+  }
+
+  .result-tile:hover {
+    opacity: 0.6;
+  }
+}
+
 .result-tile:nth-child(2)::before {
   content: "";
   position: absolute;
@@ -1372,6 +1382,20 @@ p {
 
   user-select: none;
   cursor: pointer;
+}
+
+@media (hover: hover) {
+  .result-page-btn {
+    transition: box-shadow 300ms ease-in-out;
+  }
+
+  .result-page-btn:hover {
+    box-shadow: inset 0px 0px 5px #9b9b9b;
+  }
+}
+
+.result-page-btn-highlight {
+  box-shadow: inset 0px 0px 5px #9b9b9b !important;
 }
 
 .current-page-search-results {
