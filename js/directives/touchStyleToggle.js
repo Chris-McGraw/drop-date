@@ -63,6 +63,17 @@ app.directive("touchStyleToggle", ["$route", function($route) {
         else if( this.classList.contains("submit-btn") ) {
           this.classList.add("country-select-highlight");
         }
+
+      // result tile
+        else if( this.classList.contains("result-tile") ) {
+          this.classList.add("logo-highlight");
+        }
+
+      // result page button
+        else if( this.classList.contains("result-page-btn") ) {
+          this.classList.add("result-page-btn-highlight");
+        }
+
       // footer social link icon
         else if(this.children.length === 1
         && this.children[0].classList.contains("footer-link-icon") ) {
@@ -135,6 +146,17 @@ app.directive("touchStyleToggle", ["$route", function($route) {
         else if( this.classList.contains("submit-btn") ) {
           this.classList.remove("country-select-highlight");
         }
+
+      // result tile
+        else if( this.classList.contains("result-tile") ) {
+          this.classList.remove("logo-highlight");
+        }
+
+      // result page button
+        else if( this.classList.contains("result-page-btn") ) {
+          this.classList.remove("result-page-btn-highlight");
+        }
+
       // footer social link icon
         else if(this.children.length === 1
         && this.children[0].classList.contains("footer-link-icon") ) {
