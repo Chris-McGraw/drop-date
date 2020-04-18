@@ -9,11 +9,12 @@
 
   <div id="cast-carousel">
     <button class="carousel-scroll scroll-left" style="display:none"
-    ng-click="scrollCarouselLeft($event)" aria-label="Scroll carousel left">
+    ng-click="scrollCarouselLeft($event)" aria-label="Scroll carousel left"
+    touch-style-toggle>
       <i class="fas fa-chevron-left"></i>
     </button>
 
-    <div class="carousel-tile" ng-repeat="cast in castList | limitTo: 10" ng-init="$last && checkCarouselOverflow()">
+    <div class="cast-tile" ng-repeat="cast in castList | limitTo: 10" ng-init="$last && checkCarouselOverflow()">
       <img class="cast-img" ng-src="{{ cast.img_path }}"
       alt="{{ cast.name }} headshot" err-src>
 
@@ -26,7 +27,8 @@
     </div>
 
     <button id="carousel-scroll-right" class="carousel-scroll scroll-right" style="display:none"
-    ng-click="scrollCarouselRight($event)" aria-label="Scroll carousel right">
+    ng-click="scrollCarouselRight($event)" aria-label="Scroll carousel right"
+    touch-style-toggle>
       <i class="fas fa-chevron-right"></i>
     </button>
   </div>
