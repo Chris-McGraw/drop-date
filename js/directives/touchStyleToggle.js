@@ -1,8 +1,25 @@
 app.directive("touchStyleToggle", ["$route", function($route) {
   return {
     link: function(scope, element, attrs) {
-
 // ________ EVENT HANDLERS
+      element[0].onmousedown = function() {
+        angular.forEach(document.querySelectorAll("[touch-style-toggle]"), function(element) {
+          element.style.outlineWidth = "0";
+        });
+      }
+
+// ---
+
+      document.onkeydown = function(event) {
+        if(event.which === 9) {
+          angular.forEach(document.querySelectorAll("[touch-style-toggle]"), function(element) {
+            element.style.outlineWidth = "initial";
+          });
+        }
+      }
+
+// ---
+
       element[0].ontouchstart = function() {
       // navbar dropdown link
         if(this.children.length === 1
@@ -85,6 +102,7 @@ app.directive("touchStyleToggle", ["$route", function($route) {
         }
       }
 
+// ---
 
       element[0].ontouchend = function() {
       // navbar dropdown link
