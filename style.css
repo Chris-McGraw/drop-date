@@ -927,10 +927,6 @@ p {
   opacity: 0.6 !important;
 }
 
-/* .carousel-tile:last-child {
-  margin-right: 0px !important;
-} */
-
 .carousel-scroll {
   display: flex;
   justify-content: center;
@@ -1622,6 +1618,16 @@ p {
 #cast-carousel::-webkit-scrollbar {
   width: 0 !important;
   height: 0 !important;
+}
+
+.cast-tile {
+  flex: 0 0 150px;
+
+  height: auto;
+  margin-right: 10px;
+
+  background-color: white;
+  border: 1px solid black;
 }
 
 .cast-img {
