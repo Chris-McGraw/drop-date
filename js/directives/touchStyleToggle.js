@@ -97,7 +97,7 @@ app.directive("touchStyleToggle", ["$route", function($route) {
           this.children[0].classList.add("navbar-link-highlight");
         }
       // footer attribution link
-        else {
+        else if( this.classList.contains("attr-link") ) {
           this.classList.add("attr-link-highlight");
         }
       }
@@ -181,7 +181,7 @@ app.directive("touchStyleToggle", ["$route", function($route) {
           this.children[0].classList.remove("navbar-link-highlight");
         }
       // footer attribution link
-        else {
+        else if( this.classList.contains("attr-link") ) {
           this.classList.remove("attr-link-highlight");
         }
       }
