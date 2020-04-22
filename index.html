@@ -99,9 +99,11 @@
   <div id="dropdown-search-container">
     <form id="dropdown-search-form" ng-submit="getInput()">
       <div class="dropdown-search-grid-tile">
-        <button id="dropdown-search-submit" type="submit" aria-label="submit search" tabindex="-1">
-          <i class="fas fa-search dropdown-search-icon"></i>
-        </button>
+        <select id="media-search-select" name="media-search-select" tabindex="-1">
+          <option value="games" selected>Games</option>
+          <option value="movies">Movies</option>
+          <option value="tv">TV</option>
+        </select>
       </div>
 
       <div class="dropdown-search-grid-tile">
@@ -110,11 +112,9 @@
       </div>
 
       <div class="dropdown-search-grid-tile">
-        <select id="media-search-select" name="media-search-select" tabindex="-1">
-          <option value="games" selected>Games</option>
-          <option value="movies">Movies</option>
-          <option value="tv">TV</option>
-        </select>
+        <button id="dropdown-search-submit" type="submit" aria-label="submit search" tabindex="-1">
+          <i class="fas fa-search dropdown-search-icon"></i>
+        </button>
       </div>
     </form>
   </div>
