@@ -472,7 +472,7 @@ p {
 
   #dropdown-search-form {
     display: grid;
-    grid-template-columns: 25px 1fr 75px;
+    grid-template-columns: 75px 1fr 25px;
 
     position: relative;
     left: 0;
@@ -487,6 +487,7 @@ p {
   .dropdown-search-grid-tile {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
 
     z-index: 20;
     position: relative;
@@ -497,41 +498,6 @@ p {
     background-repeat: repeat;
     background-position: 0 0;
     background-size: 100%;
-  }
-
-  .dropdown-search-grid-tile button {
-    display: flex;
-
-    cursor: pointer;
-  }
-
-  #dropdown-search-submit {
-    display: flex;
-
-    cursor: pointer;
-  }
-
-  .dropdown-search-icon {
-    cursor: pointer;
-  }
-
-  #dropdown-search-input {
-    width: 100%;
-    height: 20px;
-    padding: 0 10px;
-
-    font-family: "Montserrat", sans-serif;
-    font-size: 14px;
-    color: black;
-
-    border: 1px solid #aaa;
-    border-right: none;
-    border-radius: 0;
-
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    cursor: text;
   }
 
   #media-search-select {
@@ -564,6 +530,65 @@ p {
 
   #media-search-select > option {
     height: 20px;
+  }
+
+  @media (hover: hover) {
+    #media-search-select {
+      transition: box-shadow 300ms ease-in-out;
+    }
+
+    #media-search-select:hover {
+      box-shadow: inset 0px 0px 5px #9b9b9b;
+    }
+  }
+
+  #dropdown-search-input {
+    width: 100%;
+    height: 20px;
+    padding: 0 10px;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    color: black;
+
+    border: 1px solid #aaa;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: text;
+  }
+
+  #dropdown-search-submit {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    height: 20px;
+
+    color: white;
+
+    background-color: red;
+    border: 1px solid black;
+
+    cursor: pointer;
+  }
+
+  @media (hover: hover) {
+    #dropdown-search-submit {
+      transition: box-shadow 300ms ease-in-out;
+    }
+
+    #dropdown-search-submit:hover {
+      box-shadow: inset 0px 0px 10px #9b9b9b;
+    }
+  }
+
+  .dropdown-search-icon {
+    cursor: pointer;
   }
 
 
