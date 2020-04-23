@@ -49,6 +49,14 @@ app.directive("touchStyleToggle", ["$route", function($route) {
           this.children[1].classList.add("hamburger-highlight");
           this.children[2].classList.add("hamburger-highlight");
         }
+      // dropdown seach media select
+        else if(this.id === "media-search-select") {
+          this.classList.add("result-page-btn-highlight");
+        }
+      // dropdown seach submit
+        else if(this.id === "dropdown-search-submit") {
+          this.classList.add("country-select-highlight");
+        }
       // navbar link
       // media row title link
         else if( this.classList.contains("navbar-page-link")
@@ -132,6 +140,14 @@ app.directive("touchStyleToggle", ["$route", function($route) {
           this.children[0].classList.remove("hamburger-highlight");
           this.children[1].classList.remove("hamburger-highlight");
           this.children[2].classList.remove("hamburger-highlight");
+        }
+      // dropdown seach media select
+        else if(this.id === "media-search-select") {
+          this.classList.remove("result-page-btn-highlight");
+        }
+      // dropdown seach submit
+        else if(this.id === "dropdown-search-submit") {
+          this.classList.remove("country-select-highlight");
         }
       // navbar link
       // media row title link
