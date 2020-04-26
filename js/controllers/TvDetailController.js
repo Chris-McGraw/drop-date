@@ -1,10 +1,11 @@
 app.controller("TvDetailController", ["$scope", "jsonPad", "tvApi", "countrySelect", "mediaView", "userSearch", "colorPalette", "$location", function($scope, jsonPad, tvApi, countrySelect, mediaView, userSearch, colorPalette, $location) {
+// ________ SERVICE SET UP
   mediaView.getCurrentType();
 
   userSearch.setDetail( $location.search().id );
 
 
-// -------------------- FUNCTIONS
+// _____________ FUNCTIONS
   function getReleaseList(response) {
     $scope.selectedCountry = countrySelect.getCountry();
 
@@ -18,6 +19,8 @@ app.controller("TvDetailController", ["$scope", "jsonPad", "tvApi", "countrySele
     getReleaseTense(response, response.data.release_date);
   }
 
+// ---
+
   function getReleaseTense(response, release) {
     if(release === "n/a") {
       response.data.release_tense = "";
@@ -30,13 +33,14 @@ app.controller("TvDetailController", ["$scope", "jsonPad", "tvApi", "countrySele
     }
   }
 
-// ---------------------- DETAILS
+
+/* ---------------------------- DETAILS ENDPONT ---------------------------- */
   jsonPad.getData( tvApi.detailUrl(), tvApi.callback() ).then(
     function successCallback(response) {
       $scope.detail = response.data;
       $scope.media = "tv";
 
-  // ____ DETAIL IMAGE
+  // --- DETAIL IMAGE
       if($scope.detail.poster_path === null) {
         $scope.detail.img_path = "imgs/tv-backup.png";
       }
@@ -44,7 +48,7 @@ app.controller("TvDetailController", ["$scope", "jsonPad", "tvApi", "countrySele
         $scope.detail.img_path = "http://image.tmdb.org/t/p/w500" + $scope.detail.poster_path;
       }
 
-  // _ DETAIL BACKDROP
+  // --- DETAIL BACKDROP
       if($scope.detail.backdrop_path === null) {
         if($scope.detail.poster_path !== null) {
           $scope.detail.backdrop = $scope.detail.img_path;
@@ -59,13 +63,13 @@ app.controller("TvDetailController", ["$scope", "jsonPad", "tvApi", "countrySele
 
       document.getElementById("detail-img-background").style.backgroundImage = "url(" + $scope.detail.backdrop + ")";
 
-  // ___ COLOR PALETTE
+  // --- COLOR PALETTE
       colorPalette.getPalette( $scope.detail.img_path, document.getElementById("detail-feature-container") );
 
-  // ________ RELEASES
+  // --- RELEASES
       getReleaseList(response);
 
-  // ______ PRODUCTION
+  // --- PRODUCTION
       $scope.production = response.data.production_companies;
 
       if($scope.production.length === 0) {
@@ -75,7 +79,7 @@ app.controller("TvDetailController", ["$scope", "jsonPad", "tvApi", "countrySele
         $scope.productionList = $scope.production;
       }
 
-  // __________ GENRES
+  // --- GENRES
       $scope.genres = response.data.genres;
 
       if($scope.genres.length === 0) {
@@ -85,7 +89,7 @@ app.controller("TvDetailController", ["$scope", "jsonPad", "tvApi", "countrySele
         $scope.genreList = $scope.genres;
       }
 
-  // _________ SUMMARY
+  // --- SUMMARY
       $scope.overview = response.data.overview;
 
       if($scope.overview === null || $scope.overview === undefined || $scope.overview === "") {

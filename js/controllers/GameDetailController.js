@@ -1,13 +1,16 @@
 app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "countrySelect", "mediaView", "userSearch", "colorPalette", "$location", "$filter", function($scope, jsonPad, gameApi, countrySelect, mediaView, userSearch, colorPalette, $location, $filter) {
+// ________ SERVICE SET UP
   mediaView.getCurrentType();
 
   userSearch.setDetail( $location.search().id );
 
 
+// _____________ VARIABLES
   var releaseTense = "";
 
 
-// -------------------- FUNCTIONS
+// _____________ FUNCTIONS
+/* ---------------------------- RELEASES ENDPONT ---------------------------- */
   function getReleaseList() {
     jsonPad.getData( gameApi.releaseUrl(), gameApi.callback() ).then(
       function successCallback(response) {
@@ -71,6 +74,8 @@ app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "country
     });
   }
 
+// ---
+
   function getReleaseTense(release) {
     if( release <= new Date() ) {
       releaseTense = "Initial Release";
@@ -80,7 +85,8 @@ app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "country
     }
   }
 
-// ---------------------- DETAILS
+
+/* ---------------------------- DETAILS ENDPONT ---------------------------- */
   jsonPad.getData( gameApi.detailUrl(), gameApi.callback() ).then(
     function successCallback(response) {
       $scope.detail = response.data.results;
@@ -88,7 +94,7 @@ app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "country
 
       // console.log($scope.detail.releases);
 
-  // ____ DETAIL IMAGE
+  // --- DETAIL IMAGE
       if( $scope.detail.image.small_url.includes("gb_default") ) {
         $scope.detail.img_path = "imgs/game-backup.png";
       }
@@ -96,13 +102,13 @@ app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "country
         $scope.detail.img_path = $scope.detail.image.small_url;
       }
 
-  // _ DETAIL BACKDROP
+  // --- DETAIL BACKDROP
       document.getElementById("detail-img-background").style.backgroundImage = "url(" + $scope.detail.img_path + ")";
 
-  // ___ COLOR PALETTE
+  // --- COLOR PALETTE
       colorPalette.getPalette( $scope.detail.img_path, document.getElementById("detail-feature-container") );
 
-  // ______ PRODUCTION
+  // --- PRODUCTION
       $scope.production = response.data.results.developers;
 
       if($scope.production === null || $scope.production === undefined || $scope.production === "" || $scope.production.length === 0) {
@@ -112,7 +118,7 @@ app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "country
         $scope.productionList = $scope.production;
       }
 
-  // __________ GENRES
+  // --- GENRES
       $scope.genres = response.data.results.genres;
 
       if($scope.genres === null || $scope.genres === undefined || $scope.genres === "" || $scope.genres.length === 0) {
@@ -122,7 +128,7 @@ app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "country
         $scope.genreList = $scope.genres;
       }
 
-  // _________ SUMMARY
+  // --- SUMMARY
       $scope.overview = response.data.results.deck;
 
       if($scope.overview === null || $scope.overview === undefined || $scope.overview === "") {
@@ -132,7 +138,7 @@ app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "country
         $scope.detail.summary = response.data.results.deck;
       }
 
-  // --------------------- RELEASES
+  // --- RELEASES
       getReleaseList();
   });
 
