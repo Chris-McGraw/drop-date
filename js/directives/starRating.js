@@ -1,4 +1,4 @@
-app.directive("starRating", ["jsonPad", "movieApi", "tvApi", function(jsonPad, movieApi, tvApi) {
+app.directive("starRating", ["jsonPad", "gameApi", "movieApi", "tvApi", function(jsonPad, gameApi, movieApi, tvApi) {
   return {
     restrict: "E",
     scope: {
@@ -10,11 +10,6 @@ app.directive("starRating", ["jsonPad", "movieApi", "tvApi", function(jsonPad, m
 // -----
 
       function getStarRating(response) {
-        scope.starRating = response.data.vote_average / 2;
-        // var starRating = response.data.vote_average / 2;
-
-        scope.ratingCount = response.data.vote_count;
-
         if(scope.starRating < 0.5) {
           scope.oneStar = "far fa-star";
         }
@@ -68,17 +63,48 @@ app.directive("starRating", ["jsonPad", "movieApi", "tvApi", function(jsonPad, m
 
 // -----
 
-      if(scope.type === "movies") {
+      if(scope.type === "games") {
+        jsonPad.getData( gameApi.reviewUrl(), gameApi.callback() ).then(
+          function successCallback(response) {
+            var gameRatingSum = 0;
+            var gameRatingCount = response.data.results.length;
+            var gameStarRating = 0;
+
+            angular.forEach(response.data.results, function(result) {
+              gameRatingSum += result.score;
+            });
+
+            if(gameRatingSum === 0 ) {
+              gameStarRating = 0;
+            }
+            else {
+              gameStarRating = Math.round( (gameRatingSum / gameRatingCount) * 10) / 10;
+            }
+
+            scope.starRating = gameStarRating;
+            scope.ratingCount = gameRatingCount;
+
+            getStarRating(scope.starRating);
+        });
+      }
+
+      else if(scope.type === "movies") {
         jsonPad.getData( movieApi.detailUrl(), movieApi.callback() ).then(
           function successCallback(response) {
-            getStarRating(response);
+            scope.starRating = response.data.vote_average / 2;
+            scope.ratingCount = response.data.vote_count;
+
+            getStarRating(scope.starRating);
         });
       }
 
       else if(scope.type === "tv") {
         jsonPad.getData( tvApi.detailUrl(), tvApi.callback() ).then(
           function successCallback(response) {
-            getStarRating(response);
+            scope.starRating = response.data.vote_average / 2;
+            scope.ratingCount = response.data.vote_count;
+
+            getStarRating(scope.starRating);
         });
       }
 
