@@ -1,10 +1,12 @@
 app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "countrySelect", "mediaView", "userSearch", "colorPalette", "$location", "$filter", function($scope, jsonPad, movieApi, countrySelect, mediaView, userSearch, colorPalette, $location, $filter) {
+// ________ SERVICE SET UP
   mediaView.getCurrentType();
 
   userSearch.setDetail( $location.search().id );
 
 
-// -------------------- FUNCTIONS
+// _____________ FUNCTIONS
+/* ---------------------------- RELEASES ENDPONT ---------------------------- */
   function getReleaseList() {
     jsonPad.getData( movieApi.releaseUrl(), movieApi.callback() ).then(
       function successCallback(response) {
@@ -21,6 +23,8 @@ app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "count
         releaseType();
     });
   }
+
+// ---
 
   function releaseType() {
     angular.forEach($scope.releases, function(release) {
@@ -55,13 +59,13 @@ app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "count
   }
 
 
-// ---------------------- DETAILS
+/* ---------------------------- DETAILS ENDPONT ---------------------------- */
   jsonPad.getData( movieApi.detailUrl(), movieApi.callback() ).then(
     function successCallback(response) {
       $scope.detail = response.data;
       $scope.media = "movies";
 
-  // ____ DETAIL IMAGE
+  // --- DETAIL IMAGE
       if($scope.detail.poster_path === null) {
         $scope.detail.img_path = "imgs/movie-backup.png";
       }
@@ -69,7 +73,7 @@ app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "count
         $scope.detail.img_path = "http://image.tmdb.org/t/p/w500" + $scope.detail.poster_path;
       }
 
-  // _ DETAIL BACKDROP
+  // --- DETAIL BACKDROP
       if($scope.detail.backdrop_path === null) {
         if($scope.detail.poster_path !== null) {
           $scope.detail.backdrop = $scope.detail.img_path;
@@ -84,10 +88,10 @@ app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "count
 
       document.getElementById("detail-img-background").style.backgroundImage = "url(" + $scope.detail.backdrop + ")";
 
-  // ___ COLOR PALETTE
+  // --- COLOR PALETTE
       colorPalette.getPalette( $scope.detail.img_path, document.getElementById("detail-feature-container") );
 
-  // ______ PRODUCTION
+  // --- PRODUCTION
       $scope.production = response.data.production_companies;
 
       if($scope.production.length === 0) {
@@ -97,7 +101,7 @@ app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "count
         $scope.productionList = $scope.production;
       }
 
-  // __________ GENRES
+  // --- GENRES
       $scope.genres = response.data.genres;
 
       if($scope.genres.length === 0) {
@@ -107,7 +111,7 @@ app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "count
         $scope.genreList = $scope.genres;
       }
 
-  // _________ SUMMARY
+  // --- SUMMARY
       $scope.overview = response.data.overview;
 
       if($scope.overview === null || $scope.overview === undefined || $scope.overview === "") {
@@ -117,7 +121,7 @@ app.controller("MovieDetailController", ["$scope", "jsonPad", "movieApi", "count
         $scope.detail.summary = $scope.overview;
       }
 
-  // --------------------- RELEASES
+  // --- RELEASES
       getReleaseList();
   });
 

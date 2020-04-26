@@ -55,12 +55,12 @@ app.service("gameApi", ["countrySelect", "localDate", "userSearch", function(cou
     + "&field_list=guid,name,region,platform,release_date,expected_release_month,expected_release_day,expected_release_year";
   }
 
-  this.reviewUrl = function(releaseList) {
+  this.reviewUrl = function() {
     return "https://www.giantbomb.com/api/user_reviews/"
     + "?api_key=" + key
-    + "&filter=object:" + releaseList
+    + "&filter=game:" + userSearch.getDetail()
     + "&format=jsonp"
-    + "&field_list=wikiObject,reviewer,score";
+    + "&field_list=score";
   }
 
   this.characterUrl = function(charList) {
