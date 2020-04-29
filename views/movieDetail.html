@@ -14,9 +14,9 @@
 
           <div id="release-dates">
             <h3 class="media-info-tile">
-              <span class="inline-text">{{ selectedCountry }} Release Dates:</span>
+              <span class="inline-text">{{ selectedCountry }} Releases:</span>
             </h3>
-            <div class="media-info-tile">
+            <div class="media-info-tile media-info-tile-right">
               <div ng-repeat="release in releases">
                 <p>
                   <span class="inline-text">{{ release.release_date | date:"MMM dd, yyyy":"UTC" }}</span>
@@ -32,16 +32,16 @@
             <h3 class="media-info-tile">
               <span class="inline-text">Average Rating:</span>
             </h3>
-            <div class="media-info-tile">
+            <div class="media-info-tile media-info-tile-right">
               <star-rating type="movies"></star-rating>
             </div>
           </div>
 
           <div id="production">
             <h3 class="media-info-tile">
-              <span class="inline-text">Production Companies:</span>
+              <span class="inline-text">Production:</span>
             </h3>
-            <div class="media-info-tile">
+            <div class="media-info-tile media-info-tile-right">
               <p ng-repeat="prod in productionList">
                 <span class="inline-text">{{ prod.name }}</span>
               </p>
@@ -52,7 +52,7 @@
             <h3 class="media-info-tile">
               <span class="inline-text">Genres:</span>
             </h3>
-            <div class="media-info-tile">
+            <div class="media-info-tile media-info-tile-right">
               <p ng-repeat="genre in genreList">
                 <span class="inline-text">{{ genre.name }}</span>
               </p>

@@ -84,11 +84,11 @@ app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "country
       userSearch.setName( response.data.results.name );
 
   // --- DETAIL IMAGE
-      if( $scope.detail.image.small_url.includes("gb_default") ) {
+      if( $scope.detail.image.medium_url.includes("gb_default") ) {
         $scope.detail.img_path = "imgs/game-backup.png";
       }
       else {
-        $scope.detail.img_path = $scope.detail.image.small_url;
+        $scope.detail.img_path = $scope.detail.image.medium_url;
       }
 
   // --- DETAIL BACKDROP

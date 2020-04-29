@@ -1537,6 +1537,10 @@ p {
   margin-bottom: 10px;
 }
 
+.media-info-tile-right {
+  padding-top: 4px;
+}
+
 #release-dates {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
