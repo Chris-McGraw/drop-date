@@ -80,6 +80,9 @@ app.controller("GameDetailController", ["$scope", "jsonPad", "gameApi", "country
 
       // console.log($scope.detail.releases);
 
+      // TO BE REMOVED WHEN GAME RELEASE API BY ID IS FIXED!!!
+      userSearch.setName( response.data.results.name );
+
   // --- DETAIL IMAGE
       if( $scope.detail.image.small_url.includes("gb_default") ) {
         $scope.detail.img_path = "imgs/game-backup.png";
