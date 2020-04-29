@@ -44,14 +44,14 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
 
       // check featured hero for previous game img error
         if(scope.featuredGameImgErr === false) {
-          if( featuredGameDetail.image.small_url.includes("gb_default") ) {
+          if( featuredGameDetail.image.medium_url.includes("gb_default") ) {
             scope.img_path = "imgs/game-backup.png";
 
             element[0].firstChild.style.backgroundImage = "none";
             document.getElementById("featured-hero-inner").style.backgroundColor = "rgba(0,0,0, 0.4)";
           }
           else {
-            scope.img_path = featuredGameDetail.image.small_url;
+            scope.img_path = featuredGameDetail.image.medium_url;
 
             element[0].firstChild.style.backgroundImage = `url( ${scope.img_path} )`;
             colorPalette.getPalette( scope.img_path, document.getElementById("featured-hero-inner") );
@@ -108,7 +108,7 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
           scope.img_path = "imgs/movie-backup.png";
         }
 
-        scope.backdrop_path = "http://image.tmdb.org/t/p/w500" + featuredMovie.backdrop_path;
+        scope.backdrop_path = "http://image.tmdb.org/t/p/w780" + featuredMovie.backdrop_path;
         element[0].firstChild.style.backgroundImage = `url( ${scope.backdrop_path} )`;
       }
 
@@ -155,7 +155,7 @@ app.directive("featuredHero", ["fillMediaRow", "userSearch", "jsonPad", "gameApi
           scope.img_path = "imgs/tv-backup.png";
         }
 
-        scope.backdrop_path = "http://image.tmdb.org/t/p/w500" + featuredTv.backdrop_path;
+        scope.backdrop_path = "http://image.tmdb.org/t/p/w780" + featuredTv.backdrop_path;
         element[0].firstChild.style.backgroundImage = `url( ${scope.backdrop_path} )`;
       }
 

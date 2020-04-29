@@ -58,7 +58,7 @@ app.controller("TvDetailController", ["$scope", "jsonPad", "tvApi", "countrySele
         }
       }
       else {
-        $scope.detail.backdrop = "http://image.tmdb.org/t/p/w500" + $scope.detail.backdrop_path;
+        $scope.detail.backdrop = "http://image.tmdb.org/t/p/w780" + $scope.detail.backdrop_path;
       }
 
       document.getElementById("detail-img-background").style.backgroundImage = "url(" + $scope.detail.backdrop + ")";

@@ -47,10 +47,19 @@ app.service("gameApi", ["countrySelect", "localDate", "userSearch", function(cou
     + "&field_list=id,image,name,releases,developers,genres,deck,characters,platforms,number_of_user_reviews,original_game_rating,original_release_date,expected_release_month,expected_release_day,expected_release_year";
   }
 
+  // this.releaseUrl = function() {
+  //   return "https://www.giantbomb.com/api/releases/"
+  //   + "?api_key=" + key
+  //   + "&filter=game:" + userSearch.getDetail()
+  //   + "&format=jsonp"
+  //   + "&field_list=guid,name,region,platform,release_date,expected_release_month,expected_release_day,expected_release_year";
+  // }
+
+// TO BE REMOVED WHEN GAME RELEASE API BY ID IS FIXED!!!
   this.releaseUrl = function() {
     return "https://www.giantbomb.com/api/releases/"
     + "?api_key=" + key
-    + "&filter=game:" + userSearch.getDetail()
+    + "&filter=name:" + userSearch.getName()
     + "&format=jsonp"
     + "&field_list=guid,name,region,platform,release_date,expected_release_month,expected_release_day,expected_release_year";
   }
