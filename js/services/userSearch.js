@@ -44,18 +44,4 @@ app.service("userSearch", function() {
   this.getDetail = function() {
     return userDetail;
   }
-
-// ---
-
-// TO BE REMOVED WHEN GAME RELEASE API BY ID IS FIXED!!!
-  var gameName = "";
-
-  this.setName = function(input) {
-    gameName = input;
-  }
-
-  this.getName = function() {
-    return gameName;
-  }
-
 });
